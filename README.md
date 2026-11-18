@@ -266,9 +266,12 @@ node tests/live/inspect.ts <url> [--no-oho] [--eval "<js>"] [--frames]   # debug
 9 NOT SHOWN, 3 ERROR, and no accept clicks anywhere.
 - **HIDDEN:** these are pay-or-accept walls or notices with no way to refuse (kicker, marca,
   repubblica, tagesspiegel, lemonde, xataka, ibm).
-- **The 4 MISSes:** dba.dk, finn.no, bild.de and usercentrics.com passed or were correctly hidden in
-  the previous run. dba.dk passes when run alone, so this is probably concurrency on an unstable
-  network. It is not proven.
+- **The 4 MISSes, rerun one site at a time:** dba.dk passed 3/3 and usercentrics.com 2/2 (a third run
+  hit a dropped connection). finn.no passed 4/6. In the one instrumented finn miss, Sourcepoint never
+  rendered its banner in the oho pass, so there was nothing to reject. bild.de (a pay-or-accept wall)
+  was hidden in 5/6 runs. Its one miss came from an uninstrumented run and its cause is not known. The
+  runner now retries every MISS once, alone, before reporting it. It records when the banner first
+  appeared, and reports "banner never shown in the oho pass" as NOT SHOWN, not MISS.
 - **The FAIL:** redhat.com's TrustArc preference centre stays over the page after "Refuser tout".
 
 ## Results

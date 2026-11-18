@@ -17,7 +17,7 @@ import {
   type Check, type Site,
 } from './lib.ts';
 
-type Result = 'PASS' | 'HIDDEN' | 'MISS' | 'FAIL' | 'NOT SHOWN' | 'ERROR';
+type Result = 'PASS' | 'HIDDEN' | 'WALL' | 'MISS' | 'FAIL' | 'NOT SHOWN' | 'ERROR';
 interface Row {
   site: string; url: string; cmp: string; lang: string; result: Result; ms: number | null;
   oho: string; notes: string[]; checks: Check[]; clicks: string[]; apis?: Record<string, string>;
@@ -128,10 +128,24 @@ async function runSite(site: Site): Promise<Row> {
     const t0 = Date.now();
     await page.goto(site.url, { waitUntil: 'domcontentloaded', timeout: 45_000 });
     let out = null;
+    let firstSeen = 0; // when a banner first became visible in this pass (diagnostics)
     while (!out && Date.now() - t0 < OHO_WAIT_MS) {
       await page.waitForTimeout(250);
       out = await ohoOutcome(sw);
+      if (!firstSeen && (await page.evaluate(bannerProbe, rules).catch(() => ({ visible: false }))).visible) firstSeen = Date.now() - t0;
     }
+    if (!out) {
+      // Diagnose a miss: did oho act after the window, and when did the banner even appear?
+      const lateEnd = Date.now() + 20_000;
+      while (!out && Date.now() < lateEnd) {
+        await page.waitForTimeout(500);
+        out = await ohoOutcome(sw);
+      }
+      row.notes.push(`diagnostic: banner first visible at ${firstSeen ? firstSeen + ' ms' : 'never (in this pass)'}; ` +
+        (out ? `oho acted LATE, at ${out.t - t0} ms (outside the ${OHO_WAIT_MS / 1000} s window)` : 'oho never acted (35 s)'));
+      if (out) out = null; // still a miss under the 15 s rule
+    }
+    const neverShownWithOho = !out && !firstSeen;
     row.ms = out ? out.t - t0 : null;
     row.oho = out ? `${out.how} (${out.id})` : 'nothing';
     await page.waitForTimeout(out ? 3000 : 1000); // let the CMP persist its choice and close
@@ -174,12 +188,18 @@ async function runSite(site: Site): Promise<Row> {
     if (accepted.length) {
       row.result = 'FAIL';
       row.notes.push('ACCEPT CLICKED: ' + accepted.join(' | '));
+    } else if (out?.how === 'wall') {
+      row.result = 'WALL';
+      row.notes.push('pay-or-accept wall (only refusal is paying): left alone, "Hide pay-or-accept walls" is off');
     } else if (blocked && !out) {
       row.result = 'ERROR';
       row.notes.push('blocked by bot protection / captcha (try --headed or a residential/EU proxy)');
     } else if (!shown.visible && !out && !after.visible) {
       row.result = 'NOT SHOWN';
-      row.notes.push('no banner appeared (probably geo-targeted to EU visitors)');
+      row.notes.push('no banner appeared in either pass (CMPs often show banners to EU/EEA visitors only)');
+    } else if (neverShownWithOho && !after.visible) {
+      row.result = 'NOT SHOWN';
+      row.notes.push('banner appeared without oho but never in the oho pass: nothing to reject (the CMP did not render it)');
     } else if (after.visible) {
       row.result = 'MISS';
       row.notes.push(`banner still visible (${after.by})`);
@@ -243,6 +263,17 @@ await Promise.all(
   }),
 );
 
+// A MISS under parallel load is retried once, alone, before it is reported (step 2 of the live
+// investigation: the 4 MISSes of an earlier run all passed when rerun one at a time).
+const misses = rows.filter((r) => r.result === 'MISS');
+for (const m of misses) {
+  const site = todo.find((s) => s.url === m.url)!;
+  const again = await runSiteSafe(site);
+  again.notes.unshift(again.result === 'MISS' ? 'MISS confirmed on a solo retry' : `MISS under concurrency ${args.concurrency}; solo retry: ${again.result}`);
+  rows[rows.indexOf(m)] = again;
+  console.log(`retry     ${again.site.padEnd(28)} -> ${again.result}`);
+}
+
 // ---- report ----
 const order = sites.map((s) => s.url);
 rows.sort((x, y) => order.indexOf(x.url) - order.indexOf(y.url));
@@ -269,5 +300,5 @@ if (tally['NOT SHOWN']) {
 writeFileSync(path.join(LIVE, 'report.md'), md.join('\n'));
 writeFileSync(path.join(LIVE, 'report.json'), JSON.stringify({ generated: new Date().toISOString(), proxy: args.proxy ?? null, tally, rows }, null, 2));
 console.log('\n', tally);
-if (tally['NOT SHOWN']) console.log(`note: ${tally['NOT SHOWN']} site(s) showed no banner, probably geo-targeted. Re-run with --proxy <EU proxy>.`);
+if (tally['NOT SHOWN']) console.log(`note: ${tally['NOT SHOWN']} site(s) showed no banner. Many CMPs target EU/EEA visitors only: re-run with --proxy <EU proxy>.`);
 console.log('report: tests/live/report.md');
