@@ -1,0 +1,13 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Axeptio</title></head><body><h1>Axeptio fixture (French)</h1>
+<div id="axeptio_overlay"><div class="axeptio_mount"><div class="axeptio_widget bar">
+  <p>Ce site utilise des cookies pour améliorer votre expérience et mesurer l'audience.</p>
+  <button id="axeptio_btn_dismiss">Non merci</button>
+  <button id="axeptio_btn_configure">Je choisis</button>
+  <button id="axeptio_btn_acceptAll">OK pour moi</button>
+</div></div></div>
+<script>
+ohoLock();
+const o = document.getElementById('axeptio_overlay');
+document.getElementById('axeptio_btn_acceptAll').onclick = () => ohoClose(o, 'accepted');
+document.getElementById('axeptio_btn_dismiss').onclick = () => ohoClose(o, 'rejected');
+</script></body></html>

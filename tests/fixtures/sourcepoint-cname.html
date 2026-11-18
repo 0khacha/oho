@@ -1,0 +1,16 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Sourcepoint (first-party CNAME frame)</title></head><body><h1>Sourcepoint served from the site's own subdomain (as on dba.dk / bild.de)</h1>
+<!-- Live finding: every Sourcepoint site tested served its message from a first-party CNAME
+     (cmp2.bild.de, cmpv2.dba.dk...), not privacy-mgmt.com. They all carry consent_origin= in the URL. -->
+<div id="sp_message_container_77" class="modal">
+  <iframe id="sp_message_iframe_77" title="SP Consent Message" src="https://cmpv2.news-example.test/index.html?hasCsp=true&message_id=77&consentUUID=null&consent_origin=https%3A%2F%2Fcmpv2.news-example.test%2Fconsent%2Ftcfv2" style="width:600px;height:300px;border:0;background:#fff"></iframe>
+</div>
+<script>
+ohoLock();
+document.documentElement.classList.add('sp-message-open');
+window.addEventListener('message', (e) => {
+  if (e.data && e.data.sp) {
+    document.documentElement.classList.remove('sp-message-open');
+    ohoClose(document.getElementById('sp_message_container_77'), e.data.sp);
+  }
+});
+</script></body></html>

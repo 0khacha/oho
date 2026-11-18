@@ -1,0 +1,18 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Quantcast</title></head><body><h1>Quantcast / InMobi Choice fixture (Spanish)</h1>
+<div id="qc-cmp2-container" class="qc-cmp2-container">
+  <div id="qc-cmp2-ui" class="modal" role="dialog" aria-modal="true"><div class="box">
+    <p>Valoramos tu privacidad. Nosotros y nuestros socios almacenamos o accedemos a información en un dispositivo, tales como cookies.</p>
+    <div class="qc-cmp2-summary-buttons">
+      <button mode="secondary">MÁS OPCIONES</button>
+      <button mode="secondary">RECHAZAR TODO</button>
+      <button mode="primary">ACEPTO</button>
+    </div>
+  </div></div>
+</div>
+<script>
+ohoLock();
+const c = document.getElementById('qc-cmp2-container');
+const [more, no, yes] = document.querySelectorAll('.qc-cmp2-summary-buttons button');
+yes.onclick = () => ohoClose(c, 'accepted');
+no.onclick = () => ohoClose(c, 'rejected');
+</script></body></html>

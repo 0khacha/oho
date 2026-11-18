@@ -1,0 +1,16 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Iubenda (x rejects)</title></head><body><h1>Iubenda without a reject button, "x" rejects (as on aranzulla.it)</h1>
+<!-- Live finding: Italian sites follow the Garante guidelines: closing with "x" = refusing.
+     Iubenda exposes it as csConfiguration.banner.closeButtonRejects; oho uses the x only then. -->
+<div id="iubenda-cs-banner" class="bar iubenda-cs-default-floating">
+  <button class="iubenda-cs-close-btn" aria-label="Chiudi questa informativa">×</button>
+  <p>Noi e terze parti selezionate utilizziamo cookie o tecnologie simili per finalità tecniche e, con il tuo consenso, anche per altre finalità.</p>
+  <button class="iubenda-cs-customize-btn">Scopri di più e personalizza</button>
+  <button class="iubenda-cs-accept-btn iubenda-cs-btn-primary">Accetta</button>
+</div>
+<script>
+window._iub = { csConfiguration: { lang: 'it', banner: { closeButtonRejects: true } } };
+ohoLock();
+const b = document.getElementById('iubenda-cs-banner');
+document.querySelector('.iubenda-cs-close-btn').onclick = () => ohoClose(b, _iub.csConfiguration.banner.closeButtonRejects ? 'rejected' : 'dismissed');
+document.querySelector('.iubenda-cs-accept-btn').onclick = () => ohoClose(b, 'accepted');
+</script></body></html>

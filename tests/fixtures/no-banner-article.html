@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Article (no banner)</title>
+<style>
+header{position:sticky;top:0;background:#fff;z-index:500;padding:10px 0;border-bottom:1px solid #ddd}
+#top{position:fixed;right:16px;bottom:16px;z-index:200}
+#newsletter{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:420px;background:#fff;padding:24px;z-index:1000;box-shadow:0 4px 30px #0005}
+</style></head><body>
+<!-- False-positive traps: sticky nav with privacy links, a back-to-top button and a newsletter popup with a "No thanks" button. -->
+<header><nav><a href="/">Home</a> <a href="/news">News</a> <a href="/privacy">Privacy</a> <a href="/cookies">Cookie policy</a> <button>Subscribe</button></nav></header>
+<h1>How tide pools survive the winter</h1>
+<div id="newsletter" role="dialog" aria-modal="true" aria-label="Newsletter">
+  <h2>Get the weekly digest</h2>
+  <p>Join 40,000 readers. We respect your privacy and never share your email with partners.</p>
+  <input type="email" placeholder="you@example.com"> <button id="sub">Subscribe</button>
+  <button id="nothanks">No thanks</button>
+</div>
+<button id="top">↑ Top</button>
+</body></html>

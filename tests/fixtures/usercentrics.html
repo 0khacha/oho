@@ -1,0 +1,14 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Usercentrics</title></head><body><h1>Usercentrics fixture (shadow DOM)</h1>
+<div id="usercentrics-root"></div>
+<script>
+ohoLock();
+const host = document.getElementById('usercentrics-root');
+const sr = host.attachShadow({ mode: 'open' });
+sr.innerHTML = '<style>.b{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:20px;z-index:2147483647;box-shadow:0 -2px 10px #0003}</style>' +
+  '<div class="b" data-testid="uc-default-banner"><p>Wir verwenden Cookies und ähnliche Technologien. Datenschutz-Einstellungen.</p>' +
+  '<button data-testid="uc-more-button">Einstellungen</button>' +
+  '<button data-testid="uc-deny-all-button">Ablehnen</button>' +
+  '<button data-testid="uc-accept-all-button">Alle akzeptieren</button></div>';
+sr.querySelector('[data-testid=uc-accept-all-button]').onclick = () => ohoClose(host, 'accepted');
+sr.querySelector('[data-testid=uc-deny-all-button]').onclick = () => ohoClose(host, 'rejected');
+</script></body></html>

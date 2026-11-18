@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Pre-rendered banner revealed later</title></head><body>
+<h1>Banner in the HTML from the start, revealed by a class change after 1.5 s</h1>
+<!-- No childList mutation ever happens for this banner: exercises the full rescan. -->
+<div id="pnl" class="bar hidden" role="region" aria-label="Notice">
+  <p>We use cookies and similar tracking technologies with our advertising partners to analyse traffic. <a href="/privacy">Privacy policy</a></p>
+  <button id="y">Accept all</button>
+  <button id="n">Decline all</button>
+</div>
+<script>
+const p = document.getElementById('pnl');
+setTimeout(() => { p.classList.remove('hidden'); ohoLock(); }, 1500);
+document.getElementById('y').onclick = () => ohoClose(p, 'accepted');
+document.getElementById('n').onclick = () => ohoClose(p, 'rejected');
+</script></body></html>

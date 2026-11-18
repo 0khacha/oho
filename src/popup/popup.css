@@ -1,0 +1,55 @@
+:root {
+  --bg: #fbfaf7;
+  --fg: #1d1b18;
+  --muted: #6b665e;
+  --line: #e6e1d8;
+  --accent: #c2410c;
+  --track: #d6d0c4;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #1a1917; --fg: #f1ede6; --muted: #a39d92; --line: #34312c; --accent: #fb923c; --track: #4a463f; }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  width: 280px;
+  padding: 16px;
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+header { margin-bottom: 12px; }
+h1 { margin: 0; font-size: 26px; letter-spacing: -0.02em; color: var(--accent); }
+.tagline { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+.row {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 0; border-top: 1px solid var(--line); cursor: pointer;
+}
+.row b { font-weight: 600; word-break: break-all; }
+input[type=checkbox] {
+  appearance: none; flex: none; width: 34px; height: 20px; border-radius: 10px;
+  background: var(--track); position: relative; cursor: pointer; transition: background .15s; margin: 0;
+}
+input[type=checkbox]::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px;
+  border-radius: 50%; background: #fff; transition: transform .15s;
+}
+input[type=checkbox]:checked { background: var(--accent); }
+input[type=checkbox]:checked::after { transform: translateX(14px); }
+input[type=checkbox]:disabled { opacity: .4; cursor: default; }
+input[type=checkbox]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  padding-top: 12px; border-top: 1px solid var(--line);
+}
+.stats div { display: flex; flex-direction: column; }
+.stats strong { font-size: 22px; font-variant-numeric: tabular-nums; }
+.stats span { color: var(--muted); font-size: 12px; }
+.hint { margin: 10px 0 0; color: var(--muted); font-size: 12px; }
+.grant { margin: 0 0 12px; padding: 10px 12px; border: 1px solid var(--accent); border-radius: 8px; }
+.grant p { margin: 0 0 8px; }
+.grant button {
+  font: inherit; font-weight: 600; color: #fff; background: var(--accent);
+  border: 0; border-radius: 6px; padding: 6px 12px; cursor: pointer;
+}

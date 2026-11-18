@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>OneTrust (preferences only)</title></head><body><h1>OneTrust multi-step fixture</h1>
+<div id="onetrust-consent-sdk">
+  <div id="onetrust-banner-sdk" class="bar">
+    <p>We use cookies to improve your experience and for advertising with our partners.</p>
+    <button id="onetrust-pc-btn-handler">Manage Preferences</button>
+    <button id="onetrust-accept-btn-handler">Accept All</button>
+  </div>
+  <div id="onetrust-pc-sdk" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="box">
+      <h2>Privacy Preference Center</h2>
+      <label><input type="checkbox" checked disabled> Strictly necessary</label><br>
+      <label><input type="checkbox" class="cat" checked> Performance cookies</label><br>
+      <label><input type="checkbox" class="cat" checked> Functional cookies</label><br>
+      <label><input type="checkbox" class="cat" checked> Targeting cookies</label><br>
+      <button id="accept-recommended-btn-handler">Allow All</button>
+      <button class="save-preference-btn-handler">Confirm My Choices</button>
+    </div>
+  </div>
+</div>
+<script>
+ohoLock();
+const sdk = document.getElementById('onetrust-consent-sdk');
+const pc = document.getElementById('onetrust-pc-sdk');
+document.getElementById('onetrust-pc-btn-handler').onclick = () => {
+  document.getElementById('onetrust-banner-sdk').classList.add('hidden');
+  setTimeout(() => pc.classList.remove('hidden'), 200); // panel renders late
+};
+document.getElementById('onetrust-accept-btn-handler').onclick = () => ohoClose(sdk, 'accepted');
+document.getElementById('accept-recommended-btn-handler').onclick = () => ohoClose(sdk, 'accepted');
+document.querySelector('.save-preference-btn-handler').onclick = () => {
+  const anyOn = [...document.querySelectorAll('.cat')].some((c) => c.checked);
+  ohoClose(sdk, anyOn ? 'partial' : 'rejected');
+};
+</script></body></html>

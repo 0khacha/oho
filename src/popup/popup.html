@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>oho</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>oho</h1>
+    <p class="tagline">Tamazight for “no”. Auto-rejects cookie banners. Tiny, fast, private.</p>
+  </header>
+
+  <div class="grant" id="grant" hidden>
+    <p>oho needs access to websites to reject their cookie banners.</p>
+    <button id="grant-btn" type="button">Grant access</button>
+  </div>
+
+  <label class="row">
+    <span>Enabled</span>
+    <input type="checkbox" id="enabled" role="switch">
+  </label>
+  <label class="row">
+    <span>Disable on <b id="site-name">this site</b></span>
+    <input type="checkbox" id="site" role="switch">
+  </label>
+
+  <div class="stats">
+    <div><strong id="tab-count">0</strong><span>on this tab</span></div>
+    <div><strong id="total-count">0</strong><span>total</span></div>
+  </div>
+  <p class="hint" id="hint" hidden>Reload the page to apply.</p>
+  <script src="popup.js"></script>
+</body>
+</html>

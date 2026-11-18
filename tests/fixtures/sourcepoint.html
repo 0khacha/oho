@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Sourcepoint</title></head><body><h1>Sourcepoint fixture (iframe)</h1>
+<div id="sp_message_container_1042" class="modal">
+  <iframe id="sp_message_iframe_1042" title="SP Consent Message" src="https://cdn.privacy-mgmt.com/index.html?message_id=1042" style="width:600px;height:300px;border:0;background:#fff"></iframe>
+</div>
+<script>
+ohoLock();
+document.documentElement.classList.add('sp-message-open');
+window.addEventListener('message', (e) => {
+  if (e.data && e.data.sp) {
+    document.documentElement.classList.remove('sp-message-open');
+    ohoClose(document.getElementById('sp_message_container_1042'), e.data.sp);
+  }
+});
+</script></body></html>

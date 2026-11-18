@@ -1,0 +1,5870 @@
+[
+  {
+    "url": "https://jyllands-posten.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Jyllandsposten - Nyheder til dig, der vil vide mere",
+    "finalUrl": "https://jyllands-posten.dk/",
+    "evidence": {
+      "cookiebot": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "undefined",
+      "Cookiebot.submitCustomConsent": "function",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:cookiebot"
+    }
+  },
+  {
+    "url": "https://netto.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Netto Danmark",
+    "finalUrl": "https://netto.dk/",
+    "evidence": {
+      "usercentrics": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "function",
+      "__ucCmp.denyAllConsents": "function",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:usercentrics"
+    }
+  },
+  {
+    "url": "https://borsen.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Børsen - erhvervsnyheder, aktier og økonomi",
+    "finalUrl": "https://borsen.dk/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://politiken.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Politiken | Nyheder, debat, kultur og podcast. Læs eller lyt",
+    "finalUrl": "https://politiken.dk/",
+    "evidence": {
+      "cookiebot": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "undefined",
+      "Cookiebot.submitCustomConsent": "function",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:cookiebot"
+    }
+  },
+  {
+    "url": "https://ekstrabladet.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Nyheder, sport og underholdning",
+    "finalUrl": "https://ekstrabladet.dk/",
+    "evidence": {
+      "cookiebot": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "undefined",
+      "Cookiebot.submitCustomConsent": "function",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:cookiebot"
+    }
+  },
+  {
+    "url": "https://www.bt.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "B.T.",
+    "finalUrl": "https://www.bt.dk/",
+    "evidence": {
+      "cookiebot": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "undefined",
+      "Cookiebot.submitCustomConsent": "function",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:cookiebot"
+    }
+  },
+  {
+    "url": "https://www.elgiganten.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Vercel Security Checkpoint",
+    "finalUrl": "https://www.elgiganten.dk/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.coop.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Coop Danmark A/S",
+    "finalUrl": "https://coop.dk/",
+    "evidence": {
+      "other:cookieinformation": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.bilka.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Bilka | Elektronik, havemøbler, legetøj og meget mere hos Bilka",
+    "finalUrl": "https://www.bilka.dk/",
+    "evidence": {
+      "usercentrics": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "function",
+      "__ucCmp.denyAllConsents": "function",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:usercentrics"
+    }
+  },
+  {
+    "url": "https://www.tv2.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "TV 2 - Bedst på breaking og live - TV 2",
+    "finalUrl": "https://tv2.dk/",
+    "evidence": {
+      "onetrust": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.power.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "POWER – Samme lave pris i butik som på net",
+    "finalUrl": "https://www.power.dk/",
+    "evidence": {
+      "other:cookieinformation": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.jysk.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "JYSK | Køb møbler til din bolig – Altid gode tilbud ✓",
+    "finalUrl": "https://jysk.dk/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:onetrust"
+    }
+  },
+  {
+    "url": "https://www.flysas.com/en/",
+    "lang": "en",
+    "ok": true,
+    "title": "Scandinavian Airlines – Book Your Next Flight on Flysas.com | SAS",
+    "finalUrl": "https://www.flysas.com/en",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:dialog.hnhfyy0"
+    }
+  },
+  {
+    "url": "https://www.dsb.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "",
+    "finalUrl": "https://www.dsb.dk/",
+    "evidence": {
+      "other:cookieinformation": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#coi-banner-wrapper"
+    }
+  },
+  {
+    "url": "https://www.matas.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Matas.dk",
+    "finalUrl": "https://www.matas.dk/",
+    "evidence": {
+      "other:cookieinformation": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.norwegian.com/en/",
+    "lang": "en",
+    "ok": true,
+    "title": "Book cheap flights with Norwegian | Norwegian",
+    "finalUrl": "https://www.norwegian.com/en/",
+    "evidence": {
+      "onetrust": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.dba.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Nyt og brugt, køb og salg på DBA - Altid en god handel",
+    "finalUrl": "https://www.dba.dk/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.saxo.com/dk",
+    "lang": "en",
+    "ok": true,
+    "title": "Just a moment...",
+    "finalUrl": "https://www.saxo.com/dk",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.tagesspiegel.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Aktuelle News: Nachrichten aus Berlin und der Welt",
+    "finalUrl": "https://www.tagesspiegel.de/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.boligsiden.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Boliger til salg og leje i Danmark | Boligsiden",
+    "finalUrl": "https://www.boligsiden.dk/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.wetter.com/",
+    "lang": "de",
+    "ok": true,
+    "title": "Wetter, Wettervorhersage & Wetterbericht | wetter.com",
+    "finalUrl": "https://www.wetter.com/",
+    "evidence": {
+      "usercentrics": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.fitx.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "FitX Fitnessstudio | inkl. Kurse, Getränke, Duschen – 24/7",
+    "finalUrl": "https://www.fitx.de/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:div.cookie_overlay__container"
+    }
+  },
+  {
+    "url": "https://www.finn.no/",
+    "lang": "en",
+    "ok": true,
+    "title": "FINN.no – mulighetenes marked",
+    "finalUrl": "https://www.finn.no/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.kununu.com/de",
+    "lang": "de",
+    "ok": true,
+    "title": "Let's confirm you are human",
+    "finalUrl": "https://www.kununu.com/de",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.walesonline.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "WalesOnline: News, sport, weather and events from across Wales",
+    "finalUrl": "https://www.walesonline.co.uk/",
+    "evidence": {
+      "quantcast": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.dailyrecord.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Daily Record & Sunday Mail - Scottish News, Sport, Politics and Celeb news",
+    "finalUrl": "https://www.dailyrecord.co.uk/",
+    "evidence": {
+      "quantcast": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.liverpoolecho.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Liverpool Echo: Latest Liverpool and Merseyside news sports and whats on",
+    "finalUrl": "https://www.liverpoolecho.co.uk/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.manchestereveningnews.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Manchester Evening News: Number one for news, opinion, sport & celebrity news",
+    "finalUrl": "https://www.manchestereveningnews.co.uk/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.dailystar.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "The Daily Star: News with a Wink",
+    "finalUrl": "https://www.dailystar.co.uk/",
+    "evidence": {
+      "quantcast": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.birminghammail.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Birmingham Live - Birmingham news, features, information and sport",
+    "finalUrl": "https://www.birminghammail.co.uk/",
+    "evidence": {
+      "quantcast": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.chroniclelive.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Chronicle Live: Number one for news, opinion, sport & celebrity news",
+    "finalUrl": "https://www.chroniclelive.co.uk/",
+    "evidence": {
+      "quantcast": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://wpmayor.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "WP Mayor",
+    "finalUrl": "https://wpmayor.com/",
+    "evidence": {
+      "complianz": [
+        "script",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:complianz"
+    }
+  },
+  {
+    "url": "https://www.ok.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Celebrity News, TV Shows & Photos | OK! Magazine",
+    "finalUrl": "https://www.ok.co.uk/",
+    "evidence": {
+      "quantcast": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.belfastlive.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Belfast Live: Number one for news, opinion, sport & celebrity news",
+    "finalUrl": "https://www.belfastlive.co.uk/",
+    "evidence": {
+      "quantcast": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://wp-staging.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "The best WordPress Backup & Staging Plugin • WP STAGING",
+    "finalUrl": "https://wp-staging.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://burst-statistics.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Privacy-Friendly WordPress Analytics Plugin – Burst Statistics",
+    "finalUrl": "https://burst-statistics.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://wpastra.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Astra – Fast, Lightweight & Customizable WordPress Theme - Download Now!",
+    "finalUrl": "https://wpastra.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:div.surecookie-public-banner"
+    }
+  },
+  {
+    "url": "https://www.isitwp.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Is It Built with WordPress? Best and Free WordPress Theme Detector",
+    "finalUrl": "https://www.isitwp.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.wpexplorer.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "WPExplorer | WordPress Tips, Tutorials, Resources, Themes & Plugins",
+    "finalUrl": "https://www.wpexplorer.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.wpkube.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "WordPress Themes, Plugins, Reviews, & Tutorials - WPKube",
+    "finalUrl": "https://www.wpkube.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://yoast.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "SEO for everyone • Yoast",
+    "finalUrl": "https://yoast.com/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:onetrust"
+    }
+  },
+  {
+    "url": "https://www.codeinwp.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Just a moment...",
+    "finalUrl": "https://www.codeinwp.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://generatepress.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "GeneratePress: lightweight WordPress theme and site builder",
+    "finalUrl": "https://generatepress.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://themeisle.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Just a moment...",
+    "finalUrl": "https://themeisle.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.wordfence.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "WordPress Security Plugin | Wordfence",
+    "finalUrl": "https://www.wordfence.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:div.wf-cookie-consent"
+    }
+  },
+  {
+    "url": "https://www.kadencewp.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Kadence | #1 Site Builder for WordPress",
+    "finalUrl": "https://www.liquidweb.com/software/kadence/",
+    "evidence": {
+      "other:cookieyes": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:div.cky-consent-container"
+    }
+  },
+  {
+    "url": "https://wplift.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "WPLift.com | WordPress Tips, News, Reviews, Plugins & Themes",
+    "finalUrl": "https://wplift.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#cookie-notice"
+    }
+  },
+  {
+    "url": "https://www.wpzoom.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "High-Quality WordPress Themes and Plugins - WPZOOM",
+    "finalUrl": "https://www.wpzoom.com/",
+    "evidence": {
+      "complianz": [
+        "script",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:complianz"
+    }
+  },
+  {
+    "url": "https://www.wpbakery.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "#1 Page Builder Plugin for WordPress - WPBakery Page Builder",
+    "finalUrl": "https://wpbakery.com/",
+    "evidence": {
+      "other:cookieyes": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:div.cky-consent-container"
+    }
+  },
+  {
+    "url": "https://www.wpbeginner.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "WPBeginner - Beginner's Guide for WordPress",
+    "finalUrl": "https://www.wpbeginner.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.elegantthemes.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "The Best WordPress Themes In The World",
+    "finalUrl": "https://www.elegantthemes.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.wp-rocket.me/fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "WP Rocket : Le plugin de cache pour WordPress qui accélère votre site",
+    "finalUrl": "https://wp-rocket.me/fr/",
+    "evidence": {
+      "other:termly": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://zerospam.org/",
+    "lang": "en",
+    "ok": true,
+    "title": "Zero Spam | IP & Email Blacklist API + WordPress Anti-Spam",
+    "finalUrl": "https://www.zerospam.org/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.lemonde.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Le Monde.fr - Actualités et Infos en France et dans le monde",
+    "finalUrl": "https://www.lemonde.fr/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:div.gdpr-lmd-wall"
+    }
+  },
+  {
+    "url": "https://www.marmiton.org/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Marmiton : 78484 recettes de cuisine commentées et notées pour toutes les cuisines !",
+    "finalUrl": "https://www.marmiton.org/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.lefigaro.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Le Figaro - Actualité en direct et informations en continu",
+    "finalUrl": "https://www.lefigaro.fr/",
+    "evidence": {
+      "other:sfbx-appconsent": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "iframe:"
+    }
+  },
+  {
+    "url": "https://www.20minutes.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "20 Minutes - Toute l’actualité en direct et les dernières infos en continu",
+    "finalUrl": "https://www.20minutes.fr/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.leparisien.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Actualités en direct et info en continu - Le Parisien",
+    "finalUrl": "https://www.leparisien.fr/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.ouest-france.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Ouest-France : toute l'actualité en direct, l'info en continu en France, dans les régions et dans le monde",
+    "finalUrl": "https://www.ouest-france.fr/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.liberation.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Libération : Actualités et infos en direct",
+    "finalUrl": "https://www.liberation.fr/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.lequipe.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Access Denied",
+    "finalUrl": "https://www.lequipe.fr/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.leboncoin.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "leboncoin",
+    "finalUrl": "https://www.leboncoin.fr/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#_r_1_"
+    }
+  },
+  {
+    "url": "https://www.cdiscount.com/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Cdiscount : des prix bas qui ont de la voix !",
+    "finalUrl": "https://www.cdiscount.com/",
+    "evidence": {
+      "other:commandersact": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#footer_tc_privacy"
+    }
+  },
+  {
+    "url": "https://www.allocine.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "AlloCiné : Cinéma, Séries TV, BO de films et séries, Vidéos, DVD et VOD",
+    "finalUrl": "https://www.allocine.fr/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.fnac.com/",
+    "lang": "fr",
+    "ok": true,
+    "title": "fnac.com",
+    "finalUrl": "https://www.fnac.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.decathlon.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Decathlon | Chaussures de sport, équipements et matériel sportif",
+    "finalUrl": "https://www.decathlon.fr/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.franceinfo.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "franceinfo - Actualités en temps réel et info en direct",
+    "finalUrl": "https://www.franceinfo.fr/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.lexpress.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Actualités Politique, Monde, Economie et Culture - L'Express",
+    "finalUrl": "https://www.lexpress.fr/",
+    "evidence": {
+      "didomi": [
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.nouvelobs.com/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Le Nouvel Obs - Actualités en France et dans le monde",
+    "finalUrl": "https://www.nouvelobs.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#ObsMain"
+    }
+  },
+  {
+    "url": "https://www.darty.com/",
+    "lang": "fr",
+    "ok": true,
+    "title": "darty.com",
+    "finalUrl": "https://www.darty.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.boulanger.com/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Invalid URL",
+    "finalUrl": "https://www.boulanger.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.sncf-connect.com/",
+    "lang": "fr",
+    "ok": true,
+    "title": "SNCF Connect : Réservez vos billets SNCF, bus et covoiturage",
+    "finalUrl": "https://www.sncf-connect.com/",
+    "evidence": {
+      "didomi": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.jeuxvideo.com/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Un instant…",
+    "finalUrl": "https://www.jeuxvideo.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.latribune.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "La Tribune - Actualité Économique et Financière",
+    "finalUrl": "https://www.latribune.fr/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.qonto.com/fr",
+    "lang": "fr",
+    "ok": true,
+    "title": "Gérez toutes vos finances depuis votre compte pro | Qonto",
+    "finalUrl": "https://qonto.com/fr",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.payfit.com/fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Logiciel de paie & service de paie en ligne | Payfit",
+    "finalUrl": "https://payfit.com/fr/",
+    "evidence": {
+      "axeptio": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:axeptio"
+    }
+  },
+  {
+    "url": "https://www.welcometothejungle.com/fr",
+    "lang": "fr",
+    "ok": true,
+    "title": "Choisissez l'entreprise faite pour vous",
+    "finalUrl": "https://www.welcometothejungle.com/fr",
+    "evidence": {
+      "axeptio": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:axeptio"
+    }
+  },
+  {
+    "url": "https://www.shine.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Le Compte Pro en ligne qui simplifie votre quotidien | Shine",
+    "finalUrl": "https://www.shine.fr/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.malt.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Malt",
+    "finalUrl": "https://www.malt.fr/",
+    "evidence": {
+      "axeptio": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.ornikar.com/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Ornikar : Auto-école en ligne, assurance auto & habitation",
+    "finalUrl": "https://www.ornikar.com/",
+    "evidence": {
+      "axeptio": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.sezane.com/fr",
+    "lang": "fr",
+    "ok": true,
+    "title": "sezane.com",
+    "finalUrl": "https://www.sezane.com/fr",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.axeptio.eu/fr/home",
+    "lang": "fr",
+    "ok": true,
+    "title": "Créez une expérience de consentement immersive et premium | Axeptio",
+    "finalUrl": "https://www.axept.io/fr/",
+    "evidence": {
+      "axeptio": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.pennylane.com/fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Pennylane | Plateforme tout-en-un de gestion financière et comptabilité. | Pennylane",
+    "finalUrl": "https://www.pennylane.com/fr",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.alan.com/fr-fr",
+    "lang": "fr",
+    "ok": true,
+    "title": "Alan | Le nouveau standard de l’Assurance Prévention : la santé n’attend pas",
+    "finalUrl": "https://alan.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:div.css-ha2qrm"
+    }
+  },
+  {
+    "url": "https://www.laposte.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Achetez des Timbres, Envoyez Courrier, Colis - La Poste",
+    "finalUrl": "https://www.laposte.fr/",
+    "evidence": {
+      "other:commandersact": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#footer_tc_privacy"
+    }
+  },
+  {
+    "url": "https://www.carrefour.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Carrefour : Magasins et Courses en ligne (Drive, Livraison à Domicile) - Carrefour.fr",
+    "finalUrl": "https://www.carrefour.fr/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ],
+      "other:commandersact": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:onetrust"
+    }
+  },
+  {
+    "url": "https://www.service-public.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Accueil | Service Public",
+    "finalUrl": "https://www.service-public.gouv.fr/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.ankorstore.com/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Ankorstore | Wholesale Marketplace Home to Europe's Best Brands",
+    "finalUrl": "https://www.ankorstore.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.leroymerlin.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "403 Forbidden",
+    "finalUrl": "https://www.leroymerlin.fr/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.doctolib.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Doctolib : Prenez rendez-vous en ligne chez un soignant",
+    "finalUrl": "https://www.doctolib.fr/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.lafourche.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Magasin bio en ligne jusqu'à 50% moins cher | La Fourche",
+    "finalUrl": "https://lafourche.fr/",
+    "evidence": {
+      "axeptio": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.programme-tv.net/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Programme TV par Télé-Loisirs, TNT, box télé et satellite ce soir",
+    "finalUrl": "https://www.programme-tv.net/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.orange.fr/portail",
+    "lang": "fr",
+    "ok": true,
+    "title": "Portail Orange | Offres Mobiles, Internet, TV, Actu & Accès compte Mail",
+    "finalUrl": "https://www.orange.fr/portail",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.blablacar.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Covoiturage, Bus ou Train, Allez partout à petit prix | BlaBlaCar",
+    "finalUrl": "https://www.blablacar.fr/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.rtbf.be/",
+    "lang": "fr",
+    "ok": true,
+    "title": "RTBF Actus - La référence de l'actualité belge et internationale - Accueil - RTBF Actus",
+    "finalUrl": "https://www.rtbf.be/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.huffingtonpost.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Le HuffPost : actualités et infos décalées en continu, en France et dans le monde",
+    "finalUrl": "https://www.huffingtonpost.fr/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:div.gdpr-hfp-wall"
+    }
+  },
+  {
+    "url": "https://www.spiegel.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "DER SPIEGEL | Online-Nachrichten",
+    "finalUrl": "https://www.spiegel.de/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.lesechos.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Les Echos : actualités en direct, Économie, Finance, Marchés, Politique, Entreprises, Start-up - Les Echos",
+    "finalUrl": "https://www.lesechos.fr/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.journaldesfemmes.fr/",
+    "lang": "fr",
+    "ok": true,
+    "title": "Journal des Femmes : Magazine féminin mode, beauté, déco, cuisine...",
+    "finalUrl": "https://www.journaldesfemmes.fr/",
+    "evidence": {
+      "other:sfbx-appconsent": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.bild.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Aktuelle Nachrichten | BILD.de",
+    "finalUrl": "https://www.bild.de/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.faz.net/",
+    "lang": "de",
+    "ok": true,
+    "title": "Aktuelle Nachrichten online - FAZ.NET",
+    "finalUrl": "https://www.faz.net/aktuell/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.focus.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "FOCUS online - Aktuelle Nachrichten",
+    "finalUrl": "https://www.focus.de/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.welt.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "WELT - Aktuelle Nachrichten, News, Hintergründe & Videos",
+    "finalUrl": "https://www.welt.de/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.stern.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Nachrichten, Hintergründe & Reportagen | STERN.de",
+    "finalUrl": "https://www.stern.de/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.zeit.de/index",
+    "lang": "de",
+    "ok": true,
+    "title": "Da ist etwas schiefgelaufen",
+    "finalUrl": "https://www.zeit.de/index",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.sueddeutsche.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Aktuelle Nachrichten und Kommentare - SZ.de",
+    "finalUrl": "https://www.sueddeutsche.de/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.t-online.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "News & E-Mail bei t-online | Politik, Sport, Unterhaltung & Ratgeber",
+    "finalUrl": "https://www.t-online.de/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.heise.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "heise online - IT-News, Nachrichten und Hintergründe | heise online",
+    "finalUrl": "https://www.heise.de/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.chip.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "CHIP – News, Tests, Downloads, Tech- & Verbraucherberatung",
+    "finalUrl": "https://www.chip.de/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.n-tv.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Nachrichten, aktuelle Schlagzeilen und Videos - n-tv.de",
+    "finalUrl": "https://www.n-tv.de/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.thalia.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Thalia Online Shop | Bücher, eBooks, Spielzeug, uvm. kaufen | Thalia",
+    "finalUrl": "https://www.thalia.de/",
+    "evidence": {
+      "usercentrics": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "function",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:usercentrics"
+    }
+  },
+  {
+    "url": "https://www.rossmann.de/de/",
+    "lang": "de",
+    "ok": true,
+    "title": "ROSSMANN - Mein Drogeriemarkt, Meine Online-Drogerie",
+    "finalUrl": "https://www.rossmann.de/de/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:onetrust"
+    }
+  },
+  {
+    "url": "https://www.kicker.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Sportnachrichten | Alle Fußball & Sport News | Live-Ticker & Ergebnisse - kicker",
+    "finalUrl": "https://www.kicker.de/",
+    "evidence": {
+      "usercentrics": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "function",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#kick__pur__layer"
+    }
+  },
+  {
+    "url": "https://www.dm.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Bei dm-drogerie markt online einkaufen | dm",
+    "finalUrl": "https://www.dm.de/",
+    "evidence": {
+      "usercentrics": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "function",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:usercentrics"
+    }
+  },
+  {
+    "url": "https://www.mediamarkt.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Nur einen Moment…",
+    "finalUrl": "https://www.mediamarkt.de/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.otto.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "OTTO - Mode, Möbel & Technik » Zum Online-Shop",
+    "finalUrl": "https://www.otto.de/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:onetrust"
+    }
+  },
+  {
+    "url": "https://www.hornbach.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "HORNBACH | Dein Projektbaumarkt & Onlineshop",
+    "finalUrl": "https://www.hornbach.de/",
+    "evidence": {
+      "usercentrics": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "function",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.bauhaus.info/",
+    "lang": "de",
+    "ok": true,
+    "title": "Nur einen Moment…",
+    "finalUrl": "https://www.bauhaus.info/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.check24.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "CHECK24 | Das Vergleichsportal",
+    "finalUrl": "https://www.check24.de/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:div.c24-cookie-consent-wrapper"
+    }
+  },
+  {
+    "url": "https://www.immowelt.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "▷ Immobilien - Häuser - Wohnungen - finden bei immowelt.de",
+    "finalUrl": "https://www.immowelt.de/",
+    "evidence": {
+      "usercentrics": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "function",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:usercentrics"
+    }
+  },
+  {
+    "url": "https://www.obi.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "OBI Baumarkt & Onlineshop - alles für Heim, Haus, Garten und Bau",
+    "finalUrl": "https://www.obi.de/",
+    "evidence": {
+      "usercentrics": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "function",
+      "__ucCmp.denyAllConsents": "function",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:usercentrics"
+    }
+  },
+  {
+    "url": "https://www.conrad.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Elektronik & Technik bei Conrad » Zum Online-Shop",
+    "finalUrl": "https://www.conrad.de/",
+    "evidence": {
+      "usercentrics": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.lidl.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Lidl lohnt sich - Lokal bei Dir vor Ort und Online",
+    "finalUrl": "https://www.lidl.de/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:onetrust"
+    }
+  },
+  {
+    "url": "https://www.immobilienscout24.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Ich bin kein Roboter - ImmobilienScout24",
+    "finalUrl": "https://www.immobilienscout24.de/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.kaufland.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Nur einen Moment…",
+    "finalUrl": "https://www.kaufland.de/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.dhl.de/de/privatkunden.html",
+    "lang": "de",
+    "ok": true,
+    "title": "DHL Privatkunden - Paketversand und Paketempfang mit DHL",
+    "finalUrl": "https://www.dhl.de/de/privatkunden.html",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:onetrust"
+    }
+  },
+  {
+    "url": "https://www.bahn.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "DB Fahrplan, Auskunft, Tickets, informieren und buchen - Deutsche Bahn",
+    "finalUrl": "https://www.bahn.de/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.zalando.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Schuhe, Mode und Accessoires online bei ZALANDO",
+    "finalUrl": "https://www.zalando.de/",
+    "evidence": {
+      "usercentrics": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "function",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:usercentrics"
+    }
+  },
+  {
+    "url": "https://www.giga.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "GIGA | News und Tipps zu Android, Apple, Games, Entertainment, Tech und Haushalt",
+    "finalUrl": "https://www.giga.de/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.galeria.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Nur einen Moment…",
+    "finalUrl": "https://www.galeria.de/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.usercentrics.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Usercentrics | Leading in Data Privacy & Compliance",
+    "finalUrl": "https://usercentrics.com/",
+    "evidence": {
+      "usercentrics": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "function",
+      "__ucCmp.denyAllConsents": "function",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:usercentrics"
+    }
+  },
+  {
+    "url": "https://www.derstandard.at/",
+    "lang": "de",
+    "ok": true,
+    "title": "derStandard.at",
+    "finalUrl": "https://www.derstandard.at/consent/tcf/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.netzwelt.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "NETZWELT | Tests, Downloads, Anleitungen, Kaufberatungen & Videos",
+    "finalUrl": "https://www.netzwelt.de/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.golem.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Golem",
+    "finalUrl": "https://www.golem.de/sonstiges/zustimmung/auswahl.html?from=https%3A%2F%2Fwww.golem.de%2F",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.mytoys.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "myToys-Vielfalt bei OTTO | OTTO",
+    "finalUrl": "https://www.otto.de/mytoys/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:onetrust"
+    }
+  },
+  {
+    "url": "https://www.computerbild.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "COMPUTER BILD - Tests, Tipps, News und Kaufberatung",
+    "finalUrl": "https://www.computerbild.de/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.krone.at/",
+    "lang": "de",
+    "ok": true,
+    "title": "Kronen Zeitung | Aktuelle Nachrichten | krone.at",
+    "finalUrl": "https://www.krone.at/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.bund.de/",
+    "lang": "de",
+    "ok": true,
+    "title": "Bundesportal | Startseite",
+    "finalUrl": "https://verwaltung.bund.de/portal/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.marca.com/",
+    "lang": "es",
+    "ok": true,
+    "title": "MARCA - Diario online líder en información deportiva",
+    "finalUrl": "https://www.marca.com/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ],
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#ue-initial-modal"
+    }
+  },
+  {
+    "url": "https://www.nzz.ch/",
+    "lang": "de",
+    "ok": true,
+    "title": "NZZ – Neue Zürcher Zeitung | Aktuelle News, Hintergründe & mehr",
+    "finalUrl": "https://www.nzz.ch/",
+    "evidence": {
+      "other:consentmanager": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://elpais.com/",
+    "lang": "es",
+    "ok": true,
+    "title": "EL PAÍS: el periódico global",
+    "finalUrl": "https://elpais.com/",
+    "evidence": {
+      "didomi": [
+        "script"
+      ],
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.abc.es/",
+    "lang": "es",
+    "ok": true,
+    "title": "ABC - Últimas noticias de España y el mundo hoy",
+    "finalUrl": "https://www.abc.es/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ],
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.20min.ch/",
+    "lang": "de",
+    "ok": true,
+    "title": "20 Minuten: Aktuelle Nachrichten, Schlagzeilen - News von Jetzt",
+    "finalUrl": "https://www.20min.ch/",
+    "evidence": {
+      "onetrust": [
+        "script"
+      ],
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.elmundo.es/",
+    "lang": "es",
+    "ok": true,
+    "title": "EL MUNDO - Diario online líder de información en español",
+    "finalUrl": "https://www.elmundo.es/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ],
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.lavanguardia.com/",
+    "lang": "es",
+    "ok": true,
+    "title": "Últimas noticias, actualidad y última hora en Catalunya, España y el mundo",
+    "finalUrl": "https://www.lavanguardia.com/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.20minutos.es/",
+    "lang": "es",
+    "ok": true,
+    "title": "20minutos.es | Diario abierto | Última hora, local, España y el mundo",
+    "finalUrl": "https://www.20minutos.es/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://as.com/",
+    "lang": "es",
+    "ok": true,
+    "title": "AS.com - Diario online deportivo. Fútbol, motor y mucho más",
+    "finalUrl": "https://as.com/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.rtve.es/",
+    "lang": "es",
+    "ok": true,
+    "title": "Noticias de última hora, programas y series de televisión - RTVE.es",
+    "finalUrl": "https://www.rtve.es/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.elconfidencial.com/",
+    "lang": "es",
+    "ok": true,
+    "title": "El Confidencial - El diario de los lectores influyentes",
+    "finalUrl": "https://www.elconfidencial.com/",
+    "evidence": {
+      "didomi": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.eldiario.es/",
+    "lang": "es",
+    "ok": true,
+    "title": "elDiario.es - Noticias de actualidad - Periodismo a pesar de todo",
+    "finalUrl": "https://www.eldiario.es/",
+    "evidence": {
+      "didomi": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.elperiodico.com/es/",
+    "lang": "es",
+    "ok": true,
+    "title": "El Periódico - Noticias y última hora de Catalunya, España y el mundo",
+    "finalUrl": "https://www.elperiodico.com/es/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.mundodeportivo.com/",
+    "lang": "es",
+    "ok": true,
+    "title": "Mundo Deportivo | Noticias deportivas: Fútbol, motor, tenis y más",
+    "finalUrl": "https://www.mundodeportivo.com/",
+    "evidence": {
+      "didomi": [
+        "script"
+      ],
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.elcorteingles.es/",
+    "lang": "es",
+    "ok": true,
+    "title": "El Corte Inglés: Comprar moda, electrónica, informática, libros online",
+    "finalUrl": "https://www.elcorteingles.es/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:onetrust"
+    }
+  },
+  {
+    "url": "https://www.fotocasa.es/es/",
+    "lang": "es",
+    "ok": true,
+    "title": "Fotocasa.es: Alquiler de pisos, compra y venta",
+    "finalUrl": "https://www.fotocasa.es/es/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.milanuncios.com/",
+    "lang": "es",
+    "ok": true,
+    "title": "Pardon Our Interruption",
+    "finalUrl": "https://www.milanuncios.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.idealista.com/",
+    "lang": "es",
+    "ok": true,
+    "title": "idealista — Casas y pisos, alquiler y venta. Anuncios gratis",
+    "finalUrl": "https://www.idealista.com/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.pccomponentes.com/",
+    "lang": "es",
+    "ok": true,
+    "title": "Un momento…",
+    "finalUrl": "https://www.pccomponentes.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.xataka.com/",
+    "lang": "es",
+    "ok": true,
+    "title": "Xataka - Tecnología y gadgets, móviles, informática, electrónica",
+    "finalUrl": "https://www.xataka.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#cookies-overlay"
+    }
+  },
+  {
+    "url": "https://www.renfe.com/es/es",
+    "lang": "es",
+    "ok": true,
+    "title": "Renfe | Billetes de tren Ave, Avlo al mejor precio sin comisiones",
+    "finalUrl": "https://www.renfe.com/es/es",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:onetrust"
+    }
+  },
+  {
+    "url": "https://www.aranzulla.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "Salvatore Aranzulla",
+    "finalUrl": "https://www.aranzulla.it/",
+    "evidence": {
+      "iubenda": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:iubenda"
+    }
+  },
+  {
+    "url": "https://www.fanpage.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "Fanpage.it - Le ultime notizie di oggi in tempo reale",
+    "finalUrl": "https://www.fanpage.it/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.huffingtonpost.es/",
+    "lang": "es",
+    "ok": true,
+    "title": "El HuffPost: Última hora, noticias y opinión en español",
+    "finalUrl": "https://www.huffingtonpost.es/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.iubenda.com/it/",
+    "lang": "it",
+    "ok": true,
+    "title": "Homepage - iubenda - Compliance Solutions for Websites, Apps and Organizations | iubenda",
+    "finalUrl": "https://www.iubenda.com/it/",
+    "evidence": {
+      "iubenda": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.expansion.com/",
+    "lang": "es",
+    "ok": true,
+    "title": "Expansión - Diario Económico e información de mercados",
+    "finalUrl": "https://www.expansion.com/",
+    "evidence": {
+      "didomi": [
+        "script",
+        "global",
+        "dom"
+      ],
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://www.hdblog.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "HDblog.it",
+    "finalUrl": "https://www.hdblog.it/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#pubtech-cmp"
+    }
+  },
+  {
+    "url": "https://www.wired.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "Wired - Istruzioni per il futuro | Wired Italia",
+    "finalUrl": "https://www.wired.it/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#fides-banner-container"
+    }
+  },
+  {
+    "url": "https://www.ilpost.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "Il Post",
+    "finalUrl": "https://www.ilpost.it/",
+    "evidence": {
+      "iubenda": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.giallozafferano.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "Ricette di cucina - Le ricette di GialloZafferano",
+    "finalUrl": "https://www.giallozafferano.it/",
+    "evidence": {
+      "iubenda": [
+        "script",
+        "global"
+      ],
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.ansa.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "Agenzia ANSA: ultime notizie di cronaca, politica e sport - ANSA",
+    "finalUrl": "https://www.ansa.it/",
+    "evidence": {
+      "iubenda": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.ilfattoquotidiano.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "News e ultime notizie su politica, cronaca, giustizia, economia | Il Fatto Quotidiano",
+    "finalUrl": "https://www.ilfattoquotidiano.it/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.tomshw.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "Home - Tom's Hardware",
+    "finalUrl": "https://www.tomshw.it/",
+    "evidence": {
+      "iubenda": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:iubenda"
+    }
+  },
+  {
+    "url": "https://www.corriere.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "Corriere della Sera: News e Ultime notizie in tempo reale da Italia e Mondo",
+    "finalUrl": "https://www.corriere.it/",
+    "evidence": {
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.repubblica.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "la Repubblica - Ultime notizie di Cronaca, Politica, Economia, Sport, Esteri",
+    "finalUrl": "https://www.repubblica.it/",
+    "evidence": {
+      "iubenda": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:iubenda"
+    }
+  },
+  {
+    "url": "https://www.punto-informatico.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "Punto Informatico: Notizie Online su Informatica e Tecnologia",
+    "finalUrl": "https://www.punto-informatico.it/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#pubtech-cmp"
+    }
+  },
+  {
+    "url": "https://www.money.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "Money.it | News di economia, finanza, fisco e lavoro",
+    "finalUrl": "https://www.money.it/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#cl-consent"
+    }
+  },
+  {
+    "url": "https://www.html.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "HTML.it | Guide, download, tutorial e news",
+    "finalUrl": "https://www.html.it/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#pubtech-cmp"
+    }
+  },
+  {
+    "url": "https://www.everyeye.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "Videogiochi per PC e console - Everyeye.it",
+    "finalUrl": "https://www.everyeye.it/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#pubtech-cmp"
+    }
+  },
+  {
+    "url": "https://www.theguardian.com/international",
+    "lang": "en",
+    "ok": true,
+    "title": "Latest news, sport and opinion from the Guardian",
+    "finalUrl": "https://www.theguardian.com/international",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.multiplayer.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "Multiplayer.it - Videogiochi per PC, console, iPhone, iPad e Android",
+    "finalUrl": "https://multiplayer.it/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.telegraph.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "The Telegraph - Telegraph Online, Daily Telegraph, Sunday Telegraph - Telegraph",
+    "finalUrl": "https://www.telegraph.co.uk/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.mirror.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "The Mirror: The Heart of Britain",
+    "finalUrl": "https://www.mirror.co.uk/",
+    "evidence": {
+      "quantcast": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.dday.it/",
+    "lang": "it",
+    "ok": true,
+    "title": "DDay.it",
+    "finalUrl": "https://www.dday.it/",
+    "evidence": {
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.express.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Latest UK and World News, Sport and Comment | Express.co.uk",
+    "finalUrl": "https://www.express.co.uk/",
+    "evidence": {
+      "quantcast": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.thesun.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "News, sport, celebrities and gossip | The Sun",
+    "finalUrl": "https://www.thesun.co.uk/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.standard.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "London news, sport and culture | The Standard | London Evening Standard | The London Standard",
+    "finalUrl": "https://www.standard.co.uk/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.independent.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "News | The Independent | Today's headlines and latest breaking news",
+    "finalUrl": "https://www.independent.co.uk/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.reuters.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "reuters.com",
+    "finalUrl": "https://www.reuters.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.dailymail.co.uk/home/index.html",
+    "lang": "en",
+    "ok": true,
+    "title": "UK Home | Daily Mail Online",
+    "finalUrl": "https://www.dailymail.com/home/index.html",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.booking.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Booking.com | Official site | The best hotels, flights, car rentals & accommodations",
+    "finalUrl": "https://www.booking.com/index.en-gb.html",
+    "evidence": {
+      "onetrust": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://metro.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Metro.co.uk: News, Sport, Showbiz, Celebrities from Metro",
+    "finalUrl": "https://metro.co.uk/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.forbes.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Forbes",
+    "finalUrl": "https://www.forbes.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www2.hm.com/en_gb/index.html",
+    "lang": "en",
+    "ok": true,
+    "title": "H&M | Online Fashion, Homeware & Kids Clothes | H&M GB",
+    "finalUrl": "https://www2.hm.com/en_gb/index.html",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:dialog.cookie-consent-popup"
+    }
+  },
+  {
+    "url": "https://www.redhat.com/en",
+    "lang": "en",
+    "ok": true,
+    "title": "Red Hat - We make open source technologies for the enterprise",
+    "finalUrl": "https://www.redhat.com/en",
+    "evidence": {
+      "trustarc": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:trustarc"
+    }
+  },
+  {
+    "url": "https://www.ikea.com/gb/en/",
+    "lang": "en",
+    "ok": true,
+    "title": "Affordable Furniture And Home Inspiration - IKEA UK",
+    "finalUrl": "https://www.ikea.com/gb/en/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:onetrust"
+    }
+  },
+  {
+    "url": "https://www.oracle.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Oracle",
+    "finalUrl": "https://www.oracle.com/",
+    "evidence": {
+      "trustarc": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.cisco.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "AI Infrastructure, Secure Networking, and Software Solutions - Cisco",
+    "finalUrl": "https://www.cisco.com/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:onetrust"
+    }
+  },
+  {
+    "url": "https://www.ibm.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "IBM",
+    "finalUrl": "https://www.ibm.com/us-en",
+    "evidence": {
+      "trustarc": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:trustarc"
+    }
+  },
+  {
+    "url": "https://www.cookiebot.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Cookiebot™ CMP by Usercentrics - GDPR Compliance for SMBs",
+    "finalUrl": "https://www.cookiebot.com/",
+    "evidence": {
+      "cookiebot": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "undefined",
+      "Cookiebot.submitCustomConsent": "function",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:cookiebot"
+    }
+  },
+  {
+    "url": "https://www.adidas.co.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "adidas",
+    "finalUrl": "https://www.adidas.co.uk/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.ecco.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "ECCO is a global leader in innovative comfort footwear for men, women, and kids. - ECCO.com",
+    "finalUrl": "https://global.ecco.com/",
+    "evidence": {
+      "other:cookieinformation": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#coi-banner-wrapper"
+    }
+  },
+  {
+    "url": "https://www.trustarc.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Data Privacy Management Software & Solutions | TrustArc",
+    "finalUrl": "https://trustarc.com/",
+    "evidence": {
+      "trustarc": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:trustarc"
+    }
+  },
+  {
+    "url": "https://www.novonordisk.com/",
+    "lang": "en",
+    "ok": false,
+    "error": "Error: page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.novonordisk.com/"
+  },
+  {
+    "url": "https://www.lego.com/en-gb",
+    "lang": "en",
+    "ok": true,
+    "title": "Home | Official LEGO® Shop GB",
+    "finalUrl": "https://www.lego.com/en-gb?age-gate=grown_up",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:dialog.AgeGate_age-gate__wrapper__ph949"
+    }
+  },
+  {
+    "url": "https://www.bang-olufsen.com/en",
+    "lang": "en",
+    "ok": true,
+    "title": "Bang & Olufsen - High-end Headphones, Speakers, and Televisions",
+    "finalUrl": "https://www.bang-olufsen.com/en/int",
+    "evidence": {
+      "other:cookieinformation": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#coi-banner-wrapper"
+    }
+  },
+  {
+    "url": "https://www.vestas.com/en",
+    "lang": "en",
+    "ok": true,
+    "title": "Global Leader in Sustainable Energy | Vestas",
+    "finalUrl": "https://www.vestas.com/en",
+    "evidence": {
+      "other:cookieinformation": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#coiOverlay"
+    }
+  },
+  {
+    "url": "https://www.intel.com/content/www/us/en/homepage.html",
+    "lang": "en",
+    "ok": true,
+    "title": "Intel Inside - Built for AI",
+    "finalUrl": "https://www.intel.com/content/www/us/en/homepage.html",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.maersk.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Maersk | Integrated Container Logistics & Supply Chain Services",
+    "finalUrl": "https://www.maersk.com/",
+    "evidence": {
+      "other:cookieinformation": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#coi-banner-wrapper"
+    }
+  },
+  {
+    "url": "https://www.complianz.io/",
+    "lang": "en",
+    "ok": true,
+    "title": "1 Million Users Trust Complianz for WordPress & Shopify Consent",
+    "finalUrl": "https://complianz.io/",
+    "evidence": {
+      "iubenda": [
+        "script",
+        "global"
+      ],
+      "complianz": [
+        "script",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:complianz"
+    }
+  },
+  {
+    "url": "https://www.carlsberg.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Probably The Best Beer In The World - Carlsberg",
+    "finalUrl": "https://www.carlsberg.com/en/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#cbgccp-cookies-banner"
+    }
+  },
+  {
+    "url": "https://www.techradar.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "TechRadar | the technology experts",
+    "finalUrl": "https://www.techradar.com/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.pandora.net/en-gb/",
+    "lang": "en",
+    "ok": true,
+    "title": "Official Pandora™ UK | Charms & Bracelets | Women's Jewellery",
+    "finalUrl": "https://uk.pandora.net/en",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.cinemablend.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "New Movies, TV Shows | Celebrity News & Gossip | CINEMABLEND",
+    "finalUrl": "https://www.cinemablend.com/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.livescience.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Live Science | Latest science news and articles for those with curious minds",
+    "finalUrl": "https://www.livescience.com/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://really-simple-ssl.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Really Simple Security: Simple and Performant WordPress Security",
+    "finalUrl": "https://really-simple-ssl.com/",
+    "evidence": {
+      "complianz": [
+        "script",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.rockpapershotgun.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Rock Paper Shotgun",
+    "finalUrl": "https://www.rockpapershotgun.com/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ],
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.eurogamer.net/",
+    "lang": "en",
+    "ok": true,
+    "title": "Eurogamer.net",
+    "finalUrl": "https://www.eurogamer.net/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ],
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.gov.uk/",
+    "lang": "en",
+    "ok": true,
+    "title": "Welcome to GOV.UK",
+    "finalUrl": "https://www.gov.uk/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.economist.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "economist.com",
+    "finalUrl": "https://www.economist.com/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.nme.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "NME | Music, Film, TV, Gaming & Pop Culture News",
+    "finalUrl": "https://www.nme.com/",
+    "evidence": {
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.dw.com/en/",
+    "lang": "en",
+    "ok": true,
+    "title": "News and current affairs from Germany and around the world",
+    "finalUrl": "https://www.dw.com/en/top-stories/s-9097",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.ft.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Home - Financial Times",
+    "finalUrl": "https://www.ft.com/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.bbc.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "BBC Home | Breaking News, World News, US News, Sports, Business, Innovation, Climate, Culture, Travel, Video & Audio",
+    "finalUrl": "https://www.bbc.com/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.euronews.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "Latest breaking news available as free video on demand | Euronews",
+    "finalUrl": "https://www.euronews.com/",
+    "evidence": {
+      "didomi": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.irishtimes.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "The Irish Times | Latest news and headlines - Irish news, world news, video and podcasts",
+    "finalUrl": "https://www.irishtimes.com/",
+    "evidence": {
+      "onetrust": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.politico.eu/",
+    "lang": "en",
+    "ok": true,
+    "title": "POLITICO – European Politics, Policy, Government News",
+    "finalUrl": "https://www.politico.eu/",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global",
+        "dom"
+      ],
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:sourcepoint"
+    }
+  },
+  {
+    "url": "https://www.easyjet.com/en",
+    "lang": "en",
+    "ok": true,
+    "title": "Access Denied",
+    "finalUrl": "https://www.easyjet.com/en",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.ryanair.com/gb/en",
+    "lang": "en",
+    "ok": true,
+    "title": "Official Ryanair website | Book direct for the lowest fares | Ryanair.com",
+    "finalUrl": "https://www.ryanair.com/gb/en",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "generic:#cookie-popup-with-overlay"
+    }
+  },
+  {
+    "url": "https://www.dr.dk/",
+    "lang": "en",
+    "ok": true,
+    "title": "DR: Nyheder - Breaking - TV - Radio",
+    "finalUrl": "https://www.dr.dk/",
+    "evidence": {
+      "cookiebot": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "undefined",
+      "Cookiebot.submitCustomConsent": "function",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:cookiebot"
+    }
+  },
+  {
+    "url": "https://www.zara.com/",
+    "lang": "en",
+    "ok": true,
+    "title": "ZARA Official Website",
+    "finalUrl": "https://www.zara.com/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "function",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:onetrust"
+    }
+  },
+  {
+    "url": "https://www.alarabiya.net/",
+    "lang": "ar",
+    "ok": true,
+    "title": "العربية | أبرز الأخبار العالمية والمحلية العاجلة",
+    "finalUrl": "https://www.alarabiya.net/",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.skynewsarabia.com/",
+    "lang": "ar",
+    "ok": true,
+    "title": "أخبار اليوم | سكاي نيوز عربية",
+    "finalUrl": "https://www.skynewsarabia.com/",
+    "evidence": {
+      "other:google-fc": [
+        "any"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.aljazeera.net/",
+    "lang": "ar",
+    "ok": true,
+    "title": "الجزيرة نت: آخر أخبار اليوم حول العالم",
+    "finalUrl": "https://www.aljazeera.net/",
+    "evidence": {
+      "onetrust": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.france24.com/ar/",
+    "lang": "ar",
+    "ok": true,
+    "title": "فرانس 24 – الأخبار والأحداث الدولية على مدار الساعة",
+    "finalUrl": "https://www.france24.com/ar/",
+    "evidence": {
+      "didomi": [
+        "global",
+        "dom"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "function",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": true,
+      "by": "rule:didomi"
+    }
+  },
+  {
+    "url": "https://arabic.cnn.com/",
+    "lang": "ar",
+    "ok": true,
+    "title": "آخر الأخبار السياسية والرياضية والفنية وأحدث تقارير الفيديو | CNN Arabic | CNN",
+    "finalUrl": "https://arabic.cnn.com/",
+    "evidence": {
+      "onetrust": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "undefined",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.bbc.com/arabic",
+    "lang": "ar",
+    "ok": true,
+    "title": "الرئيسية - BBC News عربي",
+    "finalUrl": "https://www.bbc.com/arabic",
+    "evidence": {
+      "sourcepoint": [
+        "script",
+        "global"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.dw.com/ar/",
+    "lang": "ar",
+    "ok": true,
+    "title": "DW عربية | رؤية أخرى للأحداث في ألمانيا والعالم العربي",
+    "finalUrl": "https://www.dw.com/ar/%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A%D8%A9/s-9106",
+    "evidence": {},
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "function"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  },
+  {
+    "url": "https://www.euronews.com/arabic",
+    "lang": "ar",
+    "ok": true,
+    "title": "404 : Not Found",
+    "finalUrl": "https://www.euronews.com/arabic",
+    "evidence": {
+      "didomi": [
+        "script"
+      ]
+    },
+    "apis": {
+      "OneTrust.RejectAll": "no-object",
+      "Cookiebot.decline": "no-object",
+      "Cookiebot.submitCustomConsent": "no-object",
+      "Didomi.setUserDisagreeToAll": "no-object",
+      "UC_UI.denyAllConsents": "no-object",
+      "__ucCmp.denyAllConsents": "no-object",
+      "__tcfapi": "undefined"
+    },
+    "banner": {
+      "visible": false,
+      "by": ""
+    }
+  }
+]

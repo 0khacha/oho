@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Complianz</title></head><body><h1>Complianz fixture</h1>
+<div id="cmplz-cookiebanner-container"><div class="cmplz-cookiebanner bar">
+  <div class="cmplz-title">Manage Cookie Consent</div>
+  <p>To provide the best experiences, we use technologies like cookies to store and/or access device information.</p>
+  <button class="cmplz-btn cmplz-accept">Accept</button>
+  <button class="cmplz-btn cmplz-deny">Deny</button>
+  <button class="cmplz-btn cmplz-view-preferences">View preferences</button>
+</div></div>
+<script>
+ohoLock();
+const c = document.getElementById('cmplz-cookiebanner-container');
+document.querySelector('.cmplz-accept').onclick = () => ohoClose(c, 'accepted');
+document.querySelector('.cmplz-deny').onclick = () => ohoClose(c, 'rejected');
+</script></body></html>

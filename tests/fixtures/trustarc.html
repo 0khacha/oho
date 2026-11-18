@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>TrustArc</title></head><body><h1>TrustArc fixture</h1>
+<div id="truste-consent-track" class="bar">
+  <div id="truste-consent-content">
+    <p>This site uses cookies and related technologies for site operation, analytics and third party advertising.</p>
+    <button id="truste-consent-button">Agree and Proceed</button>
+    <button id="truste-consent-required">Required Only</button>
+    <button id="truste-show-consent">Cookie Preferences</button>
+  </div>
+</div>
+<script>
+ohoLock();
+const t = document.getElementById('truste-consent-track');
+document.getElementById('truste-consent-button').onclick = () => ohoClose(t, 'accepted');
+document.getElementById('truste-consent-required').onclick = () => ohoClose(t, 'rejected');
+</script></body></html>

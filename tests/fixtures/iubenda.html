@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Iubenda</title></head><body><h1>Iubenda fixture</h1>
+<div id="iubenda-cs-banner" class="bar" role="alertdialog">
+  <div class="iubenda-cs-content"><p>We and selected third parties use cookies or similar technologies for technical purposes and, with your consent, for other purposes as specified in the <a href="/cookie-policy">cookie policy</a>.</p>
+  <button class="iubenda-cs-customize-btn">Learn more and customize</button>
+  <button class="iubenda-cs-reject-btn iubenda-cs-btn-primary">Reject</button>
+  <button class="iubenda-cs-accept-btn iubenda-cs-btn-primary">Accept</button></div>
+</div>
+<script>
+ohoLock();
+const b = document.getElementById('iubenda-cs-banner');
+document.querySelector('.iubenda-cs-accept-btn').onclick = () => ohoClose(b, 'accepted');
+document.querySelector('.iubenda-cs-reject-btn').onclick = () => ohoClose(b, 'rejected');
+</script></body></html>

@@ -1,0 +1,16 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Pay-or-accept wall over a hidden CMP</title></head><body><h1>Custom pay-or-accept wall, Didomi loaded but hidden (as on marca.com)</h1>
+<!-- Live findings: (1) a known CMP present but hidden used to block the heuristic entirely;
+     (2) "Rechazo y me suscribo" reads as reject but means "reject AND subscribe": never click it. -->
+<div id="didomi-host"><div id="didomi-notice" class="hidden"></div></div>
+<div id="ue-initial-modal" class="bar">
+  <div><p>Pulsando <b>"Acepto y continúo gratis"</b> consientes la instalación de cookies propias y de nuestros socios para publicidad personalizada.</p>
+    <button id="yes">Acepto y continúo gratis</button></div>
+  <div><p>Pulsando <b>"Rechazo y me suscribo"</b> no autorizas las cookies y accedes mediante la suscripción. <a href="/politica-de-cookies">Política de Cookies</a></p>
+    <button id="pay">Rechazo y me suscribo</button></div>
+</div>
+<script>
+ohoLock();
+const m = document.getElementById('ue-initial-modal');
+document.getElementById('yes').onclick = () => ohoClose(m, 'accepted');
+document.getElementById('pay').onclick = () => ohoRecord('subscribe');
+</script></body></html>

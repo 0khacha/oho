@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Complianz API</title></head><body><h1>Complianz with cmplz_deny_all() and no Deny button</h1>
+<!-- Live finding (wpzoom.com): cmplz_deny_all() records the denial but leaves the banner open and
+     un-dismissed; oho also calls cmplz_set_banner_status('dismissed') and hides the banner. -->
+<div id="cmplz-cookiebanner-container"><div class="cmplz-cookiebanner optout cmplz-show bar">
+  <div class="cmplz-title">Manage Consent</div>
+  <p>To provide the best experiences, we use technologies like cookies to store and/or access device information.</p>
+  <button class="cmplz-btn cmplz-accept">Accept</button>
+  <a class="cmplz-link cookie-statement" href="/cookie-policy">Opt-out preferences</a>
+</div></div>
+<script>
+ohoLock();
+window.__bannerStatus = null;
+window.cmplz_deny_all = () => ohoRecord('rejected');
+window.cmplz_set_banner_status = (s) => (window.__bannerStatus = s);
+document.querySelector('.cmplz-accept').onclick = () => ohoClose(document.getElementById('cmplz-cookiebanner-container'), 'accepted');
+</script></body></html>

@@ -1,0 +1,15 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Bannière inconnue (FR, tardive)</title></head><body><h1>Bannière maison, affichée après 1,2 s</h1>
+<script>
+// Unknown CMP, no cookie-ish ids/classes, injected late -> exercises MutationObserver + heuristic.
+setTimeout(() => {
+  const d = document.createElement('div');
+  d.id = 'nb-42';
+  d.className = 'bar';
+  d.innerHTML = '<p>Avec votre accord, nous et nos partenaires utilisons des cookies ou technologies similaires pour stocker et accéder à des données personnelles. <a href="/confidentialite">Politique de confidentialité</a></p>' +
+    '<button id="ok">Tout accepter</button><button id="cfg">Paramétrer</button><a href="#" id="no">Continuer sans accepter →</a>';
+  document.body.appendChild(d);
+  ohoLock();
+  d.querySelector('#ok').onclick = () => ohoClose(d, 'accepted');
+  d.querySelector('#no').onclick = (e) => { e.preventDefault(); ohoClose(d, 'rejected'); };
+}, 1200);
+</script></body></html>

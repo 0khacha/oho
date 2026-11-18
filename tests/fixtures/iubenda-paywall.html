@@ -1,0 +1,15 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Iubenda pay-or-accept wall</title></head><body><h1>Cookie wall: "Rifiuta e abbonati" (as on repubblica.it)</h1>
+<!-- Live finding: the curated .iubenda-cs-reject-btn selector matched a button that means
+     "reject AND subscribe". oho must click neither that nor accept: it hides the wall instead. -->
+<div id="iubenda-cs-banner" class="modal" role="dialog"><div class="box">
+  <p>Utilizziamo cookie per finalità tecniche e, con il tuo consenso, di pubblicità. Puoi accettare o abbonarti per navigare senza pubblicità.</p>
+  <button class="iubenda-cs-reject-btn iubenda-cs-btn-primary">RIFIUTA E ABBONATI</button>
+  <button class="iubenda-cs-accept-btn iubenda-cs-btn-primary">ACCETTA</button>
+  <a href="/login">ACCEDI</a>
+</div></div>
+<script>
+ohoLock();
+const b = document.getElementById('iubenda-cs-banner');
+document.querySelector('.iubenda-cs-reject-btn').onclick = () => ohoRecord('subscribe');
+document.querySelector('.iubenda-cs-accept-btn').onclick = () => ohoClose(b, 'accepted');
+</script></body></html>

@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Cookiebot</title></head><body><h1>Cookiebot fixture (customize flow)</h1>
+<div id="CybotCookiebotDialog" class="bar" role="dialog" aria-label="This website uses cookies">
+  <h2>This website uses cookies</h2>
+  <p>We use cookies to personalise content and ads and to analyse our traffic. We share information with our partners.</p>
+  <div id="cb-levels" class="hidden">
+    <label><input type="checkbox" checked disabled> Necessary</label>
+    <label><input type="checkbox" id="CybotCookiebotDialogBodyLevelButtonPreferences" checked> Preferences</label>
+    <label><input type="checkbox" id="CybotCookiebotDialogBodyLevelButtonStatistics" checked> Statistics</label>
+    <label><input type="checkbox" id="CybotCookiebotDialogBodyLevelButtonMarketing" checked> Marketing</label>
+    <button id="CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection">Allow selection</button>
+  </div>
+  <button id="CybotCookiebotDialogBodyLevelButtonCustomize">Customize</button>
+  <button id="CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll">Allow all</button>
+</div>
+<script>
+ohoLock();
+const d = document.getElementById('CybotCookiebotDialog');
+document.getElementById('CybotCookiebotDialogBodyLevelButtonCustomize').onclick = () => document.getElementById('cb-levels').classList.remove('hidden');
+document.getElementById('CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').onclick = () => ohoClose(d, 'accepted');
+document.getElementById('CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection').onclick = () => {
+  const anyOn = ['Preferences', 'Statistics', 'Marketing'].some((k) => document.getElementById('CybotCookiebotDialogBodyLevelButton' + k).checked);
+  ohoClose(d, anyOn ? 'partial' : 'rejected');
+};
+</script></body></html>

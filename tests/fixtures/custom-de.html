@@ -1,0 +1,16 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Cookie-Wall (DE, kein Ablehnen)</title>
+<style>.wall{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9000}.dlg{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:520px;background:#fff;padding:24px;z-index:9001;border-radius:8px}</style>
+</head><body><h1>Cookie-Wall ohne Ablehnen-Knopf</h1>
+<!-- No reject button at all: oho must NOT click accept; it hides the wall and restores scrolling. -->
+<div class="wall" id="wall"></div>
+<div class="dlg" id="dlg">
+  <h2>Ihre Privatsphäre ist uns wichtig</h2>
+  <p>Wir und unsere Partner verwenden Cookies, um personenbezogene Daten zu verarbeiten und Werbung zu personalisieren. Mit „Alle akzeptieren“ erteilen Sie Ihre Einwilligung. <a href="/datenschutz">Datenschutzerklärung</a></p>
+  <button id="yes">Alle akzeptieren</button>
+  <a href="/einstellungen">Einstellungen</a>
+</div>
+<script>
+ohoLock();
+document.body.style.overflow = 'hidden';
+document.getElementById('yes').onclick = () => { ohoRecord('accepted'); document.getElementById('wall').remove(); document.getElementById('dlg').remove(); ohoUnlock(); };
+</script></body></html>

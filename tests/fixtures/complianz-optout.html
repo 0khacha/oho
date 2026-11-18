@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Complianz opt-out banner</title></head><body><h1>Complianz opt-out variant (as on wpzoom.com outside the EU)</h1>
+<!-- Live finding: no visible Deny; categories pre-checked and the Save button hidden. oho unchecks
+     the optional categories (not "functional") and triggers Complianz's own save. -->
+<div id="cmplz-cookiebanner-container">
+  <div class="cmplz-cookiebanner banner-a optout cmplz-show bar">
+    <div class="cmplz-title">Manage Consent</div>
+    <p>To provide the best experiences, we use technologies like cookies to store and/or access device information.</p>
+    <button class="cmplz-btn cmplz-accept">Accept</button>
+    <button class="cmplz-btn cmplz-deny hidden">Deny</button>
+    <button class="cmplz-btn cmplz-view-preferences hidden">View preferences</button>
+    <button class="cmplz-btn cmplz-save-preferences hidden">Save preferences</button>
+    <div class="hidden">
+      <input type="checkbox" class="cmplz-consent-checkbox cmplz-functional" checked>
+      <input type="checkbox" class="cmplz-consent-checkbox cmplz-preferences" checked>
+      <input type="checkbox" class="cmplz-consent-checkbox cmplz-statistics" checked>
+      <input type="checkbox" class="cmplz-consent-checkbox cmplz-marketing" checked>
+    </div>
+    <a class="cmplz-link cookie-statement" href="/cookie-policy">Opt-out preferences</a>
+  </div>
+  <div class="cmplz-cookiebanner cmplz-hidden banner-a optin">
+    <button class="cmplz-btn cmplz-save-preferences">Save preferences</button>
+  </div>
+</div>
+<script>
+ohoLock();
+const c = document.getElementById('cmplz-cookiebanner-container');
+const banner = document.querySelector('.cmplz-show');
+banner.querySelector('.cmplz-accept').onclick = () => ohoClose(c, 'accepted');
+banner.querySelector('.cmplz-save-preferences').onclick = () => {
+  const on = (k) => banner.querySelector('.cmplz-' + k).checked;
+  if (!on('functional')) return ohoClose(c, 'broke-functional');
+  ohoClose(c, ['preferences', 'statistics', 'marketing'].some(on) ? 'partial' : 'rejected');
+};
+document.querySelector('.cmplz-hidden .cmplz-save-preferences').onclick = () => ohoRecord('wrong-banner');
+</script></body></html>

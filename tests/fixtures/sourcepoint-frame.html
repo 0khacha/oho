@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body>
+<div class="message-container"><div class="message">
+  <p>We use cookies and similar technologies. Our partners process personal data for advertising.</p>
+  <button class="message-component message-button sp_choice_type_12" title="Options">Options</button>
+  <button class="message-component message-button sp_choice_type_11" title="Accept">Accept</button>
+  <button class="message-component message-button sp_choice_type_13" title="Reject all">Reject all</button>
+</div></div>
+<script>
+document.querySelector('.sp_choice_type_11').onclick = () => parent.postMessage({ sp: 'accepted' }, '*');
+document.querySelector('.sp_choice_type_13').onclick = () => parent.postMessage({ sp: 'rejected' }, '*');
+</script></body></html>

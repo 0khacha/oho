@@ -1,0 +1,11 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Implied-consent notice (ES)</title>
+<style>#cookies-overlay{position:fixed;left:0;right:0;bottom:0;background:#222;color:#eee;padding:10px 60px;z-index:9000;font-size:14px}#cookies-overlay button{position:absolute;right:16px;top:8px}</style></head><body><h1>Notice-only bar (as on xataka.com)</h1>
+<!-- Live finding: no reject exists, only "x" (which means "ok, I accept by browsing"). oho must not
+     click it; it hides the notice. Implied-consent wording is a strong banner signal. -->
+<div id="cookies-overlay">
+  Utilizamos cookies de terceros para generar estadísticas de audiencia y mostrar publicidad personalizada analizando tu navegación.
+  Si sigues navegando estarás aceptando su uso. <a href="/cookies">Más información</a>
+  <button id="x" aria-label="Cerrar">×</button>
+</div>
+<script>document.getElementById('x').onclick = () => ohoClose(document.getElementById('cookies-overlay'), 'accepted');</script>
+</body></html>

@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Live feed (no banner, constant mutations)</title></head><body>
+<h1>Live feed: 5,000 elements, a new item every 100 ms, no banner</h1>
+<ol id="feed"></ol>
+<div id="late-hidden" class="bar" style="display:none"></div>
+<script>
+// Stresses the MutationObserver path: rescans must only look at the added nodes.
+const feed = document.getElementById('feed');
+for (let i = 0; i < 1000; i++) {
+  const li = document.createElement('li');
+  li.innerHTML = '<b>#' + i + '</b> <span>update</span> <a href="#">link</a> <i>x</i>';
+  feed.appendChild(li);
+}
+let n = 0;
+const t = setInterval(() => {
+  const li = document.createElement('li');
+  li.innerHTML = '<b>live ' + n + '</b> <span>score changed</span> <a href="#">details</a>';
+  feed.prepend(li);
+  if (++n > 120) clearInterval(t);
+}, 100);
+</script></body></html>

@@ -1,0 +1,19 @@
+<!doctype html><html lang="da"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Usercentrics v3</title></head><body><h1>Usercentrics v3 (as on netto.dk)</h1>
+<!-- Live finding: v3 renders #uc-main-dialog in aside#usercentrics-cmp-ui's shadow root and, after a
+     choice, a small floating privacy button. That button is NOT a banner: oho must not wait on it or hide it. -->
+<aside id="usercentrics-cmp-ui"></aside>
+<script>
+ohoLock();
+const host = document.getElementById('usercentrics-cmp-ui');
+const sr = host.attachShadow({ mode: 'open' });
+const css = '<style>#uc-overlay{position:fixed;inset:0;background:#0006;z-index:2147483646}#uc-main-dialog{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;background:#fff;padding:20px;z-index:2147483647}.pb{position:fixed;left:8px;bottom:8px;width:44px;height:44px;border-radius:50%;background:#123;z-index:2147483647}</style>';
+sr.innerHTML = css + '<div id="uc-overlay"></div><div id="uc-main-dialog" role="dialog"><p>Du bestemmer over dine data. Vi bruger cookies.</p>' +
+  '<button id="deny">Kun nødvendige</button><button id="save">Gem indstillinger</button><button id="accept">Accepter alle</button></div>';
+const choose = (kind) => {
+  ohoRecord(kind);
+  sr.innerHTML = css + '<button class="pb" id="uc-privacy-button" aria-label="Privatlivsindstillinger"></button>';
+  ohoUnlock();
+};
+sr.getElementById('deny').onclick = () => choose('rejected');
+sr.getElementById('accept').onclick = () => choose('accepted');
+</script></body></html>

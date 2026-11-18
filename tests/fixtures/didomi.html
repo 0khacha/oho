@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Didomi</title></head><body><h1>Didomi fixture (JS API path)</h1>
+<div id="didomi-host">
+  <div id="didomi-notice" class="bar">
+    <p>We and our 842 partners store and/or access information on a device, such as cookies, and process personal data.</p>
+    <button id="didomi-notice-learn-more-button">Learn More</button>
+    <button id="didomi-notice-agree-button">Agree and close</button>
+  </div>
+</div>
+<script>
+ohoLock();
+const host = document.getElementById('didomi-host');
+document.getElementById('didomi-notice-agree-button').onclick = () => ohoClose(host, 'accepted');
+window.Didomi = {
+  setUserAgreeToAll: () => ohoClose(host, 'accepted'),
+  setUserDisagreeToAll: () => ohoClose(host, 'rejected'),
+};
+</script></body></html>

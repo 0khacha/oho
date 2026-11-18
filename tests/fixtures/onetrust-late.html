@@ -1,0 +1,23 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>OneTrust (handlers wired late)</title></head><body><h1>OneTrust: button rendered before its handler (as on rossmann.de)</h1>
+<!-- Live finding: OneTrust shows the banner, then attaches click handlers ~1 s later.
+     A click before that is silently ignored; oho must notice the banner stayed open and retry. -->
+<div id="onetrust-consent-sdk">
+  <div id="onetrust-banner-sdk" class="bar">
+    <p>Wenn Sie auf „Alle Cookies akzeptieren“ klicken, stimmen Sie der Speicherung von Cookies zu.</p>
+    <button id="onetrust-pc-btn-handler">Cookie-Einstellungen</button>
+    <button id="onetrust-reject-all-handler">Alle ablehnen</button>
+    <button id="onetrust-accept-btn-handler">Alle Cookies akzeptieren</button>
+  </div>
+</div>
+<script>
+ohoLock();
+const sdk = document.getElementById('onetrust-consent-sdk');
+window.__ignoredClicks = 0;
+const reject = document.getElementById('onetrust-reject-all-handler');
+reject.addEventListener('click', () => { if (!window.__wired) window.__ignoredClicks++; });
+setTimeout(() => {
+  window.__wired = true;
+  reject.onclick = () => ohoClose(sdk, 'rejected');
+  document.getElementById('onetrust-accept-btn-handler').onclick = () => ohoClose(sdk, 'accepted');
+}, 900);
+</script></body></html>

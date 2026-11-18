@@ -1,0 +1,22 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Axeptio (current markup)</title>
+<style>#axeptio_main_button{position:fixed;left:20px;bottom:20px;z-index:1000}</style></head><body><h1>Axeptio, markup seen on ornikar.com</h1>
+<!-- Live finding: no #axeptio_btn_dismiss any more; the refusal is button.ax-discardButton inside
+     [data-testid=modal-container]. #axeptio_main_button is the floating settings button that stays. -->
+<div class="axeptio_mount" id="axeptio_overlay">
+  <div data-testid="modal-container" class="bar" lang="fr"><div id="fade" style="opacity:0">
+    <button class="sc-gsxoIA kXSNFM ax-discardButton">Continuer sans accepter</button>
+    <h2>Gestion des cookies</h2>
+    <p>Ornikar et ses différents sites nous utilisent pour mesurer ses performances et proposer de la publicité personnalisée.</p>
+    <button id="axeptio_btn_configure">Choisir mes cookies</button>
+    <button id="axeptio_btn_acceptAll">J'accepte</button>
+  </div></div>
+  <button id="axeptio_main_button">Cookies</button>
+</div>
+<script>
+ohoLock();
+// contents fade in after the container is shown (as on ornikar.com)
+setTimeout(() => (document.getElementById('fade').style.opacity = '1'), 600);
+const m = document.querySelector('[data-testid=modal-container]');
+document.querySelector('.ax-discardButton').onclick = () => ohoClose(m, 'rejected');
+document.getElementById('axeptio_btn_acceptAll').onclick = () => ohoClose(m, 'accepted');
+</script></body></html>

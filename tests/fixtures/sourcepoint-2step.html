@@ -1,0 +1,10 @@
+<!doctype html><html lang="no"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Sourcepoint two-step (CNAME frame)</title></head><body><h1>Sourcepoint: reject only behind "Tilpass eller avvis" (as on finn.no)</h1>
+<div id="sp_message_container_88" class="modal">
+  <iframe id="sp_message_iframe_88" title="SP Consent Message" src="https://cmp.news-example.test/index.html?hasCsp=true&message_id=88&consentUUID=null&consent_origin=https%3A%2F%2Fcmp.news-example.test%2Fconsent%2Ftcfv2" style="width:600px;height:300px;border:0;background:#fff"></iframe>
+</div>
+<script>
+ohoLock();
+window.addEventListener('message', (e) => {
+  if (e.data && e.data.sp) ohoClose(document.getElementById('sp_message_container_88'), e.data.sp);
+});
+</script></body></html>

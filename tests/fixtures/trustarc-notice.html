@@ -1,0 +1,25 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>TrustArc notice + new preference center</title></head><body><h1>TrustArc notice without "required only" (as on redhat.com)</h1>
+<!-- Live finding: outside the EU, TrustArc shows only "Accept all" + "More options". The new
+     preference center (div.truste_popframe in the page, not an iframe) has "Refuser tout". -->
+<div id="truste-consent-track" class="bar">
+  <div id="truste-consent-content">
+    <p>Nous utilisons des cookies sur nos sites web pour fournir nos services en ligne. En utilisant ce site web, vous acceptez l'utilisation de cookies.</p>
+    <button id="truste-consent-button">Accepter tout</button>
+    <button id="truste-show-consent2">Plus d'options</button>
+  </div>
+</div>
+<script>
+ohoLock();
+const t = document.getElementById('truste-consent-track');
+document.getElementById('truste-consent-button').onclick = () => ohoClose(t, 'accepted');
+document.getElementById('truste-show-consent2').onclick = () => {
+  setTimeout(() => {
+    const pop = document.createElement('div');
+    pop.className = 'trustarc_newcm_container truste_popframe modal';
+    pop.innerHTML = '<div class="box"><h2>Cookies et technologies associées</h2>' +
+      '<a class="submit disable" href="#">Envoyer les préférences</a> <a class="declineAllButtonLower" href="#">Refuser tout</a></div>';
+    document.body.appendChild(pop);
+    pop.querySelector('.declineAllButtonLower').onclick = (e) => { e.preventDefault(); pop.remove(); ohoClose(t, 'rejected'); };
+  }, 300);
+};
+</script></body></html>

@@ -1,0 +1,30 @@
+{
+  "name": "oho",
+  "version": "1.0.0",
+  "description": "oho (Tamazight for 'no'): auto-rejects cookie banners. Tiny, fast, private.",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:collector": "node scripts/build.mjs --collector",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && playwright test",
+    "bench": "node scripts/build.mjs --bench && node tests/bench.mjs",
+    "check": "npm run typecheck && npm test && npm run bench",
+    "dataset:fixtures": "node scripts/build.mjs --collector && node tests/dump-features.mjs",
+    "bench:mobile": "node scripts/build.mjs --bench && node tests/bench.mjs --runs 3 --throttle 4",
+    "firefox": "npm run build && web-ext run --source-dir dist/firefox",
+    "lint:firefox": "web-ext lint --source-dir dist/firefox",
+    "test:live": "npm run build && node tests/live/run.ts",
+    "discover:live": "node tests/live/discover.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/chrome": "^0.3.7",
+    "@types/node": "^26.6.6",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2",
+    "web-ext": "^10.8.0"
+  }
+}

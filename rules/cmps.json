@@ -1,0 +1,242 @@
+{
+  "_comment": "Known CMP rules. See README 'How rules work'. Order matters: first visible match wins.",
+  "cmps": [
+    {
+      "id": "onetrust",
+      "name": "OneTrust",
+      "detect": "#onetrust-banner-sdk, #onetrust-consent-sdk",
+      "visible": "#onetrust-banner-sdk, #onetrust-pc-sdk",
+      "reject": "#onetrust-reject-all-handler, .ot-pc-refuse-all-handler, #onetrust-banner-sdk .banner-close-button.onetrust-close-btn-ui[aria-label*='ontinue without']",
+      "api": "onetrust",
+      "flow": [
+        {
+          "click": "#onetrust-pc-btn-handler, .ot-sdk-show-settings"
+        },
+        {
+          "wait": "#onetrust-pc-sdk"
+        },
+        {
+          "click": "#onetrust-pc-sdk .ot-pc-refuse-all-handler",
+          "optional": true,
+          "done": true
+        },
+        {
+          "uncheck": "#onetrust-pc-sdk input[type=checkbox]:not(:disabled)"
+        },
+        {
+          "click": "#onetrust-pc-sdk .save-preference-btn-handler, #onetrust-pc-sdk .onetrust-close-btn-handler",
+          "save": true
+        }
+      ],
+      "hide": "#onetrust-consent-sdk, .onetrust-pc-dark-filter"
+    },
+    {
+      "id": "cookiebot",
+      "name": "Cookiebot",
+      "detect": "#CybotCookiebotDialog",
+      "reject": "#CybotCookiebotDialogBodyButtonDecline, #CybotCookiebotDialogBodyLevelButtonLevelOptinDeclineAll",
+      "api": "cookiebot",
+      "flow": [
+        {
+          "click": "#CybotCookiebotDialogBodyLevelButtonCustomize, #CybotCookiebotDialogNavDetails, #CybotCookiebotDialogBodyButtonDetails",
+          "optional": true
+        },
+        {
+          "uncheck": "#CybotCookiebotDialog input[type=checkbox]:not(:disabled)"
+        },
+        {
+          "click": "#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection, #CybotCookiebotDialogBodyButtonAcceptSelected, #CybotCookiebotDialogBodyLevelButtonAccept",
+          "save": true
+        }
+      ],
+      "hide": "#CybotCookiebotDialog, #CybotCookiebotDialogBodyUnderlay"
+    },
+    {
+      "id": "didomi",
+      "name": "Didomi",
+      "detect": "#didomi-host",
+      "visible": "#didomi-notice, .didomi-popup-notice, .didomi-consent-popup-preferences",
+      "reject": "#didomi-notice-disagree-button, .didomi-continue-without-agreeing, #didomi-host button[aria-label*='Disagree']",
+      "api": "didomi",
+      "flow": [
+        {
+          "click": "#didomi-notice-learn-more-button"
+        },
+        {
+          "wait": ".didomi-consent-popup-preferences"
+        },
+        {
+          "click": "#btn-toggle-disagree, .didomi-consent-popup-preferences [aria-label*='Disagree to all']"
+        },
+        {
+          "click": ".didomi-consent-popup-preferences .didomi-consent-popup-footer button.didomi-button-highlight, .didomi-consent-popup-preferences [aria-label*='Save']",
+          "save": true
+        }
+      ],
+      "hide": "#didomi-host",
+      "hideClasses": [
+        "didomi-popup-open"
+      ]
+    },
+    {
+      "id": "quantcast",
+      "name": "Quantcast / InMobi Choice",
+      "detect": "#qc-cmp2-container, #qc-cmp2-ui, .qc-cmp2-container",
+      "visible": "#qc-cmp2-ui",
+      "reject": "#qc-cmp2-ui .qc-cmp2-summary-buttons button, #qc-cmp2-ui .qc-cmp2-header-links button",
+      "rejectText": true,
+      "flow": [
+        {
+          "click": "#qc-cmp2-ui .qc-cmp2-summary-buttons button",
+          "text": "settings"
+        },
+        {
+          "click": "#qc-cmp2-ui .qc-cmp2-header-links button, #qc-cmp2-ui .qc-cmp2-footer button",
+          "text": "reject",
+          "optional": true,
+          "done": true
+        },
+        {
+          "uncheck": "#qc-cmp2-ui input[type=checkbox]:not(:disabled), #qc-cmp2-ui button[role=switch]"
+        },
+        {
+          "click": "#qc-cmp2-ui .qc-cmp2-footer button",
+          "text": "save",
+          "save": true
+        }
+      ],
+      "hide": "#qc-cmp2-container, .qc-cmp2-container",
+      "hideClasses": [
+        "qc-cmp-ui-showing"
+      ]
+    },
+    {
+      "id": "trustarc",
+      "name": "TrustArc",
+      "detect": "#truste-consent-track, #truste-consent-content, #consent_blackbar, .truste_box_overlay",
+      "visible": "#truste-consent-track, #truste-consent-content, .truste_box_overlay",
+      "reject": "#truste-consent-required, #truste-consent-button-decline, .truste-consent-required",
+      "flow": [
+        {
+          "click": "#truste-show-consent, #truste-show-consent2"
+        },
+        {
+          "wait": ".truste_popframe"
+        },
+        {
+          "click": ".truste_popframe .declineAllButtonLower, .truste_popframe .rejectAll",
+          "done": true
+        }
+      ],
+      "hide": "#truste-consent-track, #consent_blackbar, .truste_overlay, .truste_box_overlay, .truste_popframe",
+      "hideDelay": 2500
+    },
+    {
+      "id": "trustarc-frame",
+      "name": "TrustArc (preference iframe)",
+      "frame": [
+        "consent-pref.trustarc.com",
+        "consent.trustarc.com"
+      ],
+      "detect": "#prefPanel, .pdynamicbutton, .mainContent",
+      "reject": ".rejectAll, .pdynamicbutton .call[aria-label*='Decline'], #rejectAll",
+      "flow": [
+        {
+          "uncheck": "input[type=checkbox]:not(:disabled), [role=switch]"
+        },
+        {
+          "click": ".submit, .saveAndExit, .pdynamicbutton .call",
+          "text": "save",
+          "save": true
+        }
+      ]
+    },
+    {
+      "id": "usercentrics",
+      "name": "Usercentrics",
+      "detect": "#usercentrics-root, #usercentrics-cmp-ui",
+      "shadow": "#usercentrics-root, #usercentrics-cmp-ui",
+      "visible": "[data-testid=uc-default-banner], [data-testid=uc-center-container], #uc-center-container, #uc-main-dialog",
+      "reject": "[data-testid=uc-deny-all-button], button#deny, button.deny",
+      "api": "usercentrics",
+      "hide": "#usercentrics-root, #usercentrics-cmp-ui",
+      "hideDelay": 1500
+    },
+    {
+      "id": "sourcepoint-frame",
+      "name": "Sourcepoint (message iframe)",
+      "frame": [
+        "privacy-mgmt.com",
+        "sourcepoint.mgr.consensu.org",
+        "sp-prod.net"
+      ],
+      "frameUrl": "consent_origin=",
+      "detect": ".message-container, .message, #notice, .sp_choice_type_11, .sp_choice_type_REJECT_ALL",
+      "reject": ".sp_choice_type_13, .sp_choice_type_REJECT_ALL, button.sp_choice_type_15, button[title*='Reject'], button[title*='reject'], button[aria-label*='Reject']",
+      "flow": [
+        {
+          "click": ".sp_choice_type_12, button[title*='Options'], button[title*='Settings']"
+        },
+        {
+          "click": "button.sp_choice_type_REJECT_ALL, .sp_choice_type_REJECT_ALL, .pm-reject-all, button[title*='Reject All']",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "sourcepoint",
+      "name": "Sourcepoint (container)",
+      "detect": "body > div[id^='sp_message_container_']",
+      "hide": "div[id^='sp_message_container_']",
+      "hideDelay": 3000,
+      "hideClasses": [
+        "sp-message-open"
+      ]
+    },
+    {
+      "id": "axeptio",
+      "name": "Axeptio",
+      "detect": "#axeptio_overlay, .axeptio_mount",
+      "shadow": ".axeptio_mount",
+      "visible": "[data-testid=modal-container], .axeptio_widget, #axeptio_btn_dismiss, .ax-discardButton",
+      "reject": "#axeptio_btn_dismiss, button.axeptio_btn_dismiss, button.ax-discardButton",
+      "hide": "#axeptio_overlay [data-testid=modal-container], .axeptio_widget",
+      "hideDelay": 1500
+    },
+    {
+      "id": "iubenda",
+      "name": "Iubenda",
+      "detect": "#iubenda-cs-banner",
+      "reject": ".iubenda-cs-reject-btn, #iubenda-cs-banner .iubenda-cs-close-btn[aria-label*='without accepting'], #iubenda-cs-banner .iubenda-cs-close-btn[aria-label*='senza accettare']",
+      "api": "iubenda",
+      "hide": "#iubenda-cs-banner, .iubenda-cs-overlay",
+      "hideDelay": 1500,
+      "hideClasses": [
+        "iubenda-cs-overlay-visible"
+      ]
+    },
+    {
+      "id": "complianz",
+      "name": "Complianz",
+      "detect": "#cmplz-cookiebanner-container, .cmplz-cookiebanner",
+      "visible": ".cmplz-cookiebanner",
+      "reject": ".cmplz-cookiebanner .cmplz-btn.cmplz-deny",
+      "api": "complianz",
+      "flow": [
+        {
+          "click": ".cmplz-cookiebanner .cmplz-btn.cmplz-view-preferences",
+          "optional": true
+        },
+        {
+          "uncheck": ".cmplz-cookiebanner:not(.cmplz-hidden) input.cmplz-consent-checkbox:not(.cmplz-functional):not(:disabled)"
+        },
+        {
+          "click": ".cmplz-cookiebanner:not(.cmplz-hidden) .cmplz-btn.cmplz-save-preferences",
+          "save": true,
+          "hidden": true
+        }
+      ],
+      "hide": "#cmplz-cookiebanner-container, .cmplz-soft-cookiewall"
+    }
+  ]
+}

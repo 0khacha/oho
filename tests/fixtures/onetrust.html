@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>OneTrust</title></head><body><h1>OneTrust fixture</h1>
+<div id="onetrust-consent-sdk">
+  <div id="onetrust-banner-sdk" class="bar" role="region" aria-label="Cookie banner">
+    <p id="onetrust-policy-text">We and our partners use cookies to personalise ads. <a href="/privacy">Cookie Policy</a></p>
+    <button id="onetrust-pc-btn-handler">Cookies Settings</button>
+    <button id="onetrust-reject-all-handler">Reject All</button>
+    <button id="onetrust-accept-btn-handler">Accept All Cookies</button>
+  </div>
+</div>
+<script>
+ohoLock();
+const sdk = document.getElementById('onetrust-consent-sdk');
+document.getElementById('onetrust-accept-btn-handler').onclick = () => ohoClose(sdk, 'accepted');
+document.getElementById('onetrust-reject-all-handler').onclick = () => ohoClose(sdk, 'rejected');
+</script></body></html>

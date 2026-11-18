@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Heavy page (no banner)</title></head><body>
+<h1>Heavy DOM: ~25,000 elements, no banner</h1>
+<div id="root"></div>
+<script>
+// oho must not walk this: work should stay flat regardless of DOM size.
+const root = document.getElementById('root');
+const frag = document.createDocumentFragment();
+for (let i = 0; i < 2500; i++) {
+  const card = document.createElement('article');
+  card.className = 'card';
+  card.innerHTML = '<h3>Item ' + i + '</h3><p>Some <b>bold</b> and <i>italic</i> text <span>with</span> <a href="#">a link</a>.</p><ul><li>a</li><li>b</li></ul>';
+  frag.appendChild(card);
+}
+root.appendChild(frag);
+</script></body></html>

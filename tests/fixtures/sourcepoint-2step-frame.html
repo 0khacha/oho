@@ -1,0 +1,23 @@
+<!doctype html><html lang="no"><head><meta charset="utf-8"></head><body>
+<!-- First layer as on finn.no: only "accept" and "customise or reject" (sp_choice_type_12);
+     the privacy manager then offers sp_choice_type_REJECT_ALL. -->
+<div class="message-container" id="layer1"><div class="message">
+  <p>Vi og våre 40 partnere bruker informasjonskapsler (cookies) og behandler personopplysninger.</p>
+  <button class="message-component message-button sp_choice_type_11" title="Godta alle">Godta alle</button>
+  <button class="message-component message-button sp_choice_type_12" title="Tilpass eller avvis">Tilpass eller avvis</button>
+</div></div>
+<div class="message-container" id="pm" style="display:none">
+  <button class="pm-switch" role="switch" aria-checked="true">Annonsering</button>
+  <button class="sp_choice_type_SAVE_AND_EXIT" title="Lagre">Lagre</button>
+  <button class="sp_choice_type_ACCEPT_ALL" title="Godta alle">Godta alle</button>
+  <button class="sp_choice_type_REJECT_ALL" title="Kun nødvendige">Kun nødvendige</button>
+</div>
+<script>
+document.querySelector('.sp_choice_type_11').onclick = () => parent.postMessage({ sp: 'accepted' }, '*');
+document.querySelector('.sp_choice_type_ACCEPT_ALL').onclick = () => parent.postMessage({ sp: 'accepted' }, '*');
+document.querySelector('.sp_choice_type_12').onclick = () => {
+  document.getElementById('layer1').style.display = 'none';
+  setTimeout(() => (document.getElementById('pm').style.display = ''), 300);
+};
+document.querySelector('.sp_choice_type_REJECT_ALL').onclick = () => parent.postMessage({ sp: 'rejected' }, '*');
+</script></body></html>
