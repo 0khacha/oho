@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 64" width="156" height="64" role="img" aria-label="oho">
+  <title>oho</title>
+  <g fill="none" stroke="#c2410c" stroke-width="8" stroke-linecap="round">
+    <!-- "o" as a no-sign -->
+    <circle cx="28" cy="38" r="18"/>
+    <path d="M15.3 25.3 L40.7 50.7"/>
+    <!-- "h" -->
+    <path d="M64 10 V56 M64 38 a14 14 0 0 1 28 0 V56"/>
+    <!-- "o" -->
+    <circle cx="124" cy="38" r="18"/>
+  </g>
+</svg>
