@@ -99,6 +99,23 @@ test.describe('rejects', () => {
   }
 });
 
+test('TrustArc shadow-DOM preference centre: refusal saved, backdrop cleared, page usable', async ({ page }) => {
+  await page.goto(BASE + 'trustarc-notice.html');
+  await expect.poll(async () => (await state(page)).result, { timeout: 10000 }).toBe('rejected');
+  expect(await page.evaluate(() => document.cookie)).toContain('notice_preferences=0:');
+  await expect(page.locator('.truste_cm_outerdiv')).toBeHidden({ timeout: 5000 });
+  await expect(page.locator('.truste_popframe')).toHaveCount(0);
+  await expect.poll(() => scrollable(page), { timeout: 5000 }).toBe(true);
+});
+
+test("page-usable check leaves a site's own dialog (and its scroll lock) alone", async ({ page }) => {
+  await page.goto(BASE + 'site-modal-after-reject.html');
+  await expect.poll(async () => (await state(page)).result, { timeout: 8000 }).toBe('rejected');
+  await page.waitForTimeout(2500);
+  await expect(page.locator('#shop')).toBeVisible();
+  expect(await page.evaluate(() => getComputedStyle(document.documentElement).overflowY)).toBe('hidden');
+});
+
 test('late-wired OneTrust button: first click ignored, oho retries', async ({ page }) => {
   await page.goto(BASE + 'onetrust-late.html');
   await expect.poll(async () => (await state(page)).result, { timeout: 8000 }).toBe('rejected');

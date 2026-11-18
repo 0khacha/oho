@@ -1,0 +1,18 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Site modal after the cookie banner</title></head><body><h1>After the refusal the site opens its own dialog (as on thalia.de)</h1>
+<!-- oho's final "page usable" check must not unlock scrolling that belongs to the site's own dialog. -->
+<div id="onetrust-consent-sdk"><div id="onetrust-banner-sdk" class="bar">
+  <p>Wir verwenden Cookies.</p>
+  <button id="onetrust-reject-all-handler">Alle ablehnen</button>
+  <button id="onetrust-accept-btn-handler">Alle akzeptieren</button>
+</div></div>
+<div id="shop" class="modal hidden" role="dialog" aria-modal="true"><div class="box"><h2>Wählen Sie Ihren Shop</h2><button>Auswählen</button></div></div>
+<script>
+ohoLock();
+const sdk = document.getElementById('onetrust-consent-sdk');
+document.getElementById('onetrust-accept-btn-handler').onclick = () => ohoClose(sdk, 'accepted');
+document.getElementById('onetrust-reject-all-handler').onclick = () => {
+  ohoClose(sdk, 'rejected');
+  document.getElementById('shop').classList.remove('hidden');
+  ohoLock(); // the site's own modal locks scrolling
+};
+</script></body></html>

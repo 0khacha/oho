@@ -1,6 +1,11 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>TrustArc notice + new preference center</title></head><body><h1>TrustArc notice without "required only" (as on redhat.com)</h1>
-<!-- Live finding: outside the EU, TrustArc shows only "Accept all" + "More options". The new
-     preference center (div.truste_popframe in the page, not an iframe) has "Refuser tout". -->
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>TrustArc notice + new preference center</title>
+<style>.truste_cm_outerdiv{position:fixed;inset:0;background:#0007;z-index:2199998}.truste_popframe{position:fixed;left:50%;top:40px;transform:translateX(-50%);width:760px;background:#fff;z-index:2199999}</style></head><body><h1>TrustArc notice without "required only" (as on redhat.com)</h1>
+<!-- Live findings (redhat.com): outside the EU TrustArc shows only "Accept all" + "More options".
+     The new preference centre renders inside the OPEN SHADOW ROOT of div.truste_popframe, next to a
+     separate full-screen backdrop div.truste_cm_outerdiv. "Refuser tout" exists but is NOT displayed
+     in the desktop layout; clicking it (TrustArc's own decline-all) saves notice_preferences=0:
+     and switches to a confirmation with "Fermer". Worst case reproduced here: closing leaves the
+     backdrop and the scroll lock behind, so oho's final "page usable" check must clear them. -->
 <div id="truste-consent-track" class="bar">
   <div id="truste-consent-content">
     <p>Nous utilisons des cookies sur nos sites web pour fournir nos services en ligne. En utilisant ce site web, vous acceptez l'utilisation de cookies.</p>
@@ -9,17 +14,32 @@
   </div>
 </div>
 <script>
-ohoLock();
 const t = document.getElementById('truste-consent-track');
 document.getElementById('truste-consent-button').onclick = () => ohoClose(t, 'accepted');
 document.getElementById('truste-show-consent2').onclick = () => {
   setTimeout(() => {
+    ohoLock();
+    const outer = document.createElement('div');
+    outer.id = 'pop-outerdiv0745';
+    outer.className = 'truste_cm_outerdiv';
+    document.body.appendChild(outer);
     const pop = document.createElement('div');
-    pop.className = 'trustarc_newcm_container truste_popframe modal';
-    pop.innerHTML = '<div class="box"><h2>Cookies et technologies associées</h2>' +
-      '<a class="submit disable" href="#">Envoyer les préférences</a> <a class="declineAllButtonLower" href="#">Refuser tout</a></div>';
+    pop.id = 'pop-frame0112';
+    pop.className = 'trustarc_newcm_container truste_popframe';
     document.body.appendChild(pop);
-    pop.querySelector('.declineAllButtonLower').onclick = (e) => { e.preventDefault(); pop.remove(); ohoClose(t, 'rejected'); };
+    const sr = pop.attachShadow({ mode: 'open' });
+    sr.innerHTML = '<div style="padding:20px"><h2>Cookies et technologies associées</h2>' +
+      '<span class="gwt-InlineHTML on" aria-pressed="false">Désactivés</span> <span class="gwt-InlineHTML off" aria-pressed="false">Activés</span>' +
+      '<br><a class="submit disable" href="#">Envoyer les préférences</a> <a class="declineAllButtonLower" href="#" style="display:none">Refuser tout</a></div>'; // present but not displayed on desktop (redhat.com)
+    sr.querySelector('.declineAllButtonLower').onclick = (e) => {
+      e.preventDefault();
+      document.cookie = 'notice_preferences=0:; path=/';
+      document.cookie = 'notice_gdpr_prefs=0:; path=/';
+      ohoRecord('rejected');
+      t.remove();
+      sr.innerHTML = '<div style="padding:20px"><p>Vos préférences ont été enregistrées.</p><a class="close" href="#">Fermer</a></div>';
+      sr.querySelector('.close').onclick = (ev) => { ev.preventDefault(); pop.remove(); /* backdrop + lock left behind */ };
+    };
   }, 300);
 };
 </script></body></html>

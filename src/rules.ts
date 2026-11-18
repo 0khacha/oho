@@ -15,6 +15,8 @@ export interface Step {
   save?: boolean;
   /** Allow a non-displayed element (e.g. Complianz's opt-out banner keeps "Save" hidden). */
   hidden?: boolean;
+  /** Query inside this host's open shadow root (TrustArc's new preference centre). */
+  shadow?: string;
   timeout?: number;
 }
 
@@ -31,6 +33,8 @@ export interface Rule {
   hide?: string;
   hideDelay?: number;
   hideClasses?: string[];
+  /** CMP backdrops/overlays that may outlive the banner; always cleared once oho is done. */
+  overlay?: string;
   frame?: string[];
   /** Also run in iframes whose URL contains this string (first-party CNAME CMP frames). */
   frameUrl?: string;
@@ -109,15 +113,22 @@ function callApi(id: string): boolean {
   return ok;
 }
 
+/** Where a flow step looks: the rule's scope, or a specific shadow root. */
+function stepRoot(rule: Rule, step: Step): Root | null {
+  if (!step.shadow) return scope(rule);
+  const host = document.querySelector(step.shadow);
+  return host ? (host.shadowRoot ?? host) : null;
+}
+
 async function runFlow(rule: Rule): Promise<boolean> {
   let verified = false;
   for (const step of rule.flow ?? []) {
     const timeout = step.timeout ?? (step.optional ? 600 : 2000);
     if (step.wait) {
-      const el = await waitFor(() => find(scope(rule), step.wait), timeout);
+      const el = await waitFor(() => { const r = stepRoot(rule, step); return r && find(r, step.wait); }, timeout);
       if (!el && !step.optional) return false;
     } else if (step.click) {
-      const el = await waitFor(() => find(scope(rule), step.click, step.text, step.hidden), timeout);
+      const el = await waitFor(() => { const r = stepRoot(rule, step); return r && find(r, step.click, step.text, step.hidden); }, timeout);
       if (!el) {
         if (step.optional) continue;
         return false;
@@ -128,7 +139,8 @@ async function runFlow(rule: Rule): Promise<boolean> {
       await sleep(150);
     } else if (step.uncheck) {
       const sel = step.uncheck;
-      if (!timed(() => uncheckAll(scope(rule), sel))) return false;
+      const r = stepRoot(rule, step);
+      if (!r || !timed(() => uncheckAll(r, sel))) return false;
       verified = true;
       await sleep(100);
     }
@@ -142,6 +154,44 @@ const bannerVisible = (rule: Rule): boolean =>
 function hideRule(rule: Rule): void {
   if (rule.hide) document.querySelectorAll(rule.hide).forEach(hide);
   restoreScroll(rule.hideClasses);
+}
+
+const CMP_HINT = /cookie|consent|cmp|truste|onetrust|didomi|cmplz|qc-cmp|sp_message|axeptio|iubenda|usercentrics|cybot/i;
+const hint = (e: Element): string => `${e.id} ${e.getAttribute('class') ?? ''}`;
+
+/** A visible dialog that is not part of a CMP (a site's own country picker, login...). */
+function siteDialogOpen(): boolean {
+  for (const d of document.querySelectorAll('[role=dialog],[aria-modal=true],dialog[open]')) {
+    if (!isVisible(d)) continue;
+    let cmp = false;
+    for (let e: Element | null = d; e && !cmp; e = e.parentElement) cmp = CMP_HINT.test(hint(e));
+    if (!cmp) return true;
+  }
+  return false;
+}
+
+/**
+ * Final "page usable" check, run after every rule outcome: oho must never leave the page
+ * blocked. Clears the CMP's leftover overlays/backdrops (live finding: TrustArc on redhat.com
+ * keeps a full-screen .truste_cm_outerdiv after the refusal is saved) and a scroll lock,
+ * unless a non-CMP dialog explains the lock.
+ */
+export function makeUsable(rule: Rule): void {
+  if (rule.frame) return;
+  if (rule.overlay) document.querySelectorAll(rule.overlay).forEach((e) => isVisible(e) && hide(e));
+  const vw = innerWidth, vh = innerHeight;
+  for (const e of document.body?.children ?? []) {
+    if (!CMP_HINT.test(hint(e)) || !isVisible(e)) continue;
+    const cs = getComputedStyle(e);
+    const r = e.getBoundingClientRect();
+    const empty = ((e as HTMLElement).innerText ?? '').trim().length < 30;
+    if (cs.position === 'fixed' && empty && r.width * r.height > vw * vh * 0.6) hide(e);
+  }
+  const html = document.documentElement, body = document.body;
+  const locked = [html, body].some((e) => e && getComputedStyle(e).overflowY === 'hidden') ||
+    (!!body && getComputedStyle(body).position === 'fixed');
+  if (locked && !siteDialogOpen()) restoreScroll(rule.hideClasses);
+  else if (rule.hideClasses) restoreScroll(rule.hideClasses);
 }
 
 /** How long the CMP gets to close its banner after we act, before we try again. */
@@ -229,7 +279,8 @@ export class RuleEngine {
     // wait to see it close: report immediately. In the top frame, every action is confirmed.
     const done = (): Promise<boolean> => (rule.frame ? Promise.resolve(true) : closed(rule));
     const ok = (): Outcome => {
-      if (rule.hideClasses) timed(() => restoreScroll(rule.hideClasses));
+      // Give the CMP a moment to tear down its own overlay, then make sure the page is usable.
+      setTimeout(() => timed(() => makeUsable(rule)), 1200);
       return 'rejected';
     };
 
@@ -258,6 +309,7 @@ export class RuleEngine {
       return timed(() => {
         if (!document.querySelector(rule.detect) || !bannerVisible(rule)) return null;
         hideRule(rule);
+        makeUsable(rule);
         return 'hidden' as const;
       });
     }

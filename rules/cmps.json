@@ -121,15 +121,26 @@
           "click": "#truste-show-consent, #truste-show-consent2"
         },
         {
-          "wait": ".truste_popframe"
+          "wait": ".truste_popframe",
+          "timeout": 8000
         },
         {
-          "click": ".truste_popframe .declineAllButtonLower, .truste_popframe .rejectAll",
+          "click": ".declineAllButtonLower, .rejectAll",
+          "shadow": ".truste_popframe",
+          "timeout": 6000,
+          "hidden": true
+        },
+        {
+          "click": ".close",
+          "shadow": ".truste_popframe",
+          "optional": true,
+          "timeout": 3000,
           "done": true
         }
       ],
-      "hide": "#truste-consent-track, #consent_blackbar, .truste_overlay, .truste_box_overlay, .truste_popframe",
-      "hideDelay": 2500
+      "hide": "#truste-consent-track, #consent_blackbar, .truste_overlay, .truste_box_overlay, .truste_popframe, .truste_cm_outerdiv",
+      "hideDelay": 2500,
+      "overlay": ".truste_cm_outerdiv, .truste_overlay, .truste_box_overlay, .truste_popframe"
     },
     {
       "id": "trustarc-frame",
