@@ -1,4 +1,4 @@
-// Dependency-free PNG icon: a white "no" sign (ring + slash) on a rounded orange square.
+// Dependency-free PNG icon renderer for assets/mark.svg: a white "no" sign on a rounded orange square.
 import { crc32, deflateSync } from 'node:zlib';
 
 const BG = [194, 65, 12];
@@ -13,18 +13,24 @@ function chunk(type, data) {
   return Buffer.concat([len, td, crc]);
 }
 
-/** Coverage in [0,1] of shape at (x,y) in unit coords [0,1]^2. */
+// Geometry of assets/mark.svg (128-unit viewBox), in unit coordinates centred on 0.
+// Keep the two in sync: the PNGs (Chrome) and the SVG (Firefox, README) must look identical.
+const U = 1 / 128;
+const RADIUS = 28 * U; // rounded-square corner (rx=28)
+const RING = 33 * U; // ring centre-line radius (r=33)
+const STROKE = 14 * U; // stroke width
+const SLASH = (64 - 40.7) * U; // slash runs from (-SLASH,-SLASH) to (SLASH,SLASH), round caps
+
+/** Coverage of the shape at (x,y) in unit coords [0,1]^2: background alpha + white foreground. */
 function sample(x, y) {
   const cx = x - 0.5, cy = y - 0.5;
-  // rounded square
-  const r = 0.22, h = 0.5 - r;
+  const h = 0.5 - RADIUS;
   const qx = Math.max(Math.abs(cx) - h, 0), qy = Math.max(Math.abs(cy) - h, 0);
-  const inBg = Math.hypot(qx, qy) <= r;
-  if (!inBg) return { a: 0, fg: false };
-  const d = Math.hypot(cx, cy);
-  const ring = d <= 0.31 && d >= 0.2;
-  // slash from top-left to bottom-right, clipped to the ring's outer radius
-  const slash = Math.abs(cx - cy) / Math.SQRT2 <= 0.055 && d <= 0.27;
+  if (Math.hypot(qx, qy) > RADIUS) return { a: 0, fg: false };
+  const ring = Math.abs(Math.hypot(cx, cy) - RING) <= STROKE / 2;
+  // distance to the slash segment (capsule = round line caps)
+  const t = Math.max(-SLASH, Math.min(SLASH, (cx + cy) / 2));
+  const slash = Math.hypot(cx - t, cy - t) <= STROKE / 2;
   return { a: 1, fg: ring || slash };
 }
 

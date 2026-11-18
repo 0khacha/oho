@@ -70,6 +70,9 @@ function manifest(browser) {
     m.minimum_chrome_version = '111';
   } else {
     m.background = { scripts: ['background.js'] };
+    // Firefox renders SVG icons natively: crisp at every toolbar / HiDPI size.
+    m.icons = { 48: 'icons/icon.svg', 96: 'icons/icon.svg', 128: 'icons/128.png' };
+    m.action.default_icon = { 16: 'icons/icon.svg', 32: 'icons/icon.svg' };
     m.browser_specific_settings = {
       gecko: { id: 'oho@0khacha', strict_min_version: '140.0', data_collection_permissions: { required: ['none'] } },
       gecko_android: { strict_min_version: '142.0' },
@@ -108,6 +111,7 @@ if (args.has('--bench')) {
     cpSync('src/popup/popup.html', `${out}/popup.html`);
     cpSync('src/popup/popup.css', `${out}/popup.css`);
     for (const [s, png] of Object.entries(icons)) writeFileSync(`${out}/icons/${s}.png`, png);
+    if (browser === 'firefox') cpSync('assets/mark.svg', `${out}/icons/icon.svg`);
     writeFileSync(`${out}/manifest.json`, JSON.stringify(manifest(browser), null, 2));
     const zipPath = `oho-${browser}.zip`;
     const bytes = zip(out, zipPath);
