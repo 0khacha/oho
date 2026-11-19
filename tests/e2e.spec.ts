@@ -84,7 +84,7 @@ const CMPS: [fixture: string, banner: string][] = [
   ['custom-fr', '#nb-42'], // unknown, appears after 1.2 s
   ['custom-ar', '#x7'], // unknown, Arabic RTL
   ['custom-reveal', '#pnl'], // unknown, pre-rendered hidden, revealed by class change
-  // reproductions of live-site findings (tests/live/report.md)
+  // reproductions of live-site findings (tests/live/report-non-eu.md)
   ['onetrust-late', '#onetrust-banner-sdk'], // handler wired after the button renders: retry
   ['axeptio-v2', '[data-testid=modal-container]'], // current Axeptio markup (ax-discardButton)
   ['iubenda-close', '#iubenda-cs-banner'], // "x" rejects when closeButtonRejects is configured

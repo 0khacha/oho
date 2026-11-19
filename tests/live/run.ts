@@ -317,7 +317,7 @@ const order = sites.map((s) => s.url);
 rows.sort((x, y) => order.indexOf(x.url) - order.indexOf(y.url));
 const tally = rows.reduce<Record<string, number>>((t, r) => ((t[r.result] = (t[r.result] ?? 0) + 1), t), {});
 const md = [
-  `# oho live report${args.label === 'eu' ? ' (EU, via proxy)' : args.label ? ` (${args.label})` : ''}`,
+  `# oho live report${args.label === 'eu' ? ' (EU, via proxy)' : args.label === 'non-eu' ? ' (non-EU location)' : args.label ? ` (${args.label})` : ''}`,
   '',
   `Generated ${new Date().toISOString()} - ${rows.length} sites - ${args.proxy ? `proxy ${args.proxy}` : 'no proxy'} - ${args.headed ? 'headed' : 'headless'}`,
   '',

@@ -18,7 +18,7 @@ rules/          cmps.json (CMP rules), keywords.json
 model/          weights.json (hand-tuned initial weights)
 training/       train.py (scikit-learn), requirements.txt, data/fixtures.csv seed set
 tests/          fixtures/, e2e.spec.ts (Playwright), bench.mjs, server.mjs, dump-features.mjs
-tests/live/     real-website harness: discover.ts, run.ts, inspect.ts, sites.json, report.md
+tests/live/     real-website harness: discover.ts, run.ts, inspect.ts, sites.json, report-non-eu.md
 scripts/        build.mjs, icon.mjs (PNG icon renderer), zip.mjs (zip writer), all dependency-free
 ```
 
@@ -121,5 +121,5 @@ node tests/live/inspect.ts <url> [--no-oho] [--eval "<js>"] [--frames]
 - `--log` uses the debug build and writes `results/<site>/oho.log`: per frame, CMP detection, the
   rule chosen, each flow step and its timing, every click with its label and safety-gate verdict,
   and why the scan stopped (handled, timeout, frame unloaded).
-- `--only` writes `report-only.*`, so it never overwrites the full report. With `--proxy`, the
-  report is `report-eu.*`.
+- Reports: `report-non-eu.*` by default, `report-eu.*` with `--proxy`, `report-only.*` with `--only`
+  (so a single-site run never overwrites the full report), `report-<name>.*` with `--label`.

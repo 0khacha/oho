@@ -1,8 +1,8 @@
 // Headline numbers for the README, computed from a live report so they always match it.
-//   node tests/live/summary.mjs [label]   (no label: report.json; 'eu': report-eu.json)
+//   node tests/live/summary.mjs [label]   (default 'non-eu': report-non-eu.json; 'eu': report-eu.json)
 import { readFileSync } from 'node:fs';
 
-const label = process.argv[2] ?? '';
+const label = process.argv[2] ?? 'non-eu';
 const { rows, generated } = JSON.parse(readFileSync(new URL(`./report${label ? '-' + label : ''}.json`, import.meta.url), 'utf8'));
 const by = (r) => rows.filter((x) => x.result === r);
 const shown = rows.filter((r) => !['NOT SHOWN', 'ERROR'].includes(r.result));

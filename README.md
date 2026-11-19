@@ -104,7 +104,7 @@ runs on this machine.
 | heavy (25k elements) | 4.50–5.00 | 5.60–6.90 | untouched |
 | busy (constant mutations) | 4.50–4.90 | 5.20–5.80 | untouched |
 
-**Live:** [`tests/live/report.md`](tests/live/report.md) (52 sites, tested from a non-EU location). Details of
+**Live:** [`tests/live/report-non-eu.md`](tests/live/report-non-eu.md) (52 sites, tested from a non-EU location). Details of
 each run are in the [changelog](CHANGELOG.md).
 
 ## Permissions

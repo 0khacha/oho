@@ -32,7 +32,8 @@ DOM), Sourcepoint, Axeptio, Iubenda, Complianz.
 
 ### Live results
 
-52 real sites, tested from a non-EU location (no proxy, headless Chromium, `tests/live/report.md`, 2026-11-19).
+52 real sites, tested from a non-EU location (no proxy, headless Chromium, `tests/live/report-non-eu.md`,
+2026-11-19). EU-only banner variants are less covered.
 A banner appeared on 38:
 
 - 38 of 38 handled correctly: 31 rejected, 1 notice with no way to refuse hidden, 6 pay-or-accept

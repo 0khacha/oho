@@ -33,8 +33,8 @@ export function cliArgs(argv = process.argv.slice(2)) {
     headed: argv.includes('--headed'),
     proxy: get('--proxy'),
     only: get('--only'),
-    /** report.md / .json by default; report-<label>.* with --label (report-eu.* with --proxy, report-only.* with --only). */
-    label: get('--label') ?? (get('--proxy') ? 'eu' : get('--only') ? 'only' : ''),
+    /** report-<label>.md / .json: non-eu by default, eu with --proxy, only with --only, or --label <name>. */
+    label: get('--label') ?? (get('--proxy') ? 'eu' : get('--only') ? 'only' : 'non-eu'),
     concurrency: Number(get('--concurrency') ?? 3),
     /** Per-frame decision log (debug build) -> results/<site>/oho.log. Always on for MISS retries. */
     log: argv.includes('--log'),

@@ -75,11 +75,10 @@ const CANDIDATES: [url: string, lang: string][] = [
   ['https://www.ft.com/', 'en'], ['https://www.irishtimes.com/', 'en'], ['https://www.dw.com/en/', 'en'],
   ['https://www.euronews.com/', 'en'], ['https://www.politico.eu/', 'en'], ['https://www.dr.dk/', 'en'],
   ['https://www.zara.com/', 'en'], ['https://www.ryanair.com/gb/en', 'en'], ['https://www.easyjet.com/en', 'en'],
-  // Arabic- and French-language
-  ['https://www.aljazeera.net/', 'ar'], ['https://www.alarabiya.net/', 'ar'],
-  ['https://www.skynewsarabia.com/', 'ar'], ['https://www.bbc.com/arabic', 'ar'], ['https://arabic.cnn.com/', 'ar'],
-  ['https://www.france24.com/ar/', 'ar'], ['https://www.dw.com/ar/', 'ar'],
-  ['https://www.euronews.com/arabic', 'ar'],
+  // Arabic-language
+  ['https://www.aljazeera.net/', 'ar'], ['https://www.alarabiya.net/', 'ar'], ['https://www.skynewsarabia.com/', 'ar'],
+  ['https://www.bbc.com/arabic', 'ar'], ['https://arabic.cnn.com/', 'ar'], ['https://www.france24.com/ar/', 'ar'],
+  ['https://www.dw.com/ar/', 'ar'], ['https://www.euronews.com/arabic', 'ar'],
 ];
 
 const args = cliArgs();

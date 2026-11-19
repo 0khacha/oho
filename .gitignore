@@ -9,3 +9,4 @@ __pycache__/
 tests/live/results/
 tests/live/inspect.png
 tests/live/report-only.*
+CLAUDE.local.md
