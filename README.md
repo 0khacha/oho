@@ -16,7 +16,7 @@ Pay-or-accept walls are left alone unless you choose to hide them.
 
 - **18.3 KB** zipped for Chrome (18.6 KB for Firefox), zero runtime dependencies.
 - **No network requests, no analytics, no data collection** ([privacy policy](PRIVACY.md)).
-- **1.4–5.1 ms** median main-thread work per page across 36 test fixtures, at most 6.9 ms in 3 bench runs, against a 10 ms budget. It never blocks page load.
+- **1.7–6.0 ms** median main-thread work per page across 36 test fixtures (highest single run 8.1 ms), against a 10 ms median budget. It never blocks page load.
 - **Live** (52 sites, a banner shown on 38): **38 of 38 banners handled correctly**, **0 accept
   clicks**. 31 rejected, all 31 refusals verified in the site's own storage; 1 notice hidden;
   6 pay-or-accept walls left alone.
@@ -72,7 +72,7 @@ The tests fail on any accept click, even one followed by a reject.
 ```sh
 npx playwright install chromium   # once
 npm test                          # build + 46 Playwright e2e tests with the real extension
-npm run bench                     # main-thread time per fixture, fails if any run > 10 ms
+npm run bench                     # main-thread time per fixture: fails if a median > 10 ms or a run > 15 ms
 npm run check                     # typecheck + test + bench
 npm run check:firefox             # Firefox build in Playwright's Firefox
 node tests/live/run.ts            # real websites (see CONTRIBUTING.md)
@@ -82,27 +82,27 @@ node tests/live/run.ts            # real websites (see CONTRIBUTING.md)
 
 **Bundle:** `content.js` 26.4 KB, `oho-chrome.zip` 18.3 KB, `oho-firefox.zip` 18.6 KB.
 
-**Benchmark** (`npm run bench`, Chromium headless, Windows 11, 5 runs per fixture, 3 runs of the
-bench). Main-thread work summed over the whole page life. Ranges are the lowest and highest values
-across the three runs. Other desktop apps were running, and the same code varies by up to 2× between
-runs on this machine.
+**Benchmark** (`npm run bench`, Chromium headless, Windows 11, 5 runs per fixture). Main-thread work
+summed over the whole page life. The gate fails a fixture whose **median** is over 10 ms, or any
+single run over 15 ms: one run can spike on a busy desktop, so the max is reported but not gated at
+10 ms. All 36 fixtures pass; the highest single run is 8.10 ms.
 
 | fixture | median ms | max ms | outcome |
 |---|---|---|---|
-| onetrust | 2.00–2.40 | 2.50–3.70 | rejected |
-| onetrust-prefs (multi-step) | 4.00–5.00 | 5.20–5.70 | rejected |
-| cookiebot (customize flow) | 4.30–4.60 | 4.90–5.20 | rejected |
-| didomi (JS API) | 2.90–3.20 | 3.20–4.00 | rejected |
-| usercentrics-v3 (shadow DOM) | 1.90–2.40 | 2.40–3.30 | rejected |
-| trustarc-notice (shadow-DOM flow + cleanup) | 3.90–5.10 | 4.60–5.50 | rejected |
-| complianz-optout (hidden save) | 4.80–5.00 | 5.30–5.70 | rejected |
-| sourcepoint-slowpm (top frame; slow CMP frame) | 1.50–1.70 | 1.80–2.40 | in-frame (e2e) |
-| custom-fr (late, unknown) | 3.80–4.20 | 4.30–5.20 | rejected |
-| custom-ar (unknown, RTL) | 2.40–2.80 | 3.20–3.30 | rejected |
-| iubenda-paywall (wall, left alone) | 2.20–3.40 | 2.50–4.00 | untouched |
-| no-banner-article | 2.30–3.20 | 3.20–3.90 | untouched |
-| heavy (25k elements) | 4.50–5.00 | 5.60–6.90 | untouched |
-| busy (constant mutations) | 4.50–4.90 | 5.20–5.80 | untouched |
+| onetrust | 3.20 | 3.40 | rejected |
+| onetrust-prefs (multi-step) | 4.50 | 5.20 | rejected |
+| cookiebot (customize flow) | 4.10 | 4.90 | rejected |
+| didomi (JS API) | 2.90 | 3.30 | rejected |
+| usercentrics-v3 (shadow DOM) | 3.10 | 3.20 | rejected |
+| trustarc-notice (shadow-DOM flow + cleanup) | 4.40 | 4.50 | rejected |
+| complianz-optout (hidden save) | 4.50 | 5.40 | rejected |
+| sourcepoint-slowpm (top frame; slow CMP frame) | 1.80 | 2.30 | in-frame (e2e) |
+| custom-fr (late, unknown) | 4.70 | 4.80 | rejected |
+| custom-ar (unknown, RTL) | 3.60 | 3.90 | rejected |
+| iubenda-paywall (wall, left alone) | 3.40 | 3.50 | untouched |
+| no-banner-article | 4.00 | 5.10 | untouched |
+| heavy (25k elements) | 6.00 | 8.10 | untouched |
+| busy (constant mutations) | 5.20 | 5.60 | untouched |
 
 **Live:** [`tests/live/report-non-eu.md`](tests/live/report-non-eu.md) (52 sites, tested from a non-EU location). Details of
 each run are in the [changelog](CHANGELOG.md).

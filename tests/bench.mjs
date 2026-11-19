@@ -1,4 +1,5 @@
-// Per-page execution-time benchmark. Fails if oho spends > 10 ms of main-thread work on any fixture.
+// Per-page execution-time benchmark. Fails if a fixture's median main-thread work is > 10 ms, or if
+// any single run is > 15 ms. The max of each fixture is always reported.
 //
 // Uses the instrumented bundle from `node scripts/build.mjs --bench` (dist/bench): every synchronous
 // slice of oho's work (script evaluation, scans, flow steps, the lazy fallback) is wrapped in a timer
@@ -16,7 +17,10 @@ const arg = (k, d) => {
 };
 const RUNS = arg('--runs', 5);
 const THROTTLE = arg('--throttle', 1);
-const BUDGET_MS = 10;
+// Gate: a fixture's typical cost (the median of its runs) must stay within the budget. A single run
+// may spike above it (GC, OS scheduling on a busy desktop), but never past the hard cap.
+const BUDGET_MS = 10; // median per fixture
+const CAP_MS = 15; // any single run
 const SETTLE_MS = 5000; // covers late banners, the 3 s full rescan, multi-step flows and the 1.5 s post-click check
 
 const fixtures = readdirSync(new URL('./fixtures/', import.meta.url))
@@ -64,7 +68,10 @@ for (const fx of fixtures) {
     await page.close();
   }
   const row = { fixture: fx.replace('.html', ''), median: median(times), max: Math.max(...times), result };
-  if (row.max > BUDGET_MS) failed = true;
+  if (row.median > BUDGET_MS || row.max > CAP_MS) {
+    failed = true;
+    row.over = row.median > BUDGET_MS ? `median > ${BUDGET_MS} ms` : `a run > ${CAP_MS} ms`;
+  }
   rows.push(row);
 }
 
@@ -73,14 +80,15 @@ server.close();
 
 const pad = (s, n) => String(s).padEnd(n);
 const lines = [
-  `oho bench: ${RUNS} runs/fixture, CPU throttle ${THROTTLE}x, budget ${BUDGET_MS} ms`,
+  `oho bench: ${RUNS} runs/fixture, CPU throttle ${THROTTLE}x, gate: median <= ${BUDGET_MS} ms, every run <= ${CAP_MS} ms`,
   `${pad('fixture', 20)}${pad('median ms', 11)}${pad('max ms', 9)}outcome`,
   ...rows.map((r) => `${pad(r.fixture, 20)}${pad(r.median.toFixed(2), 11)}${pad(r.max.toFixed(2), 9)}${r.result}`),
 ];
 console.log(lines.join('\n'));
 writeFileSync(new URL(`../bench-results${THROTTLE > 1 ? `-x${THROTTLE}` : ''}.txt`, import.meta.url), lines.join('\n') + '\n');
 if (failed) {
-  console.error(`\nFAIL: at least one fixture exceeded ${BUDGET_MS} ms`);
+  console.error(`\nFAIL: ${rows.filter((r) => r.over).map((r) => `${r.fixture} (${r.over})`).join(', ')}`);
   process.exit(1);
 }
-console.log(`\nPASS: every fixture under ${BUDGET_MS} ms`);
+const worst = rows.reduce((a, b) => (b.max > a.max ? b : a));
+console.log(`\nPASS: every median <= ${BUDGET_MS} ms, every run <= ${CAP_MS} ms (highest single run: ${worst.fixture}, ${worst.max.toFixed(2)} ms)`);

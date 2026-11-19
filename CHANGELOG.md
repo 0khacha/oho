@@ -12,6 +12,9 @@ Firefox Add-ons (AMO) submission prep. No change to what the extension does.
   keeps checkouts LF. A Windows checkout no longer adds CRs to `popup.html` / `popup.css`.
   `oho-firefox.zip` is now 18.6 KB.
 - Live reports are now named `report-non-eu.*`.
+- Benchmark gate: a fixture fails if its median is over 10 ms or any single run is over 15 ms
+  (was: any run over 10 ms, which failed on one-off spikes on a busy desktop). Max values are still
+  reported.
 
 ## 0.1.0 (2026-11-19)
 
