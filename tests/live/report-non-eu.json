@@ -1,24 +1,692 @@
 {
-  "generated": "2026-11-19T00:06:24.800Z",
+  "generated": "2026-11-19T02:19:54.655Z",
   "proxy": null,
   "tally": {
-    "NOT SHOWN": 1
+    "PASS": 31,
+    "NOT SHOWN": 10,
+    "WALL": 6,
+    "ERROR": 4,
+    "HIDDEN": 1
   },
   "rows": [
     {
-      "site": "ibm.com",
-      "url": "https://www.ibm.com/",
-      "cmp": "trustarc",
+      "site": "jysk.dk",
+      "url": "https://www.jysk.dk/",
+      "cmp": "onetrust",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 4453,
+      "oho": "rejected (onetrust)",
+      "notes": [
+        "MISS under concurrency 2; solo retry: PASS",
+        "OptanonConsent ok: choice saved; 4 groups, ON: [C0001]"
+      ],
+      "checks": [
+        {
+          "name": "OptanonConsent",
+          "ok": true,
+          "detail": "choice saved; 4 groups, ON: [C0001]"
+        }
+      ],
+      "clicks": [
+        "Nødvendige"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "function",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "carrefour.fr",
+      "url": "https://www.carrefour.fr/",
+      "cmp": "onetrust",
+      "lang": "fr",
+      "result": "NOT SHOWN",
+      "ms": null,
+      "oho": "nothing",
+      "notes": [
+        "screenshot before.png failed: TimeoutError: page.screenshot: Timeout 10000ms exceeded.",
+        "diagnostic: banner first visible at 13880 ms; oho acted LATE, at 15277 ms (outside the 15 s window)",
+        "no banner appeared in either pass (CMPs often show banners to EU/EEA visitors only)",
+        "tcf ok: tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0",
+        "OptanonConsent ok: choice saved; 46 groups, ON: [C0048,C0132,C0001] | always-active by site config (reported only): [C0048,C0132]"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": true,
+          "detail": "tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+        },
+        {
+          "name": "OptanonConsent",
+          "ok": true,
+          "detail": "choice saved; 46 groups, ON: [C0048,C0132,C0001] | always-active by site config (reported only): [C0048,C0132]"
+        }
+      ],
+      "clicks": [
+        "Refuser tout Refuser tous les cookies"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "function",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "rossmann.de",
+      "url": "https://www.rossmann.de/de/",
+      "cmp": "onetrust",
+      "lang": "de",
+      "result": "PASS",
+      "ms": 5209,
+      "oho": "rejected (onetrust)",
+      "notes": [
+        "MISS under concurrency 2; solo retry: PASS",
+        "OptanonConsent ok: choice saved; 6 groups, ON: [C0001]"
+      ],
+      "checks": [
+        {
+          "name": "OptanonConsent",
+          "ok": true,
+          "detail": "choice saved; 6 groups, ON: [C0001]"
+        }
+      ],
+      "clicks": [
+        "Alle ablehnen",
+        "Alle ablehnen"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "function",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "elcorteingles.es",
+      "url": "https://www.elcorteingles.es/",
+      "cmp": "onetrust",
+      "lang": "es",
+      "result": "PASS",
+      "ms": 7837,
+      "oho": "rejected (onetrust)",
+      "notes": [
+        "before: TimeoutError: page.goto: Timeout 45000ms exceeded.",
+        "banner not seen in the no-oho pass (timing/geo)",
+        "OptanonConsent ok: choice saved; 5 groups, ON: [C0001]"
+      ],
+      "checks": [
+        {
+          "name": "OptanonConsent",
+          "ok": true,
+          "detail": "choice saved; 5 groups, ON: [C0001]"
+        }
+      ],
+      "clicks": [
+        "RECHAZAR TODAS"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "function",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "yoast.com",
+      "url": "https://yoast.com/",
+      "cmp": "onetrust",
       "lang": "en",
       "result": "NOT SHOWN",
       "ms": null,
       "oho": "nothing",
       "notes": [
-        "MISS under concurrency 1; solo retry: NOT SHOWN",
-        "screenshot before.png failed: TimeoutError: page.screenshot: Timeout 10000ms exceeded.",
-        "diagnostic: banner first visible at never (in this pass); oho acted LATE, at 24298 ms (outside the 15 s window)",
-        "screenshot after.png failed: TimeoutError: page.screenshot: Timeout 10000ms exceeded.",
+        "MISS under concurrency 2; solo retry: NOT SHOWN",
+        "diagnostic: banner first visible at never (in this pass); oho acted LATE, at 19725 ms (outside the 15 s window)",
         "banner appeared without oho but never in the oho pass: nothing to reject (the CMP did not render it)",
+        "OptanonConsent ok: choice saved; 4 groups, ON: [C0001]"
+      ],
+      "checks": [
+        {
+          "name": "OptanonConsent",
+          "ok": true,
+          "detail": "choice saved; 4 groups, ON: [C0001]"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "function",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "jyllands-posten.dk",
+      "url": "https://jyllands-posten.dk/",
+      "cmp": "cookiebot",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 10353,
+      "oho": "rejected (cookiebot)",
+      "notes": [
+        "tcf (n/a): gdprApplies=false (geo: TCF not in force)",
+        "CookieConsent ok: necessary:true preferences:false statistics:false marketing:false"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": null,
+          "detail": "gdprApplies=false (geo: TCF not in force)"
+        },
+        {
+          "name": "CookieConsent",
+          "ok": true,
+          "detail": "necessary:true preferences:false statistics:false marketing:false"
+        }
+      ],
+      "clicks": [
+        "KUN NØDVENDIGE"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "undefined",
+        "Cookiebot.submitCustomConsent": "function",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "politiken.dk",
+      "url": "https://politiken.dk/",
+      "cmp": "cookiebot",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 11281,
+      "oho": "rejected (cookiebot)",
+      "notes": [
+        "tcf (n/a): gdprApplies=false (geo: TCF not in force)",
+        "CookieConsent ok: necessary:true preferences:false statistics:false marketing:false"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": null,
+          "detail": "gdprApplies=false (geo: TCF not in force)"
+        },
+        {
+          "name": "CookieConsent",
+          "ok": true,
+          "detail": "necessary:true preferences:false statistics:false marketing:false"
+        }
+      ],
+      "clicks": [
+        "Kun nødvendige"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "undefined",
+        "Cookiebot.submitCustomConsent": "function",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "ekstrabladet.dk",
+      "url": "https://ekstrabladet.dk/",
+      "cmp": "cookiebot",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 10768,
+      "oho": "rejected (cookiebot)",
+      "notes": [
+        "tcf (n/a): gdprApplies=false (geo: TCF not in force)",
+        "CookieConsent ok: necessary:true preferences:false statistics:false marketing:false"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": null,
+          "detail": "gdprApplies=false (geo: TCF not in force)"
+        },
+        {
+          "name": "CookieConsent",
+          "ok": true,
+          "detail": "necessary:true preferences:false statistics:false marketing:false"
+        }
+      ],
+      "clicks": [
+        "Kun nødvendige"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "undefined",
+        "Cookiebot.submitCustomConsent": "function",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "bt.dk",
+      "url": "https://www.bt.dk/",
+      "cmp": "cookiebot",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 11246,
+      "oho": "rejected (cookiebot)",
+      "notes": [
+        "tcf (n/a): gdprApplies=false (geo: TCF not in force)",
+        "CookieConsent ok: necessary:true preferences:false statistics:false marketing:false"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": null,
+          "detail": "gdprApplies=false (geo: TCF not in force)"
+        },
+        {
+          "name": "CookieConsent",
+          "ok": true,
+          "detail": "necessary:true preferences:false statistics:false marketing:false"
+        }
+      ],
+      "clicks": [
+        "Kun nødvendige"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "undefined",
+        "Cookiebot.submitCustomConsent": "function",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "cookiebot.com",
+      "url": "https://www.cookiebot.com/",
+      "cmp": "cookiebot",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 7845,
+      "oho": "rejected (cookiebot)",
+      "notes": [
+        "CookieConsent ok: necessary:true preferences:false statistics:false marketing:false"
+      ],
+      "checks": [
+        {
+          "name": "CookieConsent",
+          "ok": true,
+          "detail": "necessary:true preferences:false statistics:false marketing:false"
+        }
+      ],
+      "clicks": [
+        "Deny"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "undefined",
+        "Cookiebot.submitCustomConsent": "function",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "borsen.dk",
+      "url": "https://borsen.dk/",
+      "cmp": "didomi",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 9211,
+      "oho": "rejected (didomi)",
+      "notes": [
+        "tcf ok: tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [2,7,8,9,10,11], vendors 31",
+        "Didomi.getUserStatus ok: consent purposes ON: []; vendors ON for refused purposes: []; essential-only vendors (reported only): 1 | LI purposes ON (reported only): [measure_ad_performance,improve_products,select_basic_ads,market_research,measure_content_performance,use_limited_data_to_select_content,analytics_tracking,functional]"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": true,
+          "detail": "tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [2,7,8,9,10,11], vendors 31"
+        },
+        {
+          "name": "Didomi.getUserStatus",
+          "ok": true,
+          "detail": "consent purposes ON: []; vendors ON for refused purposes: []; essential-only vendors (reported only): 1 | LI purposes ON (reported only): [measure_ad_performance,improve_products,select_basic_ads,market_research,measure_content_performance,use_limited_data_to_select_content,analytics_tracking,functional]"
+        }
+      ],
+      "clicks": [
+        "Disagree and close Disagree and close: Disagree to our data processing and close"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "function",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "marmiton.org",
+      "url": "https://www.marmiton.org/",
+      "cmp": "didomi",
+      "lang": "fr",
+      "result": "PASS",
+      "ms": 12017,
+      "oho": "rejected (didomi)",
+      "notes": [
+        "refusal still stored after reload, but the site shows a dialog again (rule:didomi): typically \"you refused: accept or subscribe\"",
+        "tcf ok: tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 17",
+        "Didomi.getUserStatus ok: consent purposes ON: []; vendors ON for refused purposes: []; essential-only vendors (reported only): 0 | LI purposes ON (reported only): []"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": true,
+          "detail": "tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 17"
+        },
+        {
+          "name": "Didomi.getUserStatus",
+          "ok": true,
+          "detail": "consent purposes ON: []; vendors ON for refused purposes: []; essential-only vendors (reported only): 0 | LI purposes ON (reported only): []"
+        }
+      ],
+      "clicks": [
+        "Je n'accepte rien Je n'accepte rien: Refuser notre traitement des données et fermer"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "function",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "krone.at",
+      "url": "https://www.krone.at/",
+      "cmp": "didomi",
+      "lang": "de",
+      "result": "PASS",
+      "ms": 4751,
+      "oho": "rejected (didomi)",
+      "notes": [
+        "MISS under concurrency 2; solo retry: PASS",
+        "refusal still stored after reload, but the site shows a dialog again (rule:didomi): typically \"you refused: accept or subscribe\"",
+        "tcf ok: tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0",
+        "Didomi.getUserStatus ok: consent purposes ON: []; vendors ON for refused purposes: []; essential-only vendors (reported only): 7 | LI purposes ON (reported only): []"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": true,
+          "detail": "tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+        },
+        {
+          "name": "Didomi.getUserStatus",
+          "ok": true,
+          "detail": "consent purposes ON: []; vendors ON for refused purposes: []; essential-only vendors (reported only): 7 | LI purposes ON (reported only): []"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "function",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "marca.com",
+      "url": "https://www.marca.com/",
+      "cmp": "didomi",
+      "lang": "es",
+      "result": "WALL",
+      "ms": 4030,
+      "oho": "wall (heuristic)",
+      "notes": [
+        "MISS under concurrency 2; solo retry: WALL",
+        "pay-or-accept wall (only refusal is paying): left alone, \"Hide pay-or-accept walls\" is off",
+        "tcf ok: tcString set, status=cmpuishown; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 40",
+        "Didomi.getUserStatus ok: consent purposes ON: []; vendors ON for refused purposes: []; essential-only vendors (reported only): 0 | LI purposes ON (reported only): []",
+        "html/body overflow:hidden but page still scrolls"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": true,
+          "detail": "tcString set, status=cmpuishown; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 40"
+        },
+        {
+          "name": "Didomi.getUserStatus",
+          "ok": true,
+          "detail": "consent purposes ON: []; vendors ON for refused purposes: []; essential-only vendors (reported only): 0 | LI purposes ON (reported only): []"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "function",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "france24.com",
+      "url": "https://www.france24.com/ar/",
+      "cmp": "didomi",
+      "lang": "ar",
+      "result": "NOT SHOWN",
+      "ms": null,
+      "oho": "nothing",
+      "notes": [
+        "diagnostic: banner first visible at never (in this pass); oho never acted (35 s)",
+        "no banner appeared in either pass (CMPs often show banners to EU/EEA visitors only)",
+        "tcf (n/a): getTCData gave no answer"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": null,
+          "detail": "getTCData gave no answer"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "walesonline.co.uk",
+      "url": "https://www.walesonline.co.uk/",
+      "cmp": "quantcast",
+      "lang": "en",
+      "result": "ERROR",
+      "ms": null,
+      "oho": "-",
+      "notes": [
+        "before: TimeoutError: page.goto: Timeout 45000ms exceeded.",
+        "TimeoutError: page.goto: Timeout 45000ms exceeded."
+      ],
+      "checks": [],
+      "clicks": []
+    },
+    {
+      "site": "dailyrecord.co.uk",
+      "url": "https://www.dailyrecord.co.uk/",
+      "cmp": "quantcast",
+      "lang": "en",
+      "result": "ERROR",
+      "ms": null,
+      "oho": "-",
+      "notes": [
+        "before: TimeoutError: page.goto: Timeout 45000ms exceeded.",
+        "TimeoutError: page.goto: Timeout 45000ms exceeded."
+      ],
+      "checks": [],
+      "clicks": []
+    },
+    {
+      "site": "dailystar.co.uk",
+      "url": "https://www.dailystar.co.uk/",
+      "cmp": "quantcast",
+      "lang": "en",
+      "result": "ERROR",
+      "ms": null,
+      "oho": "-",
+      "notes": [
+        "screenshot before.png failed: TimeoutError: page.screenshot: Timeout 10000ms exceeded.",
+        "TimeoutError: page.goto: Timeout 45000ms exceeded."
+      ],
+      "checks": [],
+      "clicks": []
+    },
+    {
+      "site": "birminghammail.co.uk",
+      "url": "https://www.birminghammail.co.uk/",
+      "cmp": "quantcast",
+      "lang": "en",
+      "result": "NOT SHOWN",
+      "ms": null,
+      "oho": "nothing",
+      "notes": [
+        "before: TimeoutError: page.goto: Timeout 45000ms exceeded.",
+        "diagnostic: banner first visible at never (in this pass); oho never acted (35 s)",
+        "no banner appeared in either pass (CMPs often show banners to EU/EEA visitors only)",
+        "tcf (n/a): gdprApplies=false (geo: TCF not in force)",
+        "html/body overflow:hidden but page still scrolls"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": null,
+          "detail": "gdprApplies=false (geo: TCF not in force)"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "chroniclelive.co.uk",
+      "url": "https://www.chroniclelive.co.uk/",
+      "cmp": "quantcast",
+      "lang": "en",
+      "result": "NOT SHOWN",
+      "ms": null,
+      "oho": "nothing",
+      "notes": [
+        "screenshot before.png failed: TimeoutError: page.screenshot: Timeout 10000ms exceeded.",
+        "diagnostic: banner first visible at never (in this pass); oho never acted (35 s)",
+        "no banner appeared in either pass (CMPs often show banners to EU/EEA visitors only)",
+        "tcf (n/a): gdprApplies=false (geo: TCF not in force)"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": null,
+          "detail": "gdprApplies=false (geo: TCF not in force)"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "redhat.com",
+      "url": "https://www.redhat.com/en",
+      "cmp": "trustarc",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 7988,
+      "oho": "rejected (trustarc)",
+      "notes": [
+        "notice_preferences ok: value=0:"
+      ],
+      "checks": [
+        {
+          "name": "notice_preferences",
+          "ok": true,
+          "detail": "value=0:"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "ibm.com",
+      "url": "https://www.ibm.com/",
+      "cmp": "trustarc",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 14205,
+      "oho": "rejected (trustarc)",
+      "notes": [
         "notice_preferences ok: value=0:"
       ],
       "checks": [
@@ -40,6 +708,939 @@
         "UC_UI.denyAllConsents": "no-object",
         "__ucCmp.denyAllConsents": "no-object",
         "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "trustarc.com",
+      "url": "https://www.trustarc.com/",
+      "cmp": "trustarc",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 1582,
+      "oho": "rejected (trustarc)",
+      "notes": [
+        "notice_preferences ok: value=0:"
+      ],
+      "checks": [
+        {
+          "name": "notice_preferences",
+          "ok": true,
+          "detail": "value=0:"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "oracle.com",
+      "url": "https://www.oracle.com/",
+      "cmp": "trustarc",
+      "lang": "en",
+      "result": "NOT SHOWN",
+      "ms": null,
+      "oho": "nothing",
+      "notes": [
+        "diagnostic: banner first visible at never (in this pass); oho never acted (35 s)",
+        "no banner appeared in either pass (CMPs often show banners to EU/EEA visitors only)"
+      ],
+      "checks": [
+        {
+          "name": "notice_preferences",
+          "ok": false,
+          "detail": "cookie missing"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "netto.dk",
+      "url": "https://netto.dk/",
+      "cmp": "usercentrics",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 5837,
+      "oho": "rejected (usercentrics)",
+      "notes": [
+        "refusal still stored after reload, but the site shows a dialog again (rule:usercentrics): typically \"you refused: accept or subscribe\"",
+        "__ucCmp.getConsentDetails ok: status=ALL_DENIED type=EXPLICIT by=onDenyAllServices; 35 services, non-essential ON: []"
+      ],
+      "checks": [
+        {
+          "name": "__ucCmp.getConsentDetails",
+          "ok": true,
+          "detail": "status=ALL_DENIED type=EXPLICIT by=onDenyAllServices; 35 services, non-essential ON: []"
+        }
+      ],
+      "clicks": [
+        "Kun nødvendige Kun nødvendige"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "function",
+        "__ucCmp.denyAllConsents": "function",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "thalia.de",
+      "url": "https://www.thalia.de/",
+      "cmp": "usercentrics",
+      "lang": "de",
+      "result": "PASS",
+      "ms": 4684,
+      "oho": "rejected (usercentrics)",
+      "notes": [
+        "UC_UI.getServicesBaseInfo ok: 65 services; explicit choice=true; non-essential ON: []",
+        "html/body overflow:hidden but page still scrolls"
+      ],
+      "checks": [
+        {
+          "name": "UC_UI.getServicesBaseInfo",
+          "ok": true,
+          "detail": "65 services; explicit choice=true; non-essential ON: []"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "function",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "bilka.dk",
+      "url": "https://www.bilka.dk/",
+      "cmp": "usercentrics",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 5480,
+      "oho": "rejected (usercentrics)",
+      "notes": [
+        "refusal still stored after reload, but the site shows a dialog again (rule:usercentrics): typically \"you refused: accept or subscribe\"",
+        "__ucCmp.getConsentDetails ok: status=ALL_DENIED type=EXPLICIT by=onDenyAllServices; 45 services, non-essential ON: []"
+      ],
+      "checks": [
+        {
+          "name": "__ucCmp.getConsentDetails",
+          "ok": true,
+          "detail": "status=ALL_DENIED type=EXPLICIT by=onDenyAllServices; 45 services, non-essential ON: []"
+        }
+      ],
+      "clicks": [
+        "Kun nødvendige Kun nødvendige"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "function",
+        "__ucCmp.denyAllConsents": "function",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "kicker.de",
+      "url": "https://www.kicker.de/",
+      "cmp": "usercentrics",
+      "lang": "de",
+      "result": "WALL",
+      "ms": 5283,
+      "oho": "wall (heuristic)",
+      "notes": [
+        "pay-or-accept wall (only refusal is paying): left alone, \"Hide pay-or-accept walls\" is off"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": false,
+          "detail": "NO tcString, status=cmpuishown; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+        },
+        {
+          "name": "UC_UI.getServicesBaseInfo",
+          "ok": false,
+          "detail": "36 services; explicit choice=false; non-essential ON: [kicker Quotencoach,Tickaroo,Firebase Crashlytics]"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "function",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "usercentrics.com",
+      "url": "https://www.usercentrics.com/",
+      "cmp": "usercentrics",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 6179,
+      "oho": "rejected (usercentrics)",
+      "notes": [
+        "refusal still stored after reload, but the site shows a dialog again (rule:usercentrics): typically \"you refused: accept or subscribe\"",
+        "__ucCmp.getConsentDetails ok: status=ALL_DENIED type=EXPLICIT by=onDenyAllServices; 25 services, non-essential ON: []"
+      ],
+      "checks": [
+        {
+          "name": "__ucCmp.getConsentDetails",
+          "ok": true,
+          "detail": "status=ALL_DENIED type=EXPLICIT by=onDenyAllServices; 25 services, non-essential ON: []"
+        }
+      ],
+      "clicks": [
+        "Deny Deny"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "function",
+        "__ucCmp.denyAllConsents": "function",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "dba.dk",
+      "url": "https://www.dba.dk/",
+      "cmp": "sourcepoint",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 4545,
+      "oho": "rejected (sourcepoint-frame)",
+      "notes": [
+        "tcf ok: tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": true,
+          "detail": "tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "tagesspiegel.de",
+      "url": "https://www.tagesspiegel.de/",
+      "cmp": "sourcepoint",
+      "lang": "de",
+      "result": "WALL",
+      "ms": 2904,
+      "oho": "wall (sourcepoint-frame)",
+      "notes": [
+        "pay-or-accept wall (only refusal is paying): left alone, \"Hide pay-or-accept walls\" is off",
+        "tcf ok: tcString set, status=cmpuishown; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": true,
+          "detail": "tcString set, status=cmpuishown; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "liberation.fr",
+      "url": "https://www.liberation.fr/",
+      "cmp": "sourcepoint",
+      "lang": "fr",
+      "result": "ERROR",
+      "ms": null,
+      "oho": "nothing",
+      "notes": [
+        "diagnostic: banner first visible at never (in this pass); oho never acted (35 s)",
+        "blocked by bot protection / captcha (try --headed or a residential/EU proxy)"
+      ],
+      "checks": [],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "finn.no",
+      "url": "https://www.finn.no/",
+      "cmp": "sourcepoint",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 9245,
+      "oho": "rejected (sourcepoint-frame)",
+      "notes": [
+        "tcf ok: tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": true,
+          "detail": "tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "bild.de",
+      "url": "https://www.bild.de/",
+      "cmp": "sourcepoint",
+      "lang": "de",
+      "result": "WALL",
+      "ms": 4148,
+      "oho": "wall (sourcepoint-frame)",
+      "notes": [
+        "pay-or-accept wall (only refusal is paying): left alone, \"Hide pay-or-accept walls\" is off",
+        "tcf ok: tcString set, status=cmpuishown; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": true,
+          "detail": "tcString set, status=cmpuishown; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "payfit.com",
+      "url": "https://www.payfit.com/fr/",
+      "cmp": "axeptio",
+      "lang": "fr",
+      "result": "PASS",
+      "ms": 4035,
+      "oho": "rejected (axeptio)",
+      "notes": [
+        "axeptio_cookies ok: choice completed; vendors ON: [] ; authorized=,,"
+      ],
+      "checks": [
+        {
+          "name": "axeptio_cookies",
+          "ok": true,
+          "detail": "choice completed; vendors ON: [] ; authorized=,,"
+        }
+      ],
+      "clicks": [
+        "Refuser Refuser - Continuer sans accepter",
+        "Bien intégré, dès le 1er jour",
+        "Visibilité en temps réel",
+        "Paie et congés en temps réel",
+        "Votre complexité, notre affaire",
+        "Un contrat carré",
+        "Des contrats conformes sans intermédiaire",
+        "Au-delà de la paie, l’humain",
+        "Pilotage RH à grande échelle",
+        "Une IA qui vous comprend",
+        "Une IA qui vous comprend",
+        "Une IA qui vous comprend",
+        "Une IA qui vous comprend",
+        "Vos bulletins générés par nos soins",
+        "Votre paie, entre de bonnes mains",
+        "Un accompagnement dès le 1er jour",
+        "Un accompagnement dès le 1er jour"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "welcometothejungle.com",
+      "url": "https://www.welcometothejungle.com/fr",
+      "cmp": "axeptio",
+      "lang": "fr",
+      "result": "PASS",
+      "ms": 11225,
+      "oho": "rejected (axeptio)",
+      "notes": [
+        "axeptio_cookies ok: choice completed; vendors ON: [] ; authorized=,,"
+      ],
+      "checks": [
+        {
+          "name": "axeptio_cookies",
+          "ok": true,
+          "detail": "choice completed; vendors ON: [] ; authorized=,,"
+        }
+      ],
+      "clicks": [
+        "Non merci Non merci - Fermer sans accepter les cookies"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "malt.fr",
+      "url": "https://www.malt.fr/",
+      "cmp": "axeptio",
+      "lang": "fr",
+      "result": "NOT SHOWN",
+      "ms": null,
+      "oho": "nothing",
+      "notes": [
+        "diagnostic: banner first visible at never (in this pass); oho never acted (35 s)",
+        "no banner appeared in either pass (CMPs often show banners to EU/EEA visitors only)"
+      ],
+      "checks": [
+        {
+          "name": "axeptio_cookies",
+          "ok": false,
+          "detail": "NO $$completed (default cookie, no choice); vendors ON: [] ; authorized=,,"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "ornikar.com",
+      "url": "https://www.ornikar.com/",
+      "cmp": "axeptio",
+      "lang": "fr",
+      "result": "PASS",
+      "ms": 6737,
+      "oho": "rejected (axeptio)",
+      "notes": [
+        "axeptio_cookies ok: choice completed; vendors ON: [] ; authorized=,,"
+      ],
+      "checks": [
+        {
+          "name": "axeptio_cookies",
+          "ok": true,
+          "detail": "choice completed; vendors ON: [] ; authorized=,,"
+        }
+      ],
+      "clicks": [
+        "Continuer sans accepter Continuer sans accepter - Fermer le widget sans consentement"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "axeptio.eu",
+      "url": "https://www.axeptio.eu/fr/home",
+      "cmp": "axeptio",
+      "lang": "fr",
+      "result": "NOT SHOWN",
+      "ms": null,
+      "oho": "nothing",
+      "notes": [
+        "diagnostic: banner first visible at never (in this pass); oho never acted (35 s)",
+        "no banner appeared in either pass (CMPs often show banners to EU/EEA visitors only)"
+      ],
+      "checks": [
+        {
+          "name": "axeptio_cookies",
+          "ok": false,
+          "detail": "NO $$completed (default cookie, no choice); vendors ON: [] ; authorized=,,"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "aranzulla.it",
+      "url": "https://www.aranzulla.it/",
+      "cmp": "iubenda",
+      "lang": "it",
+      "result": "PASS",
+      "ms": 3496,
+      "oho": "rejected (iubenda)",
+      "notes": [
+        "tcf ok: tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 21",
+        "_iub_cs-281842 ok: {\"timestamp\":\"2026-11-19T02:13:21.600Z\",\"version\":\"1.109.0\",\"purposes\":{\"1\":true,\"2\":false,\"3\":false,\"4\":false,\"5\":false},\"id\":281842,\"cons\":{\"rand\":\"e2021d\"}}"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": true,
+          "detail": "tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 21"
+        },
+        {
+          "name": "_iub_cs-281842",
+          "ok": true,
+          "detail": "{\"timestamp\":\"2026-11-19T02:13:21.600Z\",\"version\":\"1.109.0\",\"purposes\":{\"1\":true,\"2\":false,\"3\":false,\"4\":false,\"5\":false},\"id\":281842,\"cons\":{\"rand\":\"e2021d\"}}"
+        }
+      ],
+      "clicks": [
+        "× Chiudi questa informativa"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "tomshw.it",
+      "url": "https://www.tomshw.it/",
+      "cmp": "iubenda",
+      "lang": "it",
+      "result": "PASS",
+      "ms": 4069,
+      "oho": "rejected (iubenda)",
+      "notes": [
+        "tcf ok: tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 21",
+        "_iub_cs-s3806744 ok: {\"timestamp\":\"2026-11-19T02:13:42.608Z\",\"version\":\"1.109.0\",\"purposes\":{\"1\":true,\"2\":false,\"3\":false,\"4\":false,\"5\":false},\"id\":69803975,\"cons\":{\"rand\":\"4ab280\"}"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": true,
+          "detail": "tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 21"
+        },
+        {
+          "name": "_iub_cs-s3806744",
+          "ok": true,
+          "detail": "{\"timestamp\":\"2026-11-19T02:13:42.608Z\",\"version\":\"1.109.0\",\"purposes\":{\"1\":true,\"2\":false,\"3\":false,\"4\":false,\"5\":false},\"id\":69803975,\"cons\":{\"rand\":\"4ab280\"}"
+        }
+      ],
+      "clicks": [
+        "× Chiudi questa informativa"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "repubblica.it",
+      "url": "https://www.repubblica.it/",
+      "cmp": "iubenda",
+      "lang": "it",
+      "result": "WALL",
+      "ms": 5973,
+      "oho": "wall (iubenda)",
+      "notes": [
+        "pay-or-accept wall (only refusal is paying): left alone, \"Hide pay-or-accept walls\" is off"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": false,
+          "detail": "NO tcString, status=cmpuishown; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+        },
+        {
+          "name": "_iub_cs",
+          "ok": false,
+          "detail": "cookie missing"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "iubenda.com",
+      "url": "https://www.iubenda.com/it/",
+      "cmp": "iubenda",
+      "lang": "it",
+      "result": "NOT SHOWN",
+      "ms": null,
+      "oho": "nothing",
+      "notes": [
+        "diagnostic: banner first visible at never (in this pass); oho never acted (35 s)",
+        "no banner appeared in either pass (CMPs often show banners to EU/EEA visitors only)",
+        "html/body overflow:hidden but page still scrolls"
+      ],
+      "checks": [
+        {
+          "name": "_iub_cs",
+          "ok": false,
+          "detail": "cookie missing"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "ilpost.it",
+      "url": "https://www.ilpost.it/",
+      "cmp": "iubenda",
+      "lang": "it",
+      "result": "PASS",
+      "ms": 4037,
+      "oho": "rejected (iubenda)",
+      "notes": [
+        "tcf ok: tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 21",
+        "_iub_cs-20939148 ok: {\"timestamp\":\"2026-11-19T02:14:31.865Z\",\"version\":\"1.109.0\",\"purposes\":{\"1\":true,\"2\":false,\"3\":false,\"4\":false,\"5\":false},\"id\":20939148,\"cons\":{\"rand\":\"020ffe\"}"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": true,
+          "detail": "tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 21"
+        },
+        {
+          "name": "_iub_cs-20939148",
+          "ok": true,
+          "detail": "{\"timestamp\":\"2026-11-19T02:14:31.865Z\",\"version\":\"1.109.0\",\"purposes\":{\"1\":true,\"2\":false,\"3\":false,\"4\":false,\"5\":false},\"id\":20939148,\"cons\":{\"rand\":\"020ffe\"}"
+        }
+      ],
+      "clicks": [
+        "Continua senza accettare",
+        "Continua senza accettare"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "wpmayor.com",
+      "url": "https://wpmayor.com/",
+      "cmp": "complianz",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 3052,
+      "oho": "rejected (complianz)",
+      "notes": [
+        "cmplz_* ok: marketing=deny statistics=deny preferences=deny"
+      ],
+      "checks": [
+        {
+          "name": "cmplz_*",
+          "ok": true,
+          "detail": "marketing=deny statistics=deny preferences=deny"
+        }
+      ],
+      "clicks": [
+        "Deny"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "wpzoom.com",
+      "url": "https://www.wpzoom.com/",
+      "cmp": "complianz",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 5792,
+      "oho": "rejected (complianz)",
+      "notes": [
+        "cmplz_* ok: marketing=deny statistics=deny preferences=deny"
+      ],
+      "checks": [
+        {
+          "name": "cmplz_*",
+          "ok": true,
+          "detail": "marketing=deny statistics=deny preferences=deny"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "really-simple-ssl.com",
+      "url": "https://really-simple-ssl.com/",
+      "cmp": "complianz",
+      "lang": "en",
+      "result": "NOT SHOWN",
+      "ms": null,
+      "oho": "nothing",
+      "notes": [
+        "diagnostic: banner first visible at never (in this pass); oho never acted (35 s)",
+        "no banner appeared in either pass (CMPs often show banners to EU/EEA visitors only)"
+      ],
+      "checks": [
+        {
+          "name": "cmplz_*",
+          "ok": false,
+          "detail": "marketing=allow statistics=allow preferences=allow"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "flysas.com",
+      "url": "https://www.flysas.com/en/",
+      "cmp": "custom:unknown",
+      "lang": "en",
+      "result": "PASS",
+      "ms": 1655,
+      "oho": "rejected (heuristic)",
+      "notes": [
+        "no consent store to verify; reload check passed"
+      ],
+      "checks": [],
+      "clicks": [
+        "Deny"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "fitx.de",
+      "url": "https://www.fitx.de/",
+      "cmp": "custom:unknown",
+      "lang": "de",
+      "result": "PASS",
+      "ms": 890,
+      "oho": "rejected (heuristic)",
+      "notes": [
+        "no consent store to verify; reload check passed"
+      ],
+      "checks": [],
+      "clicks": [
+        "Nur notwendige akzeptieren"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "lemonde.fr",
+      "url": "https://www.lemonde.fr/",
+      "cmp": "custom:unknown",
+      "lang": "fr",
+      "result": "WALL",
+      "ms": 860,
+      "oho": "wall (heuristic)",
+      "notes": [
+        "scroll locked by the site's own modal (\"03:02 LIVE EN COURS Guerre en Ukraine : les derniè\"), not a cookie banner",
+        "pay-or-accept wall (only refusal is paying): left alone, \"Hide pay-or-accept walls\" is off",
+        "tcf (n/a): getTCData gave no answer",
+        "html/body overflow:hidden but page still scrolls"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": null,
+          "detail": "getTCData gave no answer"
+        }
+      ],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
+      }
+    },
+    {
+      "site": "xataka.com",
+      "url": "https://www.xataka.com/",
+      "cmp": "custom:unknown",
+      "lang": "es",
+      "result": "HIDDEN",
+      "ms": 1865,
+      "oho": "hidden (heuristic)",
+      "notes": [
+        "banner returns on reload (expected: nothing was refused)"
+      ],
+      "checks": [],
+      "clicks": [],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "undefined",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "undefined"
+      }
+    },
+    {
+      "site": "hdblog.it",
+      "url": "https://www.hdblog.it/",
+      "cmp": "custom:unknown",
+      "lang": "it",
+      "result": "PASS",
+      "ms": 2344,
+      "oho": "rejected (heuristic)",
+      "notes": [
+        "tcf ok: tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+      ],
+      "checks": [
+        {
+          "name": "tcf",
+          "ok": true,
+          "detail": "tcString set, status=useractioncomplete; purpose consents on: []; vendor consents on: 0 | legitimate interest (reported only): purposes [], vendors 0"
+        }
+      ],
+      "clicks": [
+        "Continua senza accettare Continua senza accettare"
+      ],
+      "apis": {
+        "OneTrust.RejectAll": "no-object",
+        "Cookiebot.decline": "no-object",
+        "Cookiebot.submitCustomConsent": "no-object",
+        "Didomi.setUserDisagreeToAll": "no-object",
+        "UC_UI.denyAllConsents": "no-object",
+        "__ucCmp.denyAllConsents": "no-object",
+        "__tcfapi": "function"
       }
     }
   ]

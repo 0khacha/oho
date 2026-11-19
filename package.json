@@ -17,7 +17,9 @@
     "firefox": "npm run build && web-ext run --source-dir dist/firefox",
     "lint:firefox": "web-ext lint --source-dir dist/firefox",
     "test:live": "npm run build && node tests/live/run.ts",
-    "discover:live": "node tests/live/discover.ts"
+    "discover:live": "node tests/live/discover.ts",
+    "check:firefox": "npm run build && node tests/firefox-check.mjs",
+    "demo": "npm run build && node tests/record-demo.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.65.1",

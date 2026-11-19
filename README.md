@@ -1,18 +1,33 @@
 <p align="center"><img src="assets/logo.svg" width="156" height="64" alt="oho"></p>
 
-<p align="center"><b>oho</b> (Tamazight for <i>"no"</i>): auto-rejects cookie banners. Tiny, fast, private.</p>
+<h3 align="center">oho (Tamazight for "no")</h3>
+
+<p align="center">Auto-rejects cookie banners. Tiny, fast, private.</p>
+
+<p align="center"><img src="assets/demo.gif" width="640" alt="A cookie banner appears, oho clicks its reject button, and the page is clean: OneTrust, an unknown French banner, and an unknown Arabic banner"></p>
 
 oho is a Manifest V3 browser extension for Chrome and Firefox. It **rejects** cookie consent banners
-instead of just hiding them. Where a site offers "Reject all", oho clicks it. Where refusing takes
-several steps, oho opens the preferences, switches every non-essential purpose off, and saves.
-Where no way to refuse exists, oho hides the banner and gives you your scroll back. It never
-clicks anything that reads as "accept", and never anything that leads to paying.
+instead of just hiding them:
+- where a site offers "Reject all", oho clicks it;
+- where refusing takes several steps, oho opens the preferences, switches every non-essential
+  purpose off, and saves;
+- where there is no way to refuse at all, oho hides the notice and gives you your scroll back.
 
-- **17 KB** zipped, zero runtime dependencies (no frameworks, no ML runtimes, no WASM)
-- **No network requests, no analytics, no data collection.** Everything runs locally.
-- **1.5–7 ms** of main-thread work per page on the test fixtures (budget: 10 ms), never blocking page load
-- **Verified on real sites:** 28 of 48 live sites rejected *and* the refusal confirmed in the CMP's own
-  storage (see [Live testing](#live-testing-on-real-websites))
+It never clicks anything that reads as "accept", and never anything that leads to paying.
+Pay-or-accept walls are left alone unless you choose to hide them.
+
+- **18.2 KB** zipped for Chrome (18.6 KB for Firefox), with zero runtime dependencies: no
+  frameworks, no ML runtimes, no WASM.
+- **No network requests, no analytics, no data collection.** Everything runs locally
+  ([privacy policy](PRIVACY.md)).
+- **1.2–7.5 ms** median main-thread work per page on the test fixtures, at most 9.6 ms, against a
+  10 ms budget. It never blocks page load.
+- **Live, from a non-EU location** (52 sites, a banner shown on 38): **38 of 38 banners handled correctly**.
+  31 were rejected (29 of them verified in the CMP's own storage), 1 notice was hidden, and 6
+  pay-or-accept walls were left alone. **0 accept clicks**, 0 failed. 5 sites missed in the parallel
+  pass and were retried alone: 4 were then handled, and 1 never showed its banner.
+- **Live, from the EU:** not run yet. It needs an EU proxy:
+  `node tests/live/run.ts --proxy <url> --concurrency 1` writes `tests/live/report-eu.md`.
 
 ## Install
 
@@ -29,9 +44,15 @@ npm run build        # -> oho-chrome.zip, oho-firefox.zip (+ unpacked in dist/ch
   `npm run lint:firefox` runs `web-ext lint` (0 errors, 0 warnings). Firefox lets users withhold
   MV3 site access; if it is missing, the popup shows a **Grant access** button.
 
-The popup has a global on/off switch, a *Disable on this site* switch (kept in
-`chrome.storage.local` as `oho_settings`), and two counters: banners handled on this tab, and
-the total.
+The popup has:
+- a global on/off switch;
+- a *Disable on this site* switch;
+- a *Hide pay-or-accept walls* switch, off by default;
+- a line saying what happened on the current page, for example "Pay-or-accept wall: no free way to
+  refuse";
+- two counters: banners handled on this tab, and the total.
+
+The switches are kept in `chrome.storage.local` as `oho_settings`.
 
 ## How it works
 
@@ -49,7 +70,12 @@ The content script runs at `document_idle` and does the following, in this order
       in it was confirmed to exist on live sites;
    3. a **multi-step flow**: open preferences → uncheck everything non-essential → *verify* that
       it is all off → save;
-   4. as a last resort, **hiding** the banner and restoring scroll.
+   4. as a last resort, **hiding** the banner and restoring scroll. If the banner turns out to be a
+      **pay-or-accept wall** (the only alternative to accepting is paying), oho leaves it alone
+      unless you switched on *Hide pay-or-accept walls*.
+
+   Every path ends with a **page-usable check**. Leftover CMP overlays and backdrops are cleared, and
+   so is a stale scroll lock, unless one of the site's own dialogs is holding it.
 2. **Heuristic + tiny ML fallback (unknown banners).** A cheap candidate filter reads only the
    body's direct children plus one targeted `querySelectorAll` (`[role=dialog]`, `[aria-modal]`,
    `dialog[open]`, `[id/class*=cookie|consent|gdpr]`, `[style*=fixed]`). From those it climbs at most 5
@@ -149,6 +175,8 @@ Each entry in `rules/cmps.json`:
 | `hideClasses` | scroll-lock classes to remove from `<html>`/`<body>` |
 | `frame` | host suffixes: the rule runs **only** inside iframes on these domains |
 | `frameUrl` | the rule also runs in iframes whose URL contains this string (first-party CNAME frames) |
+| `overlay` | CMP backdrops that can outlive the banner; cleared by the final "page usable" check |
+| `wallInFrame` | the banner's choices live in a cross-origin frame; ask that frame whether it is a pay-or-accept wall |
 
 Flow steps run in order. Each step waits for its element (2 s by default; 600 ms when `optional`).
 
@@ -159,6 +187,7 @@ Flow steps run in order. Each step waits for its element (2 s by default; 600 ms
 { "uncheck": "#prefs input[type=checkbox]:not(:disabled)" } // switch all off (checkbox, role=switch, aria-pressed), then verify
 { "click": ".save", "save": true }                // save button; may read "Allow selection" only after a verified uncheck
 { "click": ".save", "save": true, "hidden": true } // allow a non-displayed element (Complianz opt-out banner)
+{ "click": ".declineAllButtonLower", "shadow": ".truste_popframe" } // query inside an open shadow root (TrustArc)
 ```
 
 A step that fails ends the flow, oho marks that rule as failed for the page, and the heuristic gets
@@ -210,23 +239,30 @@ When you add a feature, add it to `FEATURES`/`extract()` in `src/features.ts` an
 
 ```sh
 npx playwright install chromium   # once
-npm test                          # build + 36 Playwright e2e tests with the real extension loaded
+npm test                          # build + 45 Playwright e2e tests with the real extension loaded
 npm run bench                     # per-page execution time, fails if any fixture > 10 ms
 npm run bench:mobile              # same at 4x CPU throttling (informational)
 npm run check                     # typecheck + test + bench
+npm run check:firefox             # load the Firefox build into Playwright's Firefox, reject fixtures
+npm run demo                      # re-record assets/demo.gif and store/screenshots/
 ```
 
 Fixtures cover:
 - one page per supported CMP, plus the variants that need a multi-step flow or a CMP API;
-- reproductions of everything the live run found (see below), for example a OneTrust button whose
-  handler is attached late, current Axeptio markup, Sourcepoint on a first-party CNAME, the
-  Usercentrics v3 shadow DOM, the Complianz opt-out banner, Iubenda's "×" rejecting, the TrustArc
-  notice, and pay-or-accept walls;
+- reproductions of everything the live runs found (see below), for example:
+  - a OneTrust button whose handler is attached late;
+  - current Axeptio markup, and the Usercentrics v3 shadow DOM;
+  - Sourcepoint on a first-party CNAME, and its two-step flow;
+  - the Complianz opt-out banner, and Iubenda's "×" that rejects;
+  - TrustArc's shadow-DOM preference centre whose backdrop stays behind;
+  - a site's own dialog appearing after the refusal;
+  - pay-or-accept walls, including one whose paid option fades in, tested with the setting both on
+    and off;
 - unknown banners: French and late-injected, Arabic RTL, a German wall with no reject button, a
   banner revealed by a class change, and a Spanish notice-only bar;
 - false-positive traps: a newsletter popup with "No thanks", an Accept/Decline invite, a toast with
-  "OK", a login modal, a page with 25k elements, a constantly mutating feed, and an Axeptio
-  settings button with no banner.
+  "OK", a login modal, a page with 25k elements, a constantly mutating feed, and an Axeptio settings
+  button with no banner.
 
 ## Live testing on real websites
 
@@ -234,9 +270,11 @@ Fixtures cover:
 geo-targeting and bot protection make it flaky, and results drift as sites change.
 
 ```sh
-node tests/live/discover.ts             # probe ~250 candidate sites, detect each one's CMP -> sites.json
-node tests/live/run.ts [--headed] [--proxy http://host:port] [--only host] [--concurrency 3]
+node tests/live/discover.ts          # probe ~250 candidate sites, detect each one's CMP -> sites.json
+node tests/live/run.ts [--headed] [--proxy http://host:port] [--only host] [--concurrency 2] [--label non-eu|eu]
+node tests/live/summary.mjs ma       # the headline numbers used in this README
 node tests/live/inspect.ts <url> [--no-oho] [--eval "<js>"] [--frames]   # debug one site
+node scripts/build.mjs --debug       # build that logs oho's decisions to the page console
 ```
 
 - **Discovery** never trusts memory: it identifies the CMP from scripts, network resources, globals
@@ -250,7 +288,7 @@ node tests/live/inspect.ts <url> [--no-oho] [--eval "<js>"] [--frames]   # debug
   Screenshots go to `tests/live/results/<site>/`.
 - **Verification** reads the CMP's own stored choice, not just "the banner is gone":
   - TCF `getTCData`: every purpose and vendor consent must be off (legitimate interest is reported);
-  - OneTrust: `OptanonConsent` plus `OptanonAlertBoxClosed` (groups the site marks always-active are reported);
+  - OneTrust: `OptanonConsent` plus `OptanonAlertBoxClosed` (always-active groups are reported);
   - Cookiebot: `CookieConsent`;
   - Didomi: `getUserStatus` (vendors kept on only by site-defined essential purposes are reported);
   - Usercentrics: `getConsentDetails` must be `EXPLICIT`;
@@ -258,21 +296,26 @@ node tests/live/inspect.ts <url> [--no-oho] [--eval "<js>"] [--frames]   # debug
   - Axeptio: `axeptio_cookies` with `$$completed`;
   - Iubenda: `_iub_cs-*`;
   - Complianz: `cmplz_*`.
-- **Results** fall into PASS, HIDDEN, MISS, FAIL, NOT SHOWN and ERROR. NOT SHOWN usually means the
-  CMP only targets EU visitors: rerun with `--proxy`. Each run writes `tests/live/report.md` and
-  `report.json`.
 
-**Latest run** (48 sites, from a non-EU location, no proxy): **28 PASS**, 7 HIDDEN, 4 MISS, 1 FAIL,
-9 NOT SHOWN, 3 ERROR, and no accept clicks anywhere.
-- **HIDDEN:** these are pay-or-accept walls or notices with no way to refuse (kicker, marca,
-  repubblica, tagesspiegel, lemonde, xataka, ibm).
-- **The 4 MISSes, rerun one site at a time:** dba.dk passed 3/3 and usercentrics.com 2/2 (a third run
-  hit a dropped connection). finn.no passed 4/6. In the one instrumented finn miss, Sourcepoint never
-  rendered its banner in the oho pass, so there was nothing to reject. bild.de (a pay-or-accept wall)
-  was hidden in 5/6 runs. Its one miss came from an uninstrumented run and its cause is not known. The
-  runner now retries every MISS once, alone, before reporting it. It records when the banner first
-  appeared, and reports "banner never shown in the oho pass" as NOT SHOWN, not MISS.
-- **The FAIL:** redhat.com's TrustArc preference centre stays over the page after "Refuser tout".
+  The page must also still scroll, and no CMP overlay may cover it.
+- **Results:**
+  - PASS: rejected and verified;
+  - HIDDEN: no way to refuse, so the notice was hidden;
+  - WALL: a pay-or-accept wall, left alone;
+  - MISS: the banner is still there;
+  - FAIL: an accept was clicked, the refusal wasn't recorded, or the page was left blocked;
+  - NOT SHOWN: no banner appeared;
+  - ERROR: the network or bot protection got in the way.
+- **A MISS is retried once, alone**, before it is reported. The runner also records when the banner
+  first appeared, so "the CMP never showed its banner in the oho pass" is reported as NOT SHOWN, not
+  as an oho miss. These rules come from rerunning the earlier 4 MISSes one site at a time:
+  - dba.dk passed 3 of 3 runs;
+  - usercentrics.com passed 2 of 2 valid runs;
+  - finn.no passed 4 of 6, and in its instrumented miss Sourcepoint never rendered a banner;
+  - bild.de was handled 5 of 6 times. Its one miss was in an uninstrumented run, so its cause is
+    unknown, and it did not recur in 3 instrumented runs.
+- Reports: [`report-non-eu.md`](tests/live/report-non-eu.md) (from a non-EU location) and `report-eu.md` (from the EU,
+  once run).
 
 ## Results
 
@@ -280,35 +323,37 @@ node tests/live/inspect.ts <url> [--no-oho] [--eval "<js>"] [--frames]   # debug
 
 | file | size |
 |---|---|
-| `content.js` (rule engine + fallback) | 23.5 KB |
+| `content.js` (rule engine + fallback) | 26.4 KB |
 | `api.js` | 1.1 KB |
-| `background.js` | 1.0 KB |
-| `popup.js` | 1.4 KB |
-| **`oho-chrome.zip`** | **16.7 KB** (35.9 KB unpacked) |
-| **`oho-firefox.zip`** | **16.8 KB** (36.2 KB unpacked) |
+| `background.js` | 1.3 KB |
+| `popup.js` | 1.7 KB |
+| **`oho-chrome.zip`** | **18.2 KB** (40.0 KB unpacked) |
+| **`oho-firefox.zip`** | **18.6 KB** (40.5 KB unpacked) |
 
 **Benchmark** (`npm run bench`, Chromium headless on Windows 11, 5 runs per fixture). The numbers are
-main-thread work summed over the whole page life, including script evaluation, every observer
-rescan, and multi-step flows. All 32 fixtures pass the 10 ms budget. A selection:
+main-thread work summed over the whole page life, including script evaluation, every observer rescan,
+and multi-step flows. All 35 fixtures pass the 10 ms budget. A selection:
 
 | fixture | median ms | max ms | outcome |
 |---|---|---|---|
-| onetrust | 1.90 | 2.10 | rejected |
-| onetrust-late (retry) | 2.90 | 3.30 | rejected |
-| onetrust-prefs (multi-step) | 3.40 | 4.20 | rejected |
-| cookiebot (customize flow) | 3.30 | 3.40 | rejected |
-| didomi (JS API) | 2.20 | 3.10 | rejected |
-| usercentrics-v3 (shadow DOM) | 1.70 | 1.90 | rejected |
-| complianz-optout (hidden save) | 3.30 | 4.00 | rejected |
-| custom-fr (late, unknown) | 3.70 | 3.80 | rejected |
-| custom-ar (unknown, RTL) | 2.70 | 3.10 | rejected |
-| iubenda-paywall (pay-or-accept) | 4.10 | 4.60 | hidden |
-| no-banner-article | 2.90 | 3.30 | untouched |
-| heavy (25k elements) | 6.00 | 7.30 | untouched |
-| busy (constant mutations) | 3.90 | 4.60 | untouched |
+| onetrust | 2.60 | 3.00 | rejected |
+| onetrust-late (retry) | 4.10 | 4.30 | rejected |
+| onetrust-prefs (multi-step) | 4.10 | 4.50 | rejected |
+| cookiebot (customize flow) | 4.10 | 4.30 | rejected |
+| didomi (JS API) | 4.10 | 4.70 | rejected |
+| usercentrics-v3 (shadow DOM) | 2.90 | 3.40 | rejected |
+| trustarc-notice (shadow-DOM flow + cleanup) | 4.40 | 9.60 | rejected |
+| complianz-optout (hidden save) | 4.00 | 4.90 | rejected |
+| custom-fr (late, unknown) | 4.40 | 4.70 | rejected |
+| custom-ar (unknown, RTL) | 3.90 | 4.70 | rejected |
+| iubenda-paywall (wall, left alone) | 4.90 | 5.30 | untouched |
+| no-banner-article | 3.50 | 4.20 | untouched |
+| heavy (25k elements) | 7.50 | 8.70 | untouched |
+| busy (constant mutations) | 5.20 | 5.80 | untouched |
 
-The bench runs only the top frame, so Sourcepoint fixtures show "hidden" there. In the e2e tests,
-the in-frame rule clicks "Reject all".
+These numbers were measured while other desktop applications were running, and they are about 30%
+higher than an idle run of the same code. The bench runs only the top frame, so the Sourcepoint
+fixtures show no outcome there. In the e2e tests, the in-frame rule acts.
 
 At **4× CPU throttling** (`npm run bench:mobile`, roughly a mid-range phone) costs scale about
 linearly. The 10 ms budget is enforced at 1×.
@@ -332,11 +377,15 @@ per-tab values are cleared when the tab closes. The full policy is in [PRIVACY.m
 
 ## Limitations
 
-- CMP markup changes over time. The rules were checked against live sites in November 2026, from a
-  non-EU location, so EU-only banner variants are less covered.
-- Automated tests run on Chromium only. Firefox uses the same code and a generated manifest, which
-  passes `web-ext lint`, but it is not covered by the Playwright suite.
-- Pay-or-accept walls (refuse only by subscribing) are hidden, not answered: no refusal is recorded.
+- CMP markup changes over time. The rules were checked against live sites in November 2026 from
+  a non-EU location. EU-only banner variants have not been live-tested yet; see the EU rerun above.
+- Firefox runs the same code with a generated manifest that passes `web-ext lint`. `npm run
+  check:firefox` loads it into Playwright's Firefox build, where OneTrust, Cookiebot's multi-step flow
+  and an unknown French banner are rejected. The popup and the "Grant access" flow can't be driven
+  there, because that build won't open `moz-extension://` pages, so they still need a check in
+  regular Firefox (`npm run firefox`).
+- Pay-or-accept walls are left alone by default, and with the setting on they are hidden. In both
+  cases no refusal is recorded, because the site offers none for free.
 - Banners that live in closed shadow roots, or in cross-origin iframes oho doesn't match, are
   handled only by hiding (if a rule's `hide` covers them) or not at all.
 
