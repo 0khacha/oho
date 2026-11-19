@@ -1,7 +1,11 @@
 // Live test: run oho on real websites and verify the refusal was actually recorded.
 // Deliberately NOT part of `npm run check` (network, geo-targeting, flaky by nature).
 //
-//   npm run build && node tests/live/run.ts [--headed] [--proxy http://host:port] [--only <host-substring>] [--concurrency 3]
+//   npm run build && node tests/live/run.ts [--headed] [--proxy http://host:port] [--only <host-substring>] [--concurrency 3] [--log]
+//
+// --log runs pass B with the debug build (dist/debug) and writes results/<site>/oho.log: per frame,
+// CMP detection, the rule chosen, each flow step with its timing, every click with its label and
+// the safety-gate verdict, and why the scan stopped. MISS retries are always logged.
 //
 // Per site:
 //   A. fresh profile WITHOUT oho: does a banner appear? -> before.png (or NOT SHOWN)
@@ -9,6 +13,7 @@
 //      check scroll/overlay, read TCF + the CMP's own stored choice
 //   C. disable oho, reload: the banner must not come back -> reload.png
 import { chromium, type BrowserContext, type Page, type Worker } from '@playwright/test';
+import { execFileSync } from 'node:child_process';
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -25,6 +30,9 @@ interface Row {
 
 const args = cliArgs();
 const EXT = path.join(ROOT, 'dist', 'chrome');
+const DEBUG_EXT = path.join(ROOT, 'dist', 'debug');
+// The debug build is rebuilt from the current source on every run: MISS retries always use it.
+execFileSync(process.execPath, [path.join(ROOT, 'scripts', 'build.mjs'), '--debug'], { cwd: ROOT, stdio: 'ignore' });
 const rules = JSON.parse(readFileSync(path.join(ROOT, 'rules', 'cmps.json'), 'utf8')).cmps;
 const { sites } = JSON.parse(readFileSync(path.join(LIVE, 'sites.json'), 'utf8')) as { sites: Site[] };
 const todo = args.only ? sites.filter((s) => s.url.includes(args.only!)) : sites;
@@ -32,7 +40,7 @@ const OHO_WAIT_MS = 15_000;
 
 const locale = (lang: string): string => (lang === 'ar' ? 'ar' : `${lang}-${lang.toUpperCase()}`);
 
-async function launch(withOho: boolean, lang: string): Promise<{ ctx: BrowserContext; dir: string }> {
+async function launch(withOho: boolean, lang: string, ext = EXT): Promise<{ ctx: BrowserContext; dir: string }> {
   const dir = mkdtempSync(path.join(os.tmpdir(), 'oho-live-'));
   const ctx = await chromium.launchPersistentContext(dir, {
     channel: 'chromium',
@@ -41,7 +49,7 @@ async function launch(withOho: boolean, lang: string): Promise<{ ctx: BrowserCon
     locale: locale(lang),
     viewport: { width: 1280, height: 800 },
     proxy: args.proxy ? { server: args.proxy } : undefined,
-    args: withOho ? [`--disable-extensions-except=${EXT}`, `--load-extension=${EXT}`] : [],
+    args: withOho ? [`--disable-extensions-except=${ext}`, `--load-extension=${ext}`] : [],
   });
   return { ctx, dir };
 }
@@ -97,7 +105,7 @@ async function ohoOutcome(sw: Worker): Promise<{ id: string; how: string; t: num
   });
 }
 
-async function runSite(site: Site): Promise<Row> {
+async function runSite(site: Site, logging = args.log): Promise<Row> {
   const name = slug(site.url);
   const dir = path.join(LIVE, 'results', name);
   rmSync(dir, { recursive: true, force: true });
@@ -120,20 +128,45 @@ async function runSite(site: Site): Promise<Row> {
   }
 
   // ---- B: with oho ----
-  const b = await launch(true, site.lang);
+  const b = await launch(true, site.lang, logging ? DEBUG_EXT : EXT);
+  const log: string[] = [];
+  let t0 = Date.now();
+  const note = (s: string): void => void log.push(`${String(Date.now() - t0).padStart(6)} runner ${s}`);
+  const CMP_FRAME = /privacy-mgmt|sp_message|sourcepoint|consent|cmp|notice|trustarc/i;
   try {
     const sw = b.ctx.serviceWorkers()[0] ?? (await b.ctx.waitForEvent('serviceworker', { timeout: 10_000 }));
     await b.ctx.addInitScript(recordClicks);
     const page = await b.ctx.newPage();
-    const t0 = Date.now();
+    if (logging) {
+      // Every frame's console (OOPIF CMP frames included); oho's lines start with "[oho]".
+      page.on('console', (m) => {
+        const t = m.text();
+        if (t.startsWith('[oho]')) log.push(`${String(Date.now() - t0).padStart(6)} ${t.slice(6)}`);
+      });
+      page.on('framenavigated', (f) => {
+        if (f !== page.mainFrame() && CMP_FRAME.test(f.url())) note(`frame navigated: ${f.url().slice(0, 140)}`);
+      });
+      page.on('framedetached', (f) => {
+        if (CMP_FRAME.test(f.url())) note(`frame detached: ${f.url().slice(0, 140)}`);
+      });
+    }
+    t0 = Date.now();
+    note(`goto ${site.url} (${logging ? 'debug build' : 'release build'})`);
     await page.goto(site.url, { waitUntil: 'domcontentloaded', timeout: 45_000 });
     let out = null;
     let firstSeen = 0; // when a banner first became visible in this pass (diagnostics)
     while (!out && Date.now() - t0 < OHO_WAIT_MS) {
       await page.waitForTimeout(250);
       out = await ohoOutcome(sw);
-      if (!firstSeen && (await page.evaluate(bannerProbe, rules).catch(() => ({ visible: false }))).visible) firstSeen = Date.now() - t0;
+      if (!firstSeen) {
+        const v = await page.evaluate(bannerProbe, rules).catch(() => ({ visible: false, by: '' }));
+        if (v.visible) {
+          firstSeen = Date.now() - t0;
+          note(`banner first visible (${v.by})`);
+        }
+      }
     }
+    if (out) note(`oho reported: ${out.how} (${out.id}) at ${out.t - t0} ms`);
     if (!out) {
       // Diagnose a miss: did oho act after the window, and when did the banner even appear?
       const lateEnd = Date.now() + 20_000;
@@ -234,6 +267,11 @@ async function runSite(site: Site): Promise<Row> {
   } finally {
     await close(b);
   }
+  if (logging) {
+    note(`result: ${row.result}; oho: ${row.oho}; clicks seen by the page: [${row.clicks.join(' | ')}]`);
+    for (const n of row.notes) note('note: ' + n);
+    writeFileSync(path.join(dir, 'oho.log'), [`# oho.log ${site.url} ${new Date().toISOString()}`, '# columns: ms since goto, frame (top | frame:<host> | runner), event', ...log, ''].join('\n'));
+  }
   writeFileSync(path.join(dir, 'result.json'), JSON.stringify(row, null, 2));
   return row;
 }
@@ -243,12 +281,12 @@ const firstLine = (e: unknown): string => String(e).split('\n')[0]!;
 process.on('uncaughtException', (e) => console.error('[uncaught, continuing]', firstLine(e)));
 process.on('unhandledRejection', (e) => console.error('[unhandled, continuing]', firstLine(e)));
 const SITE_TIMEOUT_MS = 150_000;
-async function runSiteSafe(site: Site): Promise<Row> {
+async function runSiteSafe(site: Site, logging = args.log): Promise<Row> {
   const error = (note: string): Row => ({
     site: slug(site.url), url: site.url, cmp: site.cmp, lang: site.lang, result: 'ERROR', ms: null, oho: '-', notes: [note], checks: [], clicks: [],
   });
   const timeout = new Promise<Row>((res) => setTimeout(() => res(error(`site timed out after ${SITE_TIMEOUT_MS / 1000} s`)), SITE_TIMEOUT_MS));
-  return Promise.race([runSite(site).catch((e) => error(firstLine(e))), timeout]);
+  return Promise.race([runSite(site, logging).catch((e) => error(firstLine(e))), timeout]);
 }
 
 const rows: Row[] = [];
@@ -268,8 +306,8 @@ await Promise.all(
 const misses = rows.filter((r) => r.result === 'MISS');
 for (const m of misses) {
   const site = todo.find((s) => s.url === m.url)!;
-  const again = await runSiteSafe(site);
-  again.notes.unshift(again.result === 'MISS' ? 'MISS confirmed on a solo retry' : `MISS under concurrency ${args.concurrency}; solo retry: ${again.result}`);
+  const again = await runSiteSafe(site, true);
+  again.notes.unshift((again.result === 'MISS' ? 'MISS confirmed on a solo retry' : `MISS under concurrency ${args.concurrency}; solo retry: ${again.result}`) + ' (logged: oho.log)');
   rows[rows.indexOf(m)] = again;
   console.log(`retry     ${again.site.padEnd(28)} -> ${again.result}`);
 }

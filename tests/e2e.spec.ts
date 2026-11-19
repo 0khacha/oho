@@ -24,6 +24,13 @@ const test = base.extend<{ page: Page }, { ctx: BrowserContext; sw: Worker }>({
       await ctx.route('https://cmp.news-example.test/**', (r) =>
         r.fulfill({ path: 'tests/fixtures/sourcepoint-2step-frame.html', contentType: 'text/html' }),
       );
+      // Slow privacy manager (finn.no): a second iframe on the same CNAME host.
+      await ctx.route('https://cmp.slow-example.test/**', (r) =>
+        r.fulfill({
+          path: r.request().url().includes('/privacy-manager/') ? 'tests/fixtures/sourcepoint-slowpm-pm-frame.html' : 'tests/fixtures/sourcepoint-slowpm-frame.html',
+          contentType: 'text/html',
+        }),
+      );
       await ctx.route('https://cmp.wall-example.test/**', (r) =>
         r.fulfill({ path: 'tests/fixtures/sourcepoint-wall-frame.html', contentType: 'text/html' }),
       );
@@ -142,6 +149,20 @@ const lastOutcome = (sw: Worker): Promise<string | null> =>
       .sort((a, b) => b.t - a.t)[0];
     return last?.how ?? null;
   });
+
+// Live finding (finn.no, oho.log): the top frame must not hide a Sourcepoint container while the
+// CMP frame is still working; the slow privacy manager refuses, and that is what gets reported.
+test('Sourcepoint slow privacy manager: the frame refuses, the top frame waits instead of hiding', async ({ page, sw }) => {
+  await page.goto(BASE + 'sourcepoint-slowpm.html');
+  await expect.poll(async () => (await state(page)).result, { timeout: 15_000 }).toBe('rejected');
+  await expect(page.locator('#sp_message_container_55')).toHaveCount(0);
+  expect(await lastOutcome(sw)).toBe('rejected');
+  expect(await page.locator('[data-oho-handled=hidden]').count()).toBe(0);
+  await expect.poll(() => scrollable(page)).toBe(true);
+  // The top frame stays quiet after the frame's report: no later "hidden" overwrites it.
+  await page.waitForTimeout(2000);
+  expect(await lastOutcome(sw)).toBe('rejected');
+});
 
 // Pay-or-accept walls: left alone by default, hidden only when the user opts in.
 const WALLS: [fixture: string, wall: string][] = [

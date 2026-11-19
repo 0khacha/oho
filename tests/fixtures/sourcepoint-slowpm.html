@@ -1,0 +1,26 @@
+<!doctype html><html lang="no"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Sourcepoint, slow privacy manager</title></head><body><h1>Sourcepoint: the privacy manager is a second, slow iframe (finn.no)</h1>
+<!-- Live finding (finn.no, oho.log, 1 run in 10): "Tilpass eller avvis" opens the privacy manager
+     in a SECOND iframe, which sometimes needs ~7 s to show "Avvis alle". The top frame's container
+     rule used to give up waiting and hide the container first: reported "hidden", and the frame
+     never got to refuse. Here the privacy manager shows its buttons 5 s after it loads. -->
+<div id="sp_message_container_55" class="modal">
+  <iframe id="sp_message_iframe_55" title="SP Consent Message" src="https://cmp.slow-example.test/index.html?hasCsp=true&message_id=55&consentUUID=null&consent_origin=https%3A%2F%2Fcmp.slow-example.test%2Fconsent%2Ftcfv2" style="width:600px;height:300px;border:0;background:#fff"></iframe>
+</div>
+<script>
+ohoLock();
+const box = document.getElementById('sp_message_container_55');
+window.addEventListener('message', (e) => {
+  if (!e.data) return;
+  if (e.data.openPm) {
+    // Sourcepoint swaps the message iframe for the privacy-manager iframe.
+    document.getElementById('sp_message_iframe_55').style.display = 'none';
+    const pm = document.createElement('iframe');
+    pm.id = 'sp_pm_iframe_55';
+    pm.title = 'SP Consent Message';
+    pm.src = 'https://cmp.slow-example.test/privacy-manager/index.html?message_id=56&hasCsp=true&consent_origin=https%3A%2F%2Fcmp.slow-example.test%2Fconsent%2Ftcfv2';
+    pm.style.cssText = 'width:600px;height:300px;border:0;background:#fff';
+    box.appendChild(pm);
+  }
+  if (e.data.sp) ohoClose(box, e.data.sp);
+});
+</script></body></html>

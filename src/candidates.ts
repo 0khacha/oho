@@ -14,9 +14,12 @@ export interface Cand {
  * from those we climb at most a few ancestors to find the fixed/sticky root.
  */
 const SEL = [
-  // Every substring selector costs ~0.35 ms per 25k nodes, so only the high-signal ones are kept.
-  '[role=dialog]', '[role=alertdialog]', '[aria-modal=true]', 'dialog[open]',
-  '[id*=cookie i]', '[class*=cookie i]', '[id*=consent i]', '[class*=consent i]', '[id*=gdpr i]', '[class*=gdpr i]',
+  // Every selector in the list is tested against every element, so the list is the cost of a full
+  // scan (cold, 25k nodes: ~2.5 ms). Only high-signal selectors are kept: [role$=dialog] covers
+  // dialog and alertdialog; [aria-modal] almost always sits on a role=dialog element, and "gdpr"
+  // naming on a banner almost always comes with "cookie" or "consent" (or a fixed body child).
+  '[role$=dialog]', 'dialog[open]',
+  '[id*=cookie i]', '[class*=cookie i]', '[id*=consent i]', '[class*=consent i]',
   '[style*=fixed]',
 ].join(',');
 
@@ -64,6 +67,8 @@ export function findCandidates(seen: WeakSet<Element>, added?: readonly Element[
     }
   } else {
     for (const e of body.children) if (!SKIP_TAGS.has(e.tagName.toUpperCase())) matches.push(e as HTMLElement);
+    // One selector list, one tree walk. (Separate queries look ~20% cheaper when warm but measured
+    // 25% slower cold, on a fresh page load, which is the case that matters.)
     matches.push(...body.querySelectorAll<HTMLElement>(SEL));
   }
   for (let i = 0; i < matches.length && budget > 0; i++) {

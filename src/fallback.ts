@@ -6,7 +6,7 @@
 import type { Cand } from './candidates';
 import { BTN_SEL, extract } from './features';
 import { HIDE_THRESHOLD, THRESHOLD, score } from './model';
-import { MARK, click, hide, isVisible, labelOf, restoreScroll, safeToClick, timed } from './shared/dom';
+import { MARK, click, dbg, hide, isVisible, labelOf, restoreScroll, safeToClick, timed } from './shared/dom';
 import { RE } from './shared/keywords';
 import type { Outcome } from './rules';
 import { isWall, payPending } from './walls';
@@ -34,6 +34,7 @@ export function run(cands: Cand[], seen: WeakSet<Element>, hideWalls = false, fi
   const scored = cands.map((c) => ({ c, p: score(extract(c)) })).sort((a, b) => b.p - a.p);
   for (const s of scored) if (s.p < THRESHOLD) seen.add(s.c.el);
   const best = scored[0];
+  if (__DEBUG__ && best) dbg('heuristic', `best score ${best.p.toFixed(3)} (act >= ${THRESHOLD}, hide >= ${HIDE_THRESHOLD})`, `<${best.c.el.tagName.toLowerCase()}${best.c.el.id ? '#' + best.c.el.id : ''}>`);
   if (!best || best.p < THRESHOLD) return null;
   const el = best.c.el;
   const btn = findReject(el);

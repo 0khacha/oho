@@ -43,15 +43,26 @@ export interface Rule {
   frameUrl?: string;
 }
 
-/** 'retry': not decidable yet (a paid option is still fading in); rescan shortly. */
-export type Outcome = 'rejected' | 'hidden' | 'wall' | 'retry' | null;
+/**
+ * 'retry': not decidable yet (a paid option is still fading in); rescan shortly.
+ * 'frame': a CMP iframe already handled the banner and reported it; the top frame stops quietly.
+ */
+export type Outcome = 'rejected' | 'hidden' | 'wall' | 'retry' | 'frame' | null;
 
 export interface HandleOptions {
   /** Hide pay-or-accept walls (user setting, off by default). */
   hideWalls: boolean;
-  /** Did a CMP iframe in this tab report a wall? (Sourcepoint renders its wall cross-origin.) */
-  frameWall: () => Promise<boolean>;
+  /** What a CMP iframe on this page reported, if anything (Sourcepoint works cross-origin). */
+  frameOutcome: () => Promise<'rejected' | 'hidden' | 'wall' | null>;
 }
+
+/**
+ * How long the top frame waits for a CMP iframe that is still working before hiding its container
+ * (polls of 500 ms, after `hideDelay`). Live finding (finn.no, oho.log): Sourcepoint's privacy
+ * manager is a second iframe that sometimes needs ~7 s to show "Avvis alle"; the old 3.5 s window
+ * hid the container first, so the refusal was reported as "hidden".
+ */
+const FRAME_POLLS = 16;
 
 const RULES = (data as { cmps: Rule[] }).cmps;
 
@@ -105,7 +116,7 @@ function uncheckAll(root: Root, sel: string): boolean {
 async function waitFor<T>(fn: () => T | null, timeout: number): Promise<T | null> {
   const end = Date.now() + timeout;
   for (;;) {
-    const v = timed(fn);
+    const v = timed(fn, 'wait');
     if (v || Date.now() >= end) return v;
     await sleep(100);
   }
@@ -133,25 +144,39 @@ function stepRoot(rule: Rule, step: Step): Root | null {
 
 async function runFlow(rule: Rule): Promise<boolean> {
   let verified = false;
-  for (const step of rule.flow ?? []) {
+  const steps = rule.flow ?? [];
+  for (let i = 0; i < steps.length; i++) {
+    const step = steps[i]!;
     const timeout = step.timeout ?? (step.optional ? 600 : 2000);
+    const t0 = __DEBUG__ ? performance.now() : 0;
+    const log = (what: string): void => {
+      if (__DEBUG__) dbg('flow', rule.id, `step ${i + 1}/${steps.length}`, step.wait ? 'wait' : step.click ? 'click' : 'uncheck', JSON.stringify(step.wait ?? step.click ?? step.uncheck), '->', what, `(${Math.round(performance.now() - t0)} ms)`);
+    };
     if (step.wait) {
       const el = await waitFor(() => { const r = stepRoot(rule, step); return r && find(r, step.wait); }, timeout);
+      if (__DEBUG__) log(el ? 'found' : step.optional ? 'absent (optional)' : 'TIMEOUT');
       if (!el && !step.optional) return false;
     } else if (step.click) {
       const el = await waitFor(() => { const r = stepRoot(rule, step); return r && find(r, step.click, step.text, step.hidden); }, timeout);
       if (!el) {
+        if (__DEBUG__) log(step.optional ? 'absent (optional)' : 'TIMEOUT');
         if (step.optional) continue;
         return false;
       }
-      if (!safeToClick(el, !!step.save && verified)) return false;
+      if (!safeToClick(el, !!step.save && verified)) {
+        if (__DEBUG__) log('REFUSED by safety gate');
+        return false;
+      }
       timed(() => click(el));
+      if (__DEBUG__) log(step.done ? 'clicked, flow done' : 'clicked');
       if (step.done) return true;
       await sleep(150);
     } else if (step.uncheck) {
       const sel = step.uncheck;
       const r = stepRoot(rule, step);
-      if (!r || !timed(() => uncheckAll(r, sel))) return false;
+      const ok = !!r && timed(() => uncheckAll(r, sel));
+      if (__DEBUG__) log(ok ? 'all off (verified)' : r ? 'FAILED: a toggle stayed on' : 'FAILED: shadow host missing');
+      if (!ok) return false;
       verified = true;
       await sleep(100);
     }
@@ -192,11 +217,10 @@ export function makeUsable(rule: Rule): void {
   if (rule.overlay) document.querySelectorAll(rule.overlay).forEach((e) => isVisible(e) && hide(e));
   const vw = innerWidth, vh = innerHeight;
   for (const e of document.body?.children ?? []) {
-    if (!CMP_HINT.test(hint(e)) || !isVisible(e)) continue;
-    const cs = getComputedStyle(e);
+    // Cheapest test first: innerText needs layout, so it is read only for a large fixed CMP layer.
+    if (!CMP_HINT.test(hint(e)) || !isVisible(e) || getComputedStyle(e).position !== 'fixed') continue;
     const r = e.getBoundingClientRect();
-    const empty = ((e as HTMLElement).innerText ?? '').trim().length < 30;
-    if (cs.position === 'fixed' && empty && r.width * r.height > vw * vh * 0.6) hide(e);
+    if (r.width * r.height > vw * vh * 0.6 && ((e as HTMLElement).innerText ?? '').trim().length < 30) hide(e);
   }
   const html = document.documentElement, body = document.body;
   const locked = [html, body].some((e) => e && getComputedStyle(e).overflowY === 'hidden') ||
@@ -222,9 +246,14 @@ async function closed(rule: Rule, ms = CONFIRM_MS): Promise<boolean> {
   }
 }
 
-function findReject(rule: Rule): HTMLElement | null {
+/**
+ * The rule's reject button, or 'refused' when the curated button is there but the safety gate
+ * refuses its label ("Rifiuta e abbonati" on repubblica.it). A refused label doesn't become free
+ * by polling it again, so callers stop waiting.
+ */
+function findReject(rule: Rule): HTMLElement | 'refused' | null {
   const b = find(scope(rule), rule.reject, rule.rejectText ? 'reject' : undefined);
-  return b && safeToClick(b) ? b : null;
+  return b ? (safeToClick(b) ? b : 'refused') : null;
 }
 
 /**
@@ -291,17 +320,22 @@ export class RuleEngine {
     // The message's buttons fade in after it becomes visible (bild.de): wait until it is
     // clearly a wall or a reject button shows up, before taking any path.
     if (rule.frame) {
-      const v = await waitFor(() => (isWall(scope(rule)) ? 'wall' : findReject(rule) ? 'reject' : null), 2000);
+      const v = await waitFor(() => {
+        if (isWall(scope(rule))) return 'wall';
+        const b = findReject(rule);
+        return b && b !== 'refused' ? 'reject' : null;
+      }, 2000);
+      if (__DEBUG__) dbg('frame check', rule.id, v ?? 'undecided after 2 s');
       if (v === 'wall') return 'wall';
     }
-    dbg('tryReject', rule.id);
+    if (__DEBUG__) dbg('rule chosen', rule.id, `paths: ${[rule.reject && 'reject', rule.api && 'api', rule.flow && 'flow', rule.hide && 'hide'].filter(Boolean).join(',')}`);
 
     // Inside a CMP iframe the frame is usually destroyed right after the click, so we can't
     // wait to see it close: report immediately. In the top frame, every action is confirmed.
     const done = (): Promise<boolean> => (rule.frame ? Promise.resolve(true) : closed(rule));
     const ok = (): Outcome => {
       // Give the CMP a moment to tear down its own overlay, then make sure the page is usable.
-      setTimeout(() => timed(() => makeUsable(rule)), 1200);
+      setTimeout(() => timed(() => makeUsable(rule), 'usable'), 1200);
       return 'rejected';
     };
 
@@ -310,34 +344,54 @@ export class RuleEngine {
       // The banner can be "visible" while its buttons are still fading in (Axeptio on
       // ornikar.com): give the reject button a moment to appear before falling back.
       const btn = rule.reject ? await waitFor(() => findReject(rule), i === 0 ? CONFIRM_MS : 0) : null;
-      if (!btn) break;
+      if (__DEBUG__) dbg('reject', rule.id, `attempt ${i + 1}:`, btn === 'refused' ? 'button refused by the safety gate' : btn ? 'button found' : 'no button');
+      if (!btn || btn === 'refused') break;
       timed(() => click(btn));
-      if (await done()) return ok();
+      const shut = await done();
+      if (__DEBUG__) dbg('reject', rule.id, `attempt ${i + 1}:`, rule.frame ? 'clicked (in frame: not awaited)' : shut ? 'banner closed' : `banner still open after ${CONFIRM_MS} ms`);
+      if (shut) return ok();
     }
     // 2. The CMP's own reject API. If it returns, the CMP has recorded the refusal itself,
     //    so a banner that stays open is only cosmetic: hide it.
-    if (rule.api && timed(() => callApi(rule.api!))) {
+    const api = !!rule.api && timed(() => callApi(rule.api!));
+    if (__DEBUG__ && rule.api) dbg('api', rule.id, rule.api, api ? 'returned ok' : 'unavailable or failed');
+    if (api) {
       if (!(await done())) timed(() => hideRule(rule));
       return ok();
     }
     // 3. Multi-step flow (preferences -> switch everything off -> verify -> save).
-    dbg('flow?', rule.id, !!rule.flow);
-    if (rule.flow && (await runFlow(rule))) {
+    const flowed = !!rule.flow && (await runFlow(rule));
+    if (__DEBUG__ && rule.flow) dbg('flow', rule.id, flowed ? 'completed' : 'aborted');
+    if (flowed) {
       if (!(await done())) timed(() => hideRule(rule));
       return ok();
     }
     if (rule.hide) {
       if (rule.hideDelay) await sleep(rule.hideDelay);
       const el = timed(() => (document.querySelector(rule.detect) ? bannerEl(rule) : null));
-      if (!el) return null;
+      if (!el) {
+        if (__DEBUG__) dbg('hide path', rule.id, 'banner gone before hiding');
+        return null;
+      }
       // Pay-or-accept wall: the only refusal is paying. Left alone unless the user opted in.
       let wall = timed(() => isWall(el));
-      // The wall may live in a slower cross-origin frame: give its report a few more seconds.
-      for (let i = 0; !wall && rule.wallInFrame && i < 7; i++) {
-        wall = await opts.frameWall();
-        if (!wall && i < 6) await sleep(500);
+      // The banner lives in a cross-origin CMP frame that oho also runs in: while the container is
+      // still up and no frame has reported, the frame is still working (a wall check, a slow
+      // second layer). Wait for it rather than hiding the banner it is about to refuse.
+      for (let i = 0; !wall && rule.wallInFrame && i < FRAME_POLLS; i++) {
+        const f = await opts.frameOutcome();
+        if (__DEBUG__ && (f || i === 0 || i === FRAME_POLLS - 1)) dbg('hide path', rule.id, `poll ${i + 1}/${FRAME_POLLS}: frame reported`, f ?? 'nothing yet');
+        if (f === 'wall') wall = true;
+        else if (f) {
+          // The frame refused (or hid) and reported it: only make sure nothing is left blocking.
+          timed(() => makeUsable(rule));
+          return 'frame';
+        } else if (!timed(() => bannerVisible(rule))) {
+          if (__DEBUG__) dbg('hide path', rule.id, 'container gone, no frame report');
+          return null;
+        } else await sleep(500);
       }
-      dbg('hide path', rule.id, 'wall=' + wall);
+      if (__DEBUG__) dbg('hide path', rule.id, 'wall=' + wall, 'hideWalls=' + opts.hideWalls);
       if (wall && !opts.hideWalls) return 'wall';
       return timed(() => {
         hideRule(rule);
@@ -345,6 +399,7 @@ export class RuleEngine {
         return 'hidden' as const;
       });
     }
+    if (__DEBUG__) dbg('rule failed', rule.id, 'every path exhausted');
     return null;
   }
 }

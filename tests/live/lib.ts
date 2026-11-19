@@ -33,9 +33,11 @@ export function cliArgs(argv = process.argv.slice(2)) {
     headed: argv.includes('--headed'),
     proxy: get('--proxy'),
     only: get('--only'),
-    /** report.md / .json by default; report-<label>.* with --label (or report-eu.* with --proxy). */
-    label: get('--label') ?? (get('--proxy') ? 'eu' : ''),
+    /** report.md / .json by default; report-<label>.* with --label (report-eu.* with --proxy, report-only.* with --only). */
+    label: get('--label') ?? (get('--proxy') ? 'eu' : get('--only') ? 'only' : ''),
     concurrency: Number(get('--concurrency') ?? 3),
+    /** Per-frame decision log (debug build) -> results/<site>/oho.log. Always on for MISS retries. */
+    log: argv.includes('--log'),
   };
 }
 
@@ -173,7 +175,14 @@ export const bannerProbe = (rules: { id: string; detect: string; visible?: strin
     const sr = (el as HTMLElement).shadowRoot;
     const text = ((el as HTMLElement).innerText || '') + ' ' + (sr ? (sr as unknown as HTMLElement).textContent : '');
     const r = el.getBoundingClientRect();
-    if (TEXT.test(text) && r.width * r.height > innerWidth * innerHeight * 0.01 && text.length < 6000)
+    // A cookie word that only appears in links is a footer/menu ("Condiciones de uso de cookies" in
+    // xataka.com's fixed full-screen menu), not a banner: banners say it in their own text.
+    let outsideLinks = !!sr; // shadow-root banners: keep the old text check
+    const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    for (let n = walk.nextNode(); n && !outsideLinks; n = walk.nextNode()) {
+      if (!n.parentElement?.closest('a') && TEXT.test(n.textContent ?? '')) outsideLinks = true;
+    }
+    if (TEXT.test(text) && outsideLinks && r.width * r.height > innerWidth * innerHeight * 0.01 && text.length < 6000)
       return { visible: true, by: 'generic:' + (el.id ? '#' + el.id : el.tagName.toLowerCase() + '.' + String(el.getAttribute('class') ?? '').split(' ')[0]) };
   }
   return { visible: false, by: '' };
@@ -365,6 +374,37 @@ export const consentProbe = async (cmp: string) => {
   if (cmp === 'complianz') {
     const cats = ['marketing', 'statistics', 'preferences'].map((c) => [c, cookies['cmplz_' + c]] as const).filter(([, v]) => v);
     checks.push({ name: 'cmplz_*', ok: cats.length ? cats.every(([, v]) => v === 'deny') : false, detail: cats.length ? cats.map(([c, v]) => `${c}=${v}`).join(' ') : 'cookies missing' });
+  }
+  // Site-built banners (no CMP): their own stores, found by diffing storage after "reject" vs
+  // "accept all" on the live site. Scoped by host, so a missing store on that host is a failure.
+  if (cmp === 'custom') {
+    const host = location.hostname;
+    if (/(^|\.)flysas\.com$/.test(host)) {
+      // _consent = {"acknowledge":true,"necessary":true,"functional":false,"statistic":false,"marketing":false,...}
+      const v = cookies._consent;
+      if (!v) checks.push({ name: '_consent', ok: false, detail: 'cookie missing' });
+      else {
+        try {
+          const o = JSON.parse(v) as Record<string, unknown>;
+          const yes = Object.entries(o).filter(([k, x]) => x === true && k !== 'acknowledge' && k !== 'necessary').map(([k]) => k);
+          checks.push({ name: '_consent', ok: o.acknowledge === true && yes.length === 0, detail: `${o.acknowledge === true ? 'choice saved' : 'NO acknowledge'}; categories ON besides necessary: [${yes}]` });
+        } catch { checks.push({ name: '_consent', ok: null, detail: 'unparseable: ' + v.slice(0, 80) }); }
+      }
+    }
+    if (/(^|\.)fitx\.de$/.test(host)) {
+      // "Nur notwendige" writes mandatory.<group>=true (= that group is limited to necessary) and
+      // consentGranted=false; "Alle akzeptieren" writes mandatory.<group>=false, consentGranted=true
+      // and the etracker opt-in cookie et_allow_cookies=1.
+      let ls: string | null = null;
+      try { ls = localStorage.getItem('consentGranted'); } catch { /* storage blocked */ }
+      const given = cookies['mandatory.consentGiven'] === 'true';
+      const limited = ['preferences', 'marketing'].filter((g) => cookies['mandatory.' + g] === 'true');
+      checks.push({
+        name: 'mandatory.*',
+        ok: given && limited.length === 2 && ls === 'false' && !cookies.et_allow_cookies,
+        detail: `${given ? 'choice saved' : 'NO mandatory.consentGiven'}; necessary-only groups: [${limited}]; consentGranted=${ls}; et_allow_cookies=${cookies.et_allow_cookies ?? '-'}`,
+      });
+    }
   }
   return checks;
 };

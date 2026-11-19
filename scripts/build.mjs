@@ -1,6 +1,8 @@
 // Build: esbuild bundles -> dist/{chrome,firefox} -> oho-chrome.zip / oho-firefox.zip
 //   node scripts/build.mjs             release build + zips
 //   node scripts/build.mjs --bench     instrumented bundle for tests/bench.mjs (dist/bench)
+//   node scripts/build.mjs --debug     unpacked Chrome build that logs every decision (dist/debug),
+//                                      used by tests/live/run.ts --log; release files are untouched
 //   node scripts/build.mjs --collector dev-only feature collector bookmarklet (training/collector.js)
 import { build } from 'esbuild';
 import { cpSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync, readdirSync } from 'node:fs';
@@ -28,7 +30,7 @@ async function bundle(outdir, bench = false, debug = false) {
   const wrap = bench
     ? {
         banner: { js: 'var __ohoT0=performance.now();' },
-        footer: { js: '(globalThis.__ohoBench??={ms:0,calls:0}).ms+=performance.now()-__ohoT0;' },
+        footer: { js: 'var __ohoB=(globalThis.__ohoBench??={ms:0,calls:0}),__ohoD=performance.now()-__ohoT0;__ohoB.ms+=__ohoD;(__ohoB.by??={}).eval=__ohoD;' },
       }
     : {};
   await Promise.all([
@@ -90,29 +92,41 @@ function dirSize(dir) {
   return n;
 }
 
+const renderIcons = () => Object.fromEntries([16, 32, 48, 128].map((s) => [s, renderIcon(s)]));
+
+/** Everything but the scripts: popup, icons, manifest. */
+function assemble(browser, out, icons) {
+  mkdirSync(`${out}/icons`, { recursive: true });
+  cpSync('src/popup/popup.html', `${out}/popup.html`);
+  cpSync('src/popup/popup.css', `${out}/popup.css`);
+  for (const [s, png] of Object.entries(icons)) writeFileSync(`${out}/icons/${s}.png`, png);
+  if (browser === 'firefox') cpSync('assets/mark.svg', `${out}/icons/icon.svg`);
+  writeFileSync(`${out}/manifest.json`, JSON.stringify(manifest(browser), null, 2));
+}
+
 process.chdir(root);
 
 if (args.has('--bench')) {
   rmSync('dist/bench', { recursive: true, force: true });
   await bundle('dist/bench', true);
   console.log('bench bundle -> dist/bench');
+} else if (args.has('--debug')) {
+  rmSync('dist/debug', { recursive: true, force: true });
+  await bundle('dist/debug', false, true);
+  assemble('chrome', 'dist/debug', renderIcons());
+  console.log('debug build -> dist/debug');
 } else if (args.has('--collector')) {
   await build({ ...common, minify: false, entryPoints: ['src/collector.ts'], format: 'iife', outfile: 'training/collector.js', define: { __BENCH__: 'false', __DEBUG__: 'false' } });
   console.log('collector -> training/collector.js');
 } else {
   for (const d of ['dist/js', 'dist/chrome', 'dist/firefox']) rmSync(d, { recursive: true, force: true });
-  await bundle('dist/js', false, args.has('--debug'));
-  const icons = Object.fromEntries([16, 32, 48, 128].map((s) => [s, renderIcon(s)]));
+  await bundle('dist/js');
+  const icons = renderIcons();
   const report = [];
   for (const browser of ['chrome', 'firefox']) {
     const out = `dist/${browser}`;
-    mkdirSync(`${out}/icons`, { recursive: true });
     cpSync('dist/js', out, { recursive: true });
-    cpSync('src/popup/popup.html', `${out}/popup.html`);
-    cpSync('src/popup/popup.css', `${out}/popup.css`);
-    for (const [s, png] of Object.entries(icons)) writeFileSync(`${out}/icons/${s}.png`, png);
-    if (browser === 'firefox') cpSync('assets/mark.svg', `${out}/icons/icon.svg`);
-    writeFileSync(`${out}/manifest.json`, JSON.stringify(manifest(browser), null, 2));
+    assemble(browser, out, icons);
     const zipPath = `oho-${browser}.zip`;
     const bytes = zip(out, zipPath);
     report.push({ browser, unpacked: dirSize(out), zip: bytes });

@@ -1,0 +1,11 @@
+<!doctype html><html lang="no"><head><meta charset="utf-8"></head><body>
+<!-- First layer (as on finn.no): "accept" and "customise or reject" only. -->
+<div class="message-container"><div class="message">
+  <p>Vi og våre 40 partnere bruker informasjonskapsler (cookies) og behandler personopplysninger.</p>
+  <button class="message-component message-button sp_choice_type_11" title="Godta alle">Godta alle</button>
+  <button class="message-component message-button sp_choice_type_12" title="Tilpass eller avvis">Tilpass eller avvis</button>
+</div></div>
+<script>
+document.querySelector('.sp_choice_type_11').onclick = () => parent.postMessage({ sp: 'accepted' }, '*');
+document.querySelector('.sp_choice_type_12').onclick = () => parent.postMessage({ openPm: true }, '*');
+</script></body></html>

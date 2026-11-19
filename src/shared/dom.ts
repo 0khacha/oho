@@ -38,6 +38,11 @@ export function isVisible(el: Element | null | undefined): el is HTMLElement {
  */
 export function safeToClick(el: Element, verifiedSave = false): boolean {
   const t = labelOf(el);
+  if (__DEBUG__) {
+    const [ok, why] = gateWhy(t, verifiedSave);
+    dbg('gate', ok ? 'ALLOW' : 'REFUSE', `(${why})`, JSON.stringify(t.slice(0, 80)));
+    return ok;
+  }
   if (RE.pay.test(t) || PRICE.test(t)) return false;
   if (RE.reject.test(t)) return true;
   if (RE.accept.test(t)) return verifiedSave && RE.save.test(t);
@@ -45,6 +50,7 @@ export function safeToClick(el: Element, verifiedSave = false): boolean {
 }
 
 export function click(el: Element): void {
+  if (__DEBUG__) dbg('click', JSON.stringify(labelOf(el).slice(0, 80)), `<${el.tagName.toLowerCase()}${el.id ? '#' + el.id : ''}>`);
   (el as HTMLElement).click();
 }
 
@@ -78,23 +84,35 @@ export function restoreScroll(lockClasses: readonly string[] = []): void {
 
 export const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
 
-/** Debug builds (`node scripts/build.mjs --debug`) log decisions; compiled away otherwise. */
-declare const __DEBUG__: boolean;
+/**
+ * Debug builds (`node scripts/build.mjs --debug`, used by `tests/live/run.ts --log`) log every
+ * decision as one line: `[oho] <ms since script start> <frame> <event> <details>`.
+ * Call sites guard with `if (__DEBUG__)`, so release builds don't even build the arguments.
+ */
 export function dbg(...a: unknown[]): void {
-  if (__DEBUG__) console.log('[oho]', (window === window.top ? 'top' : 'frame ' + location.host), ...a);
+  if (__DEBUG__) console.log('[oho]', Math.round(performance.now()) + 'ms', window === window.top ? 'top' : 'frame:' + location.host, ...a);
 }
 
+const gateWhy = (t: string, verifiedSave: boolean): [boolean, string] => {
+  if (RE.pay.test(t)) return [false, 'pay keyword'];
+  if (PRICE.test(t)) return [false, 'price'];
+  if (RE.reject.test(t)) return [true, 'reject keyword'];
+  if (RE.accept.test(t)) return verifiedSave && RE.save.test(t) ? [true, 'save after verified uncheck'] : [false, 'accept keyword'];
+  return [true, 'neutral'];
+};
+
 /** Bench instrumentation: accumulates synchronous work time. Compiled away in release builds. */
-declare const __BENCH__: boolean;
-export function timed<T>(fn: () => T): T {
+export function timed<T>(fn: () => T, label = 'rule'): T {
   if (!__BENCH__) return fn();
   const t = performance.now();
   try {
     return fn();
   } finally {
-    const g = globalThis as unknown as { __ohoBench?: { ms: number; calls: number } };
+    const g = globalThis as unknown as { __ohoBench?: { ms: number; calls: number; by?: Record<string, number> } };
     const b = (g.__ohoBench ??= { ms: 0, calls: 0 });
-    b.ms += performance.now() - t;
+    const ms = performance.now() - t;
+    b.ms += ms;
     b.calls++;
+    (b.by ??= {})[label] = (b.by[label] ?? 0) + ms;
   }
 }

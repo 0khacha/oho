@@ -2,7 +2,7 @@ import { RuleEngine, rulesFor, type Outcome } from './rules';
 import { findCandidates } from './candidates';
 import { run as runFallback } from './fallback';
 import { dbg, timed } from './shared/dom';
-import { DEFAULT_SETTINGS, ext, getSettings, isAllowed, type Last, type Msg, type Settings } from './shared/ext';
+import { DEFAULT_SETTINGS, ext, getSettings, isAllowed, type How, type Last, type Msg, type Settings } from './shared/ext';
 
 const TOP = window === window.top;
 const WATCH_MS = 10_000;
@@ -21,11 +21,14 @@ let added: Set<Element> | null = null;
 let cmpSeen = false;
 let settings: Settings = DEFAULT_SETTINGS;
 
-/** Ask the background whether a CMP iframe in this tab reported a pay-or-accept wall. */
-const frameWall = (): Promise<boolean> =>
+/**
+ * What a CMP iframe on this page reported (the background keeps the tab's last outcome).
+ * Reports older than this document belong to a previous page in the same tab: ignored.
+ */
+const frameOutcome = (): Promise<How | null> =>
   ext.runtime.sendMessage({ type: 'oho_last' } satisfies Msg).then(
-    (r: Last | null) => r?.how === 'wall',
-    () => false,
+    (r: Last | null) => (r && typeof r.t === 'number' && r.t >= performance.timeOrigin ? r.how : null),
+    () => null,
   );
 const MAX_ADDED = 200;
 let retries = 0;
@@ -34,15 +37,17 @@ let fullRescan = false;
 const MAX_RETRIES = 3;
 
 function finish(id: string, how: Exclude<Outcome, 'retry'>): void {
-  dbg('finish', id, how);
+  if (__DEBUG__) dbg('outcome', id, how ?? 'nothing (keep watching)');
   if (!how) return;
   handled = true;
-  stop();
+  stop(`handled (${id}: ${how})`);
+  if (how === 'frame') return; // the frame already reported (and counted) it
   const msg: Msg = { type: 'oho_done', id, how };
   ext.runtime.sendMessage(msg).catch(() => {});
 }
 
-function stop(): void {
+function stop(why: string): void {
+  if (__DEBUG__) dbg('stop', why, observer ? '' : '(observer already off)');
   observer?.disconnect();
   observer = null;
   clearTimeout(pending);
@@ -55,13 +60,18 @@ function scan(recheck = false): void {
   added = new Set();
   fullRescan = false;
   // Once a CMP has been seen, keep doing the full (still cheap) presence check while it loads.
-  const hit = timed(() => engine.detect(cmpSeen ? undefined : batch));
-  if (hit) dbg('detect', hit.rule.id, hit.visible ? 'visible' : 'hidden');
+  const hit = timed(() => engine.detect(cmpSeen ? undefined : batch), 'detect');
+  if (__DEBUG__) {
+    const state = hit ? `${hit.rule.id} ${hit.visible ? 'visible' : 'present, hidden'}` : 'none';
+    if (state !== lastDetect) dbg('detect', 'CMP:', state);
+    lastDetect = state;
+  }
   if (hit && hit.visible) {
     cmpSeen = true;
     busy = true;
-    void engine.handle(hit.rule, { hideWalls: settings.hideWalls, frameWall }).then((how) => {
+    void engine.handle(hit.rule, { hideWalls: settings.hideWalls, frameOutcome }).then((how) => {
       busy = false;
+      if (__DEBUG__ && (!how || how === 'retry')) dbg('rule', hit.rule.id, 'gave no outcome: heuristic gets the whole page');
       if (how && how !== 'retry') return finish(hit.rule.id, how);
       added = null; // rule failed: let the heuristic look at the whole page
       schedule(DEBOUNCE_MS);
@@ -75,11 +85,13 @@ function scan(recheck = false): void {
     schedule(500);
   }
   if (!TOP) return;
-  const cands = timed(() => findCandidates(seen, batch, recheck));
+  const cands = timed(() => findCandidates(seen, batch, recheck), 'candidates');
+  if (__DEBUG__ && cands.length) dbg('heuristic', `${cands.length} candidate(s)`, recheck ? '(dormant recheck)' : batch ? '(added nodes)' : '(full scan)');
   if (!cands.length) return;
   // The fallback is bundled in (no web-accessible resources, so pages can't probe for oho).
   // Its regexes still compile lazily, so pages without candidates never pay for them.
-  const how = timed(() => runFallback(cands, seen, settings.hideWalls, retries >= MAX_RETRIES));
+  const how = timed(() => runFallback(cands, seen, settings.hideWalls, retries >= MAX_RETRIES), 'fallback');
+  if (__DEBUG__) dbg('heuristic', 'verdict:', how ?? 'not a banner / unsure');
   if (how === 'retry') {
     // A paid option is still fading in: look again at the whole page in a moment.
     retries++;
@@ -90,6 +102,7 @@ function scan(recheck = false): void {
 }
 
 let recheckDue = false;
+let lastDetect = '';
 
 function schedule(ms: number, recheck = false): void {
   if (handled) return;
@@ -115,13 +128,14 @@ function watch(): void {
         }
       }
       schedule(DEBOUNCE_MS);
-    }),
+    }, 'observer'),
   );
   observer.observe(document.documentElement, { childList: true, subtree: true });
   // Banners already in the DOM but hidden, then revealed by a class/style change, produce no
   // childList mutation: re-check the dormant candidates a few times (no document-wide query).
   for (const ms of RECHECK_MS) setTimeout(() => schedule(0, true), ms);
-  setTimeout(stop, WATCH_MS);
+  setTimeout(() => stop(`timeout (${WATCH_MS / 1000} s watch window over, nothing handled)`), WATCH_MS);
+  if (__DEBUG__) addEventListener('pagehide', () => observer && dbg('stop', 'observer disconnected: frame unloaded'));
 }
 
 async function allowed(): Promise<boolean> {
@@ -141,7 +155,7 @@ async function main(): Promise<void> {
   g.__ohoRan = true;
   if (!TOP && !rulesFor(location.hostname, false, location.href).length) return;
   const ok = await allowed();
-  dbg('start', location.href.slice(0, 80), 'allowed=' + ok, 'rules=' + rulesFor(location.hostname, TOP, location.href).map((r) => r.id).join(','));
+  if (__DEBUG__) dbg('start', location.href.slice(0, 100), 'allowed=' + ok, 'rules=' + rulesFor(location.hostname, TOP, location.href).map((r) => r.id).join(','));
   if (!ok) return;
   scan();
   if (!handled) watch();

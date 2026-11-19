@@ -8,3 +8,4 @@ training/collector.js
 __pycache__/
 tests/live/results/
 tests/live/inspect.png
+tests/live/report-only.*
