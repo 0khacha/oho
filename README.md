@@ -375,6 +375,10 @@ oho makes no network requests. It has no analytics or telemetry and sends nothin
 stores is your settings, a total counter, and per-tab counters plus the last outcome per tab; the
 per-tab values are cleared when the tab closes. The full policy is in [PRIVACY.md](PRIVACY.md).
 
+To host the policy for the store listings, enable GitHub Pages (*Settings → Pages → Deploy from
+branch `main`, folder `/`*). It is then served at `https://0khacha.github.io/oho/PRIVACY`. The store
+texts and the 1280×800 screenshots are in [`store/`](store).
+
 ## Limitations
 
 - CMP markup changes over time. The rules were checked against live sites in November 2026 from
