@@ -224,6 +224,14 @@ test('per-site allowlist and global switch are respected', async ({ page, sw }) 
   }
 });
 
+test('without activeTab, host access still exposes the current tab URL (popup "Disable on <site>")', async ({ page, sw }) => {
+  await page.goto(BASE + 'no-banner-article.html');
+  const urls = await sw.evaluate(() => chrome.tabs.query({}).then((t) => t.map((x) => x.url ?? '')));
+  expect(urls.some((u) => u.startsWith('http://127.0.0.1:4517/no-banner-article.html'))).toBe(true);
+  const perms = await sw.evaluate(() => chrome.runtime.getManifest().permissions);
+  expect(perms).toEqual(['storage']);
+});
+
 test('counters and popup', async ({ ctx, sw }) => {
   const stats = await sw.evaluate(() => chrome.storage.local.get('oho_stats'));
   expect((stats.oho_stats as { total: number }).total).toBeGreaterThanOrEqual(CMPS.length);

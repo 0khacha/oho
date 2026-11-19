@@ -313,13 +313,22 @@ the in-frame rule clicks "Reject all".
 At **4× CPU throttling** (`npm run bench:mobile`, roughly a mid-range phone) costs scale about
 linearly. The 10 ms budget is enforced at 1×.
 
+## Permissions
+
+| Permission | Why oho needs it |
+|---|---|
+| `storage` | Saves your settings (on/off, sites you disabled oho on, "hide pay-or-accept walls") and two counters, on your device only. |
+| Host access `http://*/*`, `https://*/*` | Cookie banners can appear on any site, so the detector has to run on every page. The same access lets the popup read the current tab's address for "Disable on this site". |
+
+That is the full list. `activeTab` was dropped because host access already covers it, and an e2e
+test checks that the popup still sees the current tab's URL. There are no `tabs`, `scripting`,
+`webRequest`, `cookies` or `<all_urls>` permissions, and no remote code.
+
 ## Privacy
 
-oho makes no network requests. It has no analytics or telemetry and sends nothing anywhere.
-It stores four things, all on your device: your settings (`chrome.storage.local`), a total
-counter (`local`), and per-tab counters plus the last outcome per tab (`storage.session`, cleared
-when the tab closes). Permissions: `storage`, `activeTab`, and host access to web pages (needed for
-the content scripts).
+oho makes no network requests. It has no analytics or telemetry and sends nothing anywhere. All it
+stores is your settings, a total counter, and per-tab counters plus the last outcome per tab; the
+per-tab values are cleared when the tab closes. The full policy is in [PRIVACY.md](PRIVACY.md).
 
 ## Limitations
 

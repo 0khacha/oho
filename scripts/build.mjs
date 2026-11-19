@@ -50,7 +50,7 @@ function manifest(browser) {
     short_name: 'oho',
     version: pkg.version,
     description: pkg.description,
-    permissions: ['storage', 'activeTab'],
+    permissions: ['storage'],
     // Same scope as the content scripts. Declared explicitly so the popup can check it and,
     // on Firefox (where MV3 host access can be withheld), request it with permissions.request().
     host_permissions: WEB,

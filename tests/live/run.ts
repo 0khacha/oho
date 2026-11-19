@@ -279,7 +279,7 @@ const order = sites.map((s) => s.url);
 rows.sort((x, y) => order.indexOf(x.url) - order.indexOf(y.url));
 const tally = rows.reduce<Record<string, number>>((t, r) => ((t[r.result] = (t[r.result] ?? 0) + 1), t), {});
 const md = [
-  `# oho live report`,
+  `# oho live report (${args.label === 'eu' ? 'EU, via proxy' : args.label === 'non-eu' ? 'from a non-EU location' : args.label})`,
   '',
   `Generated ${new Date().toISOString()} - ${rows.length} sites - ${args.proxy ? `proxy ${args.proxy}` : 'no proxy'} - ${args.headed ? 'headed' : 'headless'}`,
   '',
@@ -297,8 +297,8 @@ if (tally['NOT SHOWN']) {
     '',
   );
 }
-writeFileSync(path.join(LIVE, 'report.md'), md.join('\n'));
-writeFileSync(path.join(LIVE, 'report.json'), JSON.stringify({ generated: new Date().toISOString(), proxy: args.proxy ?? null, tally, rows }, null, 2));
+writeFileSync(path.join(LIVE, `report-${args.label}.md`), md.join('\n'));
+writeFileSync(path.join(LIVE, `report-${args.label}.json`), JSON.stringify({ generated: new Date().toISOString(), proxy: args.proxy ?? null, tally, rows }, null, 2));
 console.log('\n', tally);
 if (tally['NOT SHOWN']) console.log(`note: ${tally['NOT SHOWN']} site(s) showed no banner. Many CMPs target EU/EEA visitors only: re-run with --proxy <EU proxy>.`);
-console.log('report: tests/live/report.md');
+console.log(`report: tests/live/report-${args.label}.md`);
