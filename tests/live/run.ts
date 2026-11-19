@@ -30,7 +30,7 @@ const { sites } = JSON.parse(readFileSync(path.join(LIVE, 'sites.json'), 'utf8')
 const todo = args.only ? sites.filter((s) => s.url.includes(args.only!)) : sites;
 const OHO_WAIT_MS = 15_000;
 
-const locale = (lang: string): string => (lang === 'ar' ? 'ar-MA' : `${lang}-${lang.toUpperCase()}`);
+const locale = (lang: string): string => (lang === 'ar' ? 'ar' : `${lang}-${lang.toUpperCase()}`);
 
 async function launch(withOho: boolean, lang: string): Promise<{ ctx: BrowserContext; dir: string }> {
   const dir = mkdtempSync(path.join(os.tmpdir(), 'oho-live-'));
@@ -279,7 +279,7 @@ const order = sites.map((s) => s.url);
 rows.sort((x, y) => order.indexOf(x.url) - order.indexOf(y.url));
 const tally = rows.reduce<Record<string, number>>((t, r) => ((t[r.result] = (t[r.result] ?? 0) + 1), t), {});
 const md = [
-  `# oho live report (${args.label === 'eu' ? 'EU, via proxy' : args.label === 'non-eu' ? 'from a non-EU location' : args.label})`,
+  `# oho live report${args.label === 'eu' ? ' (EU, via proxy)' : args.label ? ` (${args.label})` : ''}`,
   '',
   `Generated ${new Date().toISOString()} - ${rows.length} sites - ${args.proxy ? `proxy ${args.proxy}` : 'no proxy'} - ${args.headed ? 'headed' : 'headless'}`,
   '',
@@ -297,8 +297,8 @@ if (tally['NOT SHOWN']) {
     '',
   );
 }
-writeFileSync(path.join(LIVE, `report-${args.label}.md`), md.join('\n'));
-writeFileSync(path.join(LIVE, `report-${args.label}.json`), JSON.stringify({ generated: new Date().toISOString(), proxy: args.proxy ?? null, tally, rows }, null, 2));
+writeFileSync(path.join(LIVE, `report${args.label ? '-' + args.label : ''}.md`), md.join('\n'));
+writeFileSync(path.join(LIVE, `report${args.label ? '-' + args.label : ''}.json`), JSON.stringify({ generated: new Date().toISOString(), proxy: args.proxy ?? null, tally, rows }, null, 2));
 console.log('\n', tally);
 if (tally['NOT SHOWN']) console.log(`note: ${tally['NOT SHOWN']} site(s) showed no banner. Many CMPs target EU/EEA visitors only: re-run with --proxy <EU proxy>.`);
-console.log(`report: tests/live/report-${args.label}.md`);
+console.log(`report: tests/live/report${args.label ? '-' + args.label : ''}.md`);

@@ -1,4 +1,4 @@
-# oho live report (from a non-EU location)
+# oho live report
 
 Generated 2026-11-19T02:19:54.639Z - 52 sites - no proxy - headless
 

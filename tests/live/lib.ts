@@ -33,8 +33,8 @@ export function cliArgs(argv = process.argv.slice(2)) {
     headed: argv.includes('--headed'),
     proxy: get('--proxy'),
     only: get('--only'),
-    /** report-<label>.md / .json: 'non-eu' (from a non-EU location, no proxy) by default, 'eu' with --proxy. */
-    label: get('--label') ?? (get('--proxy') ? 'eu' : 'non-eu'),
+    /** report.md / .json by default; report-<label>.* with --label (or report-eu.* with --proxy). */
+    label: get('--label') ?? (get('--proxy') ? 'eu' : ''),
     concurrency: Number(get('--concurrency') ?? 3),
   };
 }

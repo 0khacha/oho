@@ -4,8 +4,6 @@
 
 <p align="center">Auto-rejects cookie banners. Tiny, fast, private.</p>
 
-<p align="center"><img src="assets/demo.gif" width="640" alt="A cookie banner appears, oho clicks its reject button, and the page is clean: OneTrust, an unknown French banner, and an unknown Arabic banner"></p>
-
 oho is a Manifest V3 browser extension for Chrome and Firefox. It **rejects** cookie consent banners
 instead of just hiding them:
 - where a site offers "Reject all", oho clicks it;
@@ -22,11 +20,11 @@ Pay-or-accept walls are left alone unless you choose to hide them.
   ([privacy policy](PRIVACY.md)).
 - **1.2–7.5 ms** median main-thread work per page on the test fixtures, at most 9.6 ms, against a
   10 ms budget. It never blocks page load.
-- **Live, from a non-EU location** (52 sites, a banner shown on 38): **38 of 38 banners handled correctly**.
+- **Live** (52 sites, a banner shown on 38): **38 of 38 banners handled correctly**.
   31 were rejected (29 of them verified in the CMP's own storage), 1 notice was hidden, and 6
   pay-or-accept walls were left alone. **0 accept clicks**, 0 failed. 5 sites missed in the parallel
   pass and were retried alone: 4 were then handled, and 1 never showed its banner.
-- **Live, from the EU:** not run yet. It needs an EU proxy:
+- **Live, through an EU connection:** not run yet. It needs an EU proxy:
   `node tests/live/run.ts --proxy <url> --concurrency 1` writes `tests/live/report-eu.md`.
 
 ## Install
@@ -244,7 +242,7 @@ npm run bench                     # per-page execution time, fails if any fixtur
 npm run bench:mobile              # same at 4x CPU throttling (informational)
 npm run check                     # typecheck + test + bench
 npm run check:firefox             # load the Firefox build into Playwright's Firefox, reject fixtures
-npm run demo                      # re-record assets/demo.gif and store/screenshots/
+npm run screenshots               # regenerate store/screenshots/
 ```
 
 Fixtures cover:
@@ -271,8 +269,8 @@ geo-targeting and bot protection make it flaky, and results drift as sites chang
 
 ```sh
 node tests/live/discover.ts          # probe ~250 candidate sites, detect each one's CMP -> sites.json
-node tests/live/run.ts [--headed] [--proxy http://host:port] [--only host] [--concurrency 2] [--label non-eu|eu]
-node tests/live/summary.mjs ma       # the headline numbers used in this README
+node tests/live/run.ts [--headed] [--proxy http://host:port] [--only host] [--concurrency 2] [--label name]
+node tests/live/summary.mjs          # the headline numbers used in this README
 node tests/live/inspect.ts <url> [--no-oho] [--eval "<js>"] [--frames]   # debug one site
 node scripts/build.mjs --debug       # build that logs oho's decisions to the page console
 ```
@@ -314,8 +312,7 @@ node scripts/build.mjs --debug       # build that logs oho's decisions to the pa
   - finn.no passed 4 of 6, and in its instrumented miss Sourcepoint never rendered a banner;
   - bild.de was handled 5 of 6 times. Its one miss was in an uninstrumented run, so its cause is
     unknown, and it did not recur in 3 instrumented runs.
-- Reports: [`report-non-eu.md`](tests/live/report-non-eu.md) (from a non-EU location) and `report-eu.md` (from the EU,
-  once run).
+- Reports: [`report.md`](tests/live/report.md), and `report-eu.md` once run through an EU proxy.
 
 ## Results
 
@@ -381,8 +378,8 @@ texts and the 1280×800 screenshots are in [`store/`](store).
 
 ## Limitations
 
-- CMP markup changes over time. The rules were checked against live sites in November 2026 from
-  a non-EU location. EU-only banner variants have not been live-tested yet; see the EU rerun above.
+- CMP markup changes over time. The rules were checked against live sites in November 2026, outside
+  the EU, so EU-only banner variants have not been live-tested yet; see the EU rerun above.
 - Firefox runs the same code with a generated manifest that passes `web-ext lint`. `npm run
   check:firefox` loads it into Playwright's Firefox build, where OneTrust, Cookiebot's multi-step flow
   and an unknown French banner are rejected. The popup and the "Grant access" flow can't be driven

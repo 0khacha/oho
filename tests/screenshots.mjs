@@ -1,11 +1,10 @@
-// Dev-only: record assets/demo.gif (before/after on fixtures) and the 1280x800 store screenshots.
-//   npm run build && node tests/record-demo.mjs
+// Dev-only: generate the 1280x800 store screenshots (before/after on a fixture, and the popup).
+//   npm run screenshots
 import { chromium } from '@playwright/test';
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync, statSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { start } from './server.mjs';
-import { decodePNG, downscale, encodeGIF } from '../scripts/gif.mjs';
 
 const EXT = path.resolve('dist/chrome');
 const server = await start(0);
@@ -13,7 +12,7 @@ const base = `http://127.0.0.1:${server.address().port}/`;
 const W = 1280, H = 800;
 
 async function launch(withOho) {
-  const dir = mkdtempSync(path.join(os.tmpdir(), 'oho-demo-'));
+  const dir = mkdtempSync(path.join(os.tmpdir(), 'oho-shots-'));
   const ctx = await chromium.launchPersistentContext(dir, {
     channel: 'chromium', headless: true, viewport: { width: W, height: H },
     args: withOho ? [`--disable-extensions-except=${EXT}`, `--load-extension=${EXT}`] : [],
@@ -24,23 +23,18 @@ async function launch(withOho) {
 /** Caption strip drawn into the page for the recording only (not part of oho). */
 const caption = (page, text, ok) =>
   page.evaluate(([text, ok]) => {
-    document.getElementById('__demo_cap')?.remove();
+    document.getElementById('__shot_cap')?.remove();
     const d = document.createElement('div');
-    d.id = '__demo_cap';
+    d.id = '__shot_cap';
     d.textContent = text;
     d.style.cssText = `position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:2147483647;font:600 22px system-ui,sans-serif;padding:10px 20px;border-radius:999px;color:#fff;background:${ok ? '#15803d' : '#c2410c'};box-shadow:0 4px 16px #0004`;
     document.documentElement.appendChild(d);
   }, [text, ok]);
 
-const SCENES = [
-  { fx: 'onetrust.html', before: 'OneTrust banner', after: 'oho: "Reject All" clicked' },
-  { fx: 'custom-fr.html', before: 'Unknown banner (FR)', after: 'oho: "Continuer sans accepter"', wait: 1600 },
-  { fx: 'custom-ar.html', before: 'Unknown banner (AR)', after: 'oho: "رفض الكل" clicked' },
-];
+const SCENES = [{ fx: 'onetrust.html', before: 'OneTrust banner', after: 'oho: "Reject All" clicked' }];
 
 const before = await launch(false);
 const after = await launch(true);
-const frames = [];
 const shots = {};
 for (const s of SCENES) {
   const p1 = await before.ctx.newPage();
@@ -56,14 +50,7 @@ for (const s of SCENES) {
   const a = await p2.screenshot();
   await p2.close();
   shots[s.fx] = { b, a };
-  frames.push({ img: downscale(decodePNG(b), 2), delayMs: 1600 }, { img: downscale(decodePNG(a), 2), delayMs: 1900 });
 }
-mkdirSync('assets', { recursive: true });
-writeFileSync('assets/demo.gif', encodeGIF(frames));
-const kb = statSync('assets/demo.gif').size / 1024;
-console.log(`assets/demo.gif: ${kb.toFixed(0)} KB, ${frames.length} frames`);
-if (kb > 2048) throw new Error('demo.gif exceeds 2 MB');
-
 // ---- store screenshots (1280x800) ----
 mkdirSync('store/screenshots', { recursive: true });
 writeFileSync('store/screenshots/1-before.png', shots['onetrust.html'].b);

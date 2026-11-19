@@ -8,7 +8,7 @@ import path from 'node:path';
 import { LIVE, OHO_CMPS, UA, bannerProbe, cliArgs, detectCmps, type Site } from './lib.ts';
 import { existsSync, readFileSync } from 'node:fs';
 
-// Candidates: major EU news, retail and government sites (+ Arabic-language ones).
+// Candidates: major EU news, retail and government sites, plus Arabic- and French-language sites.
 // The CMP each one uses is NOT assumed: it is detected below.
 const CANDIDATES: [url: string, lang: string][] = [
   // France
@@ -75,7 +75,7 @@ const CANDIDATES: [url: string, lang: string][] = [
   ['https://www.ft.com/', 'en'], ['https://www.irishtimes.com/', 'en'], ['https://www.dw.com/en/', 'en'],
   ['https://www.euronews.com/', 'en'], ['https://www.politico.eu/', 'en'], ['https://www.dr.dk/', 'en'],
   ['https://www.zara.com/', 'en'], ['https://www.ryanair.com/gb/en', 'en'], ['https://www.easyjet.com/en', 'en'],
-  // Arabic-language
+  // Arabic- and French-language
   ['https://www.aljazeera.net/', 'ar'], ['https://www.alarabiya.net/', 'ar'],
   ['https://www.skynewsarabia.com/', 'ar'], ['https://www.bbc.com/arabic', 'ar'], ['https://arabic.cnn.com/', 'ar'],
   ['https://www.france24.com/ar/', 'ar'], ['https://www.dw.com/ar/', 'ar'],
@@ -92,7 +92,7 @@ const rules = JSON.parse(readFileSync(path.join(LIVE, '..', '..', 'rules', 'cmps
 interface Raw { url: string; lang: string; ok: boolean; error?: string; title?: string; finalUrl?: string; evidence?: Record<string, string[]>; apis?: Record<string, string>; banner?: { visible: boolean; by: string } }
 
 async function probe(browser: Browser, url: string, lang: string): Promise<Raw> {
-  const ctx = await browser.newContext({ userAgent: UA, locale: lang === 'ar' ? 'ar-MA' : `${lang}-${lang.toUpperCase()}`, viewport: { width: 1280, height: 800 } });
+  const ctx = await browser.newContext({ userAgent: UA, locale: lang === 'ar' ? 'ar' : `${lang}-${lang.toUpperCase()}`, viewport: { width: 1280, height: 800 } });
   const page = await ctx.newPage();
   try {
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30_000 });

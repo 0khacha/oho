@@ -19,7 +19,7 @@
     "test:live": "npm run build && node tests/live/run.ts",
     "discover:live": "node tests/live/discover.ts",
     "check:firefox": "npm run build && node tests/firefox-check.mjs",
-    "demo": "npm run build && node tests/record-demo.mjs"
+    "screenshots": "npm run build && node tests/screenshots.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.65.1",
