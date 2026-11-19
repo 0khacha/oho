@@ -1,6 +1,6 @@
 {
   "name": "oho",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "oho (Tamazight for 'no'): auto-rejects cookie banners. Tiny, fast, private.",
   "private": true,
   "license": "MIT",
