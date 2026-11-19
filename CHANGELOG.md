@@ -6,6 +6,8 @@ Firefox Add-ons (AMO) submission prep. No change to what the extension does.
 
 - `npm run source-zip` builds `oho-source.zip` from the committed source, for AMO's source review.
 - `store/amo-reviewer-notes.md`: exact steps to rebuild `oho-firefox.zip` from that source.
+- Chrome Web Store assets in `store/chrome/` (`npm run store-assets`): a 128×128 store icon (the
+  extension's mark, 96×96 artwork with 16 px transparent padding) and a 440×280 small promo tile.
 - The Firefox manifest declares `data_collection_permissions: { required: ["none"] }`, and
   `web-ext lint` reports 0 errors and 0 warnings.
 - Reproducible build: shipped text files are copied with LF line endings, and `.gitattributes`
