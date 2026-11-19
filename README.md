@@ -104,6 +104,12 @@ single run over 15 ms: one run can spike on a busy desktop, so the max is report
 | heavy (25k elements) | 6.00 | 8.10 | untouched |
 | busy (constant mutations) | 5.20 | 5.60 | untouched |
 
+**Resource use** (`npm run resources`, 10 fixture tabs open for 60 s, CDP sampling profiler;
+[report](tests/resources-report.md)): oho's content scripts used 0.6–4.3 ms of CPU per tab, all of it
+in the first 11 s, and **0 ms afterwards**, once the observer had disconnected. The service worker
+used 2.7 ms while the tabs reported, then 0 ms, and Chrome stopped it as idle 37 s after the tabs
+opened. oho adds about 300–420 KB of JS heap per tab.
+
 **Live:** [`tests/live/report-non-eu.md`](tests/live/report-non-eu.md) (52 sites, tested from a non-EU location). Details of
 each run are in the [changelog](CHANGELOG.md).
 

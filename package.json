@@ -15,6 +15,7 @@
     "check": "npm run typecheck && npm test && npm run bench",
     "dataset:fixtures": "node scripts/build.mjs --collector && node tests/dump-features.mjs",
     "bench:mobile": "node scripts/build.mjs --bench && node tests/bench.mjs --runs 3 --throttle 4",
+    "resources": "npm run build && node tests/resources.mjs",
     "firefox": "npm run build && web-ext run --source-dir dist/firefox",
     "lint:firefox": "web-ext lint --source-dir dist/firefox",
     "test:live": "npm run build && node tests/live/run.ts",

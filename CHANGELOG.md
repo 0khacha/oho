@@ -6,6 +6,9 @@ Firefox Add-ons (AMO) submission prep. No change to what the extension does.
 
 - `npm run source-zip` builds `oho-source.zip` from the committed source, for AMO's source review.
 - `store/amo-reviewer-notes.md`: exact steps to rebuild `oho-firefox.zip` from that source.
+- `npm run resources`: a 60 s, 10-tab resource test (CDP profiler and heap metrics), not part of
+  `npm run check`. Results in `tests/resources-report.md`: no oho CPU after the 10 s watch window,
+  and the service worker stops when idle.
 - Chrome Web Store assets in `store/chrome/` (`npm run store-assets`): a 128×128 store icon (the
   extension's mark, 96×96 artwork with 16 px transparent padding) and a 440×280 small promo tile.
 - The Firefox manifest declares `data_collection_permissions: { required: ["none"] }`, and

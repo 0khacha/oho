@@ -24,6 +24,7 @@ scripts/        build.mjs, icon.mjs (PNG icon renderer), zip.mjs (zip writer), a
 
 Build variants: `node scripts/build.mjs` (release + zips), `--bench` (timed bundle in `dist/bench`),
 `--debug` (logs every decision to the console, unpacked in `dist/debug`), `--collector`.
+`npm run resources` runs a 60 s, 10-tab CPU and heap test (`tests/resources-report.md`).
 `npm run source-zip` packs the committed source into `oho-source.zip` for Firefox Add-ons review
 (see `store/amo-reviewer-notes.md`).
 
