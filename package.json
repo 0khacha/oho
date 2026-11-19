@@ -1,12 +1,13 @@
 {
   "name": "oho",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "oho (Tamazight for 'no'): auto-rejects cookie banners. Tiny, fast, private.",
   "private": true,
   "license": "MIT",
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "source-zip": "node scripts/source-zip.mjs",
     "build:collector": "node scripts/build.mjs --collector",
     "typecheck": "tsc --noEmit",
     "test": "npm run build && playwright test",

@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.1 (2026-11-19)
+
+Firefox Add-ons (AMO) submission prep. No change to what the extension does.
+
+- `npm run source-zip` builds `oho-source.zip` from the committed source, for AMO's source review.
+- `store/amo-reviewer-notes.md`: exact steps to rebuild `oho-firefox.zip` from that source.
+- The Firefox manifest declares `data_collection_permissions: { required: ["none"] }`, and
+  `web-ext lint` reports 0 errors and 0 warnings.
+- Live reports are now named `report-non-eu.*`.
+
 ## 0.1.0 (2026-11-19)
 
 First public release.
