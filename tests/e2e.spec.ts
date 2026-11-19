@@ -148,6 +148,7 @@ const WALLS: [fixture: string, wall: string][] = [
   ['iubenda-paywall', '#iubenda-cs-banner'], // "Rifiuta e abbonati" (repubblica.it)
   ['paywall-hidden-cmp', '#ue-initial-modal'], // custom wall over a hidden Didomi (marca.com)
   ['sourcepoint-wall', '#sp_message_container_99'], // wall inside a cross-origin CMP frame (bild.de)
+  ['paywall-fadein', '#kick__pur__layer'], // paid option fades in late (kicker.de)
 ];
 for (const [fx, wall] of WALLS) {
   test(`pay-or-accept wall, default (${fx}): left alone, reported as a wall`, async ({ page, sw }) => {

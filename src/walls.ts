@@ -7,9 +7,14 @@ import { PRICE, RE } from './shared/keywords';
  * per-partner aside, not one of the banner's choices.
  */
 function inline(el: Element, label: string): boolean {
-  if (el.tagName !== 'A') return false;
-  const block = el.parentElement?.closest('p,li,span,div');
-  return !!block && (block.textContent ?? '').trim().length > label.length * 2 + 20;
+  if (el.tagName !== 'A' || !el.parentElement) return false;
+  // A link styled as a button (block / inline-block / flex) is a choice, wherever it sits.
+  if (getComputedStyle(el).display !== 'inline') return false;
+  // Only text *directly around* the link counts (bild.de: a link inside a sentence). A standalone
+  // link button in a column of text (kicker.de's "PUR-Abo kaufen") is not inline.
+  let around = 0;
+  for (const n of el.parentElement.childNodes) if (n.nodeType === 3) around += (n.textContent ?? '').trim().length;
+  return around > Math.max(20, label.length);
 }
 
 /**
@@ -34,4 +39,18 @@ export function isWall(root: ParentNode): boolean {
     else if (RE.accept.test(t)) accept = true;
   }
   return pay && accept && !freeReject;
+}
+
+/**
+ * The banner offers a paid option that is not visible yet (buttons fading in: kicker.de,
+ * lemonde.fr). Deciding now would mistake a wall for a plain notice, so the caller waits.
+ */
+export function payPending(root: ParentNode): boolean {
+  let n = 0;
+  for (const b of root.querySelectorAll(BTN_SEL)) {
+    if (++n > 60) break;
+    const t = labelOf(b);
+    if (t && t.length <= 80 && (RE.pay.test(t) || PRICE.test(t)) && !isVisible(b)) return true;
+  }
+  return false;
 }

@@ -9,7 +9,7 @@ import { HIDE_THRESHOLD, THRESHOLD, score } from './model';
 import { MARK, click, hide, isVisible, labelOf, restoreScroll, safeToClick, timed } from './shared/dom';
 import { RE } from './shared/keywords';
 import type { Outcome } from './rules';
-import { isWall } from './walls';
+import { isWall, payPending } from './walls';
 
 function findReject(root: HTMLElement): HTMLElement | null {
   for (const btn of root.querySelectorAll<HTMLElement>(BTN_SEL)) {
@@ -29,7 +29,7 @@ function findReject(root: HTMLElement): HTMLElement | null {
 const isBackdrop = (c: Cand): boolean =>
   (c.rect.width * c.rect.height) / (c.vw * c.vh) > 0.5 && (c.el.textContent ?? '').trim().length < 30;
 
-export function run(cands: Cand[], seen: WeakSet<Element>, hideWalls = false): Outcome {
+export function run(cands: Cand[], seen: WeakSet<Element>, hideWalls = false, final = false): Outcome {
   // ---- READ phase ----
   const scored = cands.map((c) => ({ c, p: score(extract(c)) })).sort((a, b) => b.p - a.p);
   for (const s of scored) if (s.p < THRESHOLD) seen.add(s.c.el);
@@ -42,6 +42,7 @@ export function run(cands: Cand[], seen: WeakSet<Element>, hideWalls = false): O
     seen.add(el);
     return 'wall';
   }
+  if (!btn && !hideWalls && !final && payPending(el)) return 'retry';
   if (!btn && best.p < HIDE_THRESHOLD) {
     seen.add(el); // unsure: do nothing
     return null;

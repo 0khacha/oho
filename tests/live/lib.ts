@@ -196,10 +196,12 @@ export const layoutProbe = async () => {
   for (let e: Element | null = c; e && e !== document.body; e = e.parentElement) {
     const cs = getComputedStyle(e);
     const r = e.getBoundingClientRect();
-    // Only a near-empty backdrop or a layer that is itself about cookies counts as "covered"
-    // (full-screen ad takeovers / promos with real content are the site's business).
+    // Only an overlay from the CMP counts as "covered": a layer named after a CMP, or one that is
+    // itself about cookies. Full-screen ad takeovers (Adnami "topscroll" on borsen.dk /
+    // jyllands-posten.dk) and site promos are the site's business, not oho's.
     const txt = ((e as HTMLElement).innerText ?? '').trim();
-    const blocking = txt.length < 30 || /cookie|consent|gdpr|rgpd|datenschutz|privacidad|confidentialit/i.test(txt);
+    const named = /cookie|consent|cmp|truste|onetrust|didomi|cmplz|qc-cmp|sp_message|axeptio|iubenda|usercentrics|cybot/i.test(`${e.id} ${e.getAttribute('class') ?? ''}`);
+    const blocking = named || /cookie|consent|gdpr|rgpd|datenschutz|privacidad|confidentialit/i.test(txt);
     if (cs.position === 'fixed' && r.width * r.height > innerWidth * innerHeight * 0.6 && blocking) {
       covered = e.id ? '#' + e.id : e.tagName.toLowerCase() + '.' + String(e.getAttribute('class') ?? '').split(' ')[0];
       break;

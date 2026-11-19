@@ -28,8 +28,12 @@ const frameWall = (): Promise<boolean> =>
     () => false,
   );
 const MAX_ADDED = 200;
+let retries = 0;
+/** Next scan looks at the whole page (set by a 'retry'; not reset by watch()). */
+let fullRescan = false;
+const MAX_RETRIES = 3;
 
-function finish(id: string, how: Outcome): void {
+function finish(id: string, how: Exclude<Outcome, 'retry'>): void {
   dbg('finish', id, how);
   if (!how) return;
   handled = true;
@@ -47,8 +51,9 @@ function stop(): void {
 /** One pass: known CMPs first, then the heuristic fallback. All synchronous work is cheap and bounded. */
 function scan(recheck = false): void {
   if (handled || busy) return;
-  const batch = added ? [...added] : undefined;
+  const batch = added && !fullRescan ? [...added] : undefined;
   added = new Set();
+  fullRescan = false;
   // Once a CMP has been seen, keep doing the full (still cheap) presence check while it loads.
   const hit = timed(() => engine.detect(cmpSeen ? undefined : batch));
   if (hit) dbg('detect', hit.rule.id, hit.visible ? 'visible' : 'hidden');
@@ -57,7 +62,7 @@ function scan(recheck = false): void {
     busy = true;
     void engine.handle(hit.rule, { hideWalls: settings.hideWalls, frameWall }).then((how) => {
       busy = false;
-      if (how) return finish(hit.rule.id, how);
+      if (how && how !== 'retry') return finish(hit.rule.id, how);
       added = null; // rule failed: let the heuristic look at the whole page
       schedule(DEBOUNCE_MS);
     });
@@ -74,7 +79,14 @@ function scan(recheck = false): void {
   if (!cands.length) return;
   // The fallback is bundled in (no web-accessible resources, so pages can't probe for oho).
   // Its regexes still compile lazily, so pages without candidates never pay for them.
-  finish('heuristic', timed(() => runFallback(cands, seen, settings.hideWalls)));
+  const how = timed(() => runFallback(cands, seen, settings.hideWalls, retries >= MAX_RETRIES));
+  if (how === 'retry') {
+    // A paid option is still fading in: look again at the whole page in a moment.
+    retries++;
+    fullRescan = true;
+    return void schedule(700);
+  }
+  finish('heuristic', how);
 }
 
 let recheckDue = false;

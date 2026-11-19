@@ -1,0 +1,20 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Pay-or-accept wall, paid option fades in</title>
+<style>.cols{display:flex;gap:20px}.col{flex:1;background:#f3f3f3;padding:16px}.col a{display:block;margin-top:12px;background:#c00;color:#fff;padding:10px;text-align:center;text-decoration:none}</style></head><body><h1>Custom pay-or-accept wall as on kicker.de</h1>
+<!-- Live findings (kicker.de): the two choices are standalone <a> buttons inside text columns
+     (they must count as choices, unlike an inline link inside a sentence), and the paid option can
+     fade in after the layer is shown. oho must wait for it and then leave the wall alone. -->
+<div id="kick__pur__layer" class="modal" role="dialog"><div class="box" style="max-width:820px">
+  <h2>Wie möchtest du kicker.de nutzen?</h2>
+  <div class="cols">
+    <div class="col">Nutze kicker auf seinen digitalen Plattformen wie gewohnt mit Werbung und Tracking. Die Zustimmung kann jederzeit widerrufen werden. Details findest du in unserer <a href="/datenschutz" style="display:inline;background:none;color:#000;padding:0;text-decoration:underline">Datenschutzerklärung</a>.
+      <a href="#" id="yes">Zustimmen &amp; weiter</a></div>
+    <div class="col">Mit dem PUR-Abo nutzt du kicker ohne Werbetracking und praktisch werbefrei. Nur 2,49 EUR im Monat.
+      <a href="#" id="pur" style="opacity:0">PUR-Abo kaufen</a></div>
+  </div>
+</div></div>
+<script>
+ohoLock();
+setTimeout(() => (document.getElementById('pur').style.opacity = '1'), 900);
+document.getElementById('yes').onclick = (e) => { e.preventDefault(); ohoClose(document.getElementById('kick__pur__layer'), 'accepted'); };
+document.getElementById('pur').onclick = (e) => { e.preventDefault(); ohoRecord('subscribe'); };
+</script></body></html>

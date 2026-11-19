@@ -43,7 +43,8 @@ export interface Rule {
   frameUrl?: string;
 }
 
-export type Outcome = 'rejected' | 'hidden' | 'wall' | null;
+/** 'retry': not decidable yet (a paid option is still fading in); rescan shortly. */
+export type Outcome = 'rejected' | 'hidden' | 'wall' | 'retry' | null;
 
 export interface HandleOptions {
   /** Hide pay-or-accept walls (user setting, off by default). */
