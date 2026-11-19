@@ -202,7 +202,8 @@
       "hideDelay": 3000,
       "hideClasses": [
         "sp-message-open"
-      ]
+      ],
+      "wallInFrame": true
     },
     {
       "id": "axeptio",

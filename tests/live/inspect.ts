@@ -23,7 +23,7 @@ const ctx = await chromium.launchPersistentContext(dir, {
   args: oho ? [`--disable-extensions-except=${EXT}`, `--load-extension=${EXT}`] : [],
 });
 const page = await ctx.newPage();
-page.on('console', (m) => (m.type() === 'error' || m.text().startsWith('[oho')) && console.log('console:', m.text().slice(0, 200)));
+page.on('console', (m) => m.text().startsWith('[oho') && console.log('console:', m.text().slice(0, 200)));
 page.on('pageerror', (e) => console.log('pageerror:', String(e).slice(0, 200)));
 await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45_000 });
 await page.waitForTimeout(wait);

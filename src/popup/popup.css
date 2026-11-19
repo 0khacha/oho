@@ -53,3 +53,5 @@ input[type=checkbox]:focus-visible { outline: 2px solid var(--accent); outline-o
   font: inherit; font-weight: 600; color: #fff; background: var(--accent);
   border: 0; border-radius: 6px; padding: 6px 12px; cursor: pointer;
 }
+.row small { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
+.outcome { margin: 0 0 12px; padding: 8px 10px; border-radius: 6px; background: var(--line); font-size: 12px; }

@@ -78,6 +78,12 @@ export function restoreScroll(lockClasses: readonly string[] = []): void {
 
 export const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
 
+/** Debug builds (`node scripts/build.mjs --debug`) log decisions; compiled away otherwise. */
+declare const __DEBUG__: boolean;
+export function dbg(...a: unknown[]): void {
+  if (__DEBUG__) console.log('[oho]', (window === window.top ? 'top' : 'frame ' + location.host), ...a);
+}
+
 /** Bench instrumentation: accumulates synchronous work time. Compiled away in release builds. */
 declare const __BENCH__: boolean;
 export function timed<T>(fn: () => T): T {

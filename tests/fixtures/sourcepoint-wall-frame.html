@@ -1,0 +1,16 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"></head><body>
+<!-- Sourcepoint pay-or-accept message as on bild.de: accept, settings, or subscribe. No free refusal.
+     Live details reproduced: the buttons fade in after the message is shown, and the text contains a
+     per-partner opt-out link ("für Utiq jetzt ablehnen") that is not a free "reject all". -->
+<div class="message-container"><div class="message" id="m" style="opacity:0">
+  <p>Wir und unsere Partner verwenden Cookies für Werbung. Nutzen Sie BILD mit Werbung oder werbefrei mit BILD PUR. Die Utiq-Technologie können Sie <a href="#">für Utiq jetzt ablehnen</a>, unabhängig von Ihrer Auswahl hier.</p>
+  <button class="message-component message-button accept-all sp_choice_type_11" title="Alle akzeptieren">Alle akzeptieren</button>
+  <button class="message-component message-button settings sp_choice_type_12" title="Einstellungen">Einstellungen</button>
+  <button class="message-component message-button pur-subscribe-cta sp_choice_type_9" title="Jetzt BILD PUR abonnieren">Jetzt BILD PUR abonnieren</button>
+</div></div>
+<script>
+setTimeout(() => (document.getElementById('m').style.opacity = '1'), 700);
+document.querySelector('.sp_choice_type_11').onclick = () => parent.postMessage({ sp: 'accepted' }, '*');
+document.querySelector('.sp_choice_type_12').onclick = () => parent.postMessage({ sp: 'settings' }, '*');
+document.querySelector('.sp_choice_type_9').onclick = () => parent.postMessage({ sp: 'subscribe' }, '*');
+</script></body></html>

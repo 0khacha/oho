@@ -1,0 +1,11 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><link rel="stylesheet" href="_style.css"><script src="_harness.js"></script><title>Sourcepoint pay-or-accept wall</title></head><body><h1>Sourcepoint pay-or-accept wall in a CNAME frame (as on bild.de)</h1>
+<!-- The paid option is inside the cross-origin message frame: the frame detects the wall and
+     reports it, and the top frame's container rule asks before hiding anything. -->
+<div id="sp_message_container_99" class="modal">
+  <iframe id="sp_message_iframe_99" title="SP Consent Message" src="https://cmp.wall-example.test/index.html?hasCsp=true&message_id=99&consentUUID=null&consent_origin=https%3A%2F%2Fcmp.wall-example.test%2Fconsent%2Ftcfv2" style="width:600px;height:300px;border:0;background:#fff"></iframe>
+</div>
+<script>
+ohoLock();
+document.documentElement.classList.add('sp-message-open');
+window.addEventListener('message', (e) => { if (e.data && e.data.sp) ohoRecord(e.data.sp); });
+</script></body></html>

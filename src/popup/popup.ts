@@ -1,4 +1,4 @@
-import { SETTINGS_KEY, STATS_KEY, ext, getSettings, siteOf, tabKey, type Settings, type Stats } from '../shared/ext';
+import { SETTINGS_KEY, STATS_KEY, ext, getSettings, lastKey, siteOf, tabKey, type Last, type Settings, type Stats } from '../shared/ext';
 
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
 
@@ -34,19 +34,33 @@ async function init(): Promise<void> {
   const local = await ext.storage.local.get(STATS_KEY);
   const total = (local[STATS_KEY] as Stats | undefined)?.total ?? 0;
   let onTab = 0;
+  let last: Last | undefined;
   if (tab?.id !== undefined) {
-    const s = await ext.storage.session.get(tabKey(tab.id));
+    const s = await ext.storage.session.get([tabKey(tab.id), lastKey(tab.id)]);
     onTab = (s[tabKey(tab.id)] as number | undefined) ?? 0;
+    last = s[lastKey(tab.id)] as Last | undefined;
+  }
+  const outcome = $('outcome');
+  const TEXT: Record<Last['how'], string> = {
+    rejected: 'Banner rejected on this page.',
+    hidden: 'No way to refuse on this page: banner hidden.',
+    wall: 'Pay-or-accept wall: no free way to refuse. Left as is.',
+  };
+  if (last) {
+    outcome.textContent = TEXT[last.how];
+    outcome.hidden = false;
   }
 
   const enabled = $<HTMLInputElement>('enabled');
   const siteBox = $<HTMLInputElement>('site');
+  const walls = $<HTMLInputElement>('walls');
   $('site-name').textContent = site || 'this page';
   $('tab-count').textContent = String(onTab);
   $('total-count').textContent = String(total);
   enabled.checked = settings.enabled;
   siteBox.checked = !!site && settings.disabledSites.includes(site);
   siteBox.disabled = !site || !settings.enabled;
+  walls.checked = settings.hideWalls;
 
   const save = async (next: Settings): Promise<void> => {
     settings = next;
@@ -56,6 +70,7 @@ async function init(): Promise<void> {
   };
 
   enabled.addEventListener('change', () => void save({ ...settings, enabled: enabled.checked }));
+  walls.addEventListener('change', () => void save({ ...settings, hideWalls: walls.checked }));
   siteBox.addEventListener('change', () => {
     const rest = settings.disabledSites.filter((d) => d !== site);
     void save({ ...settings, disabledSites: siteBox.checked ? [...rest, site] : rest });

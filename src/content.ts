@@ -1,8 +1,8 @@
 import { RuleEngine, rulesFor, type Outcome } from './rules';
 import { findCandidates } from './candidates';
 import { run as runFallback } from './fallback';
-import { timed } from './shared/dom';
-import { ext, getSettings, isAllowed, type Msg } from './shared/ext';
+import { dbg, timed } from './shared/dom';
+import { DEFAULT_SETTINGS, ext, getSettings, isAllowed, type Last, type Msg, type Settings } from './shared/ext';
 
 const TOP = window === window.top;
 const WATCH_MS = 10_000;
@@ -19,9 +19,18 @@ let pending = 0;
 /** Elements added since the last scan (null = scan the whole document). */
 let added: Set<Element> | null = null;
 let cmpSeen = false;
+let settings: Settings = DEFAULT_SETTINGS;
+
+/** Ask the background whether a CMP iframe in this tab reported a pay-or-accept wall. */
+const frameWall = (): Promise<boolean> =>
+  ext.runtime.sendMessage({ type: 'oho_last' } satisfies Msg).then(
+    (r: Last | null) => r?.how === 'wall',
+    () => false,
+  );
 const MAX_ADDED = 200;
 
 function finish(id: string, how: Outcome): void {
+  dbg('finish', id, how);
   if (!how) return;
   handled = true;
   stop();
@@ -42,10 +51,11 @@ function scan(recheck = false): void {
   added = new Set();
   // Once a CMP has been seen, keep doing the full (still cheap) presence check while it loads.
   const hit = timed(() => engine.detect(cmpSeen ? undefined : batch));
+  if (hit) dbg('detect', hit.rule.id, hit.visible ? 'visible' : 'hidden');
   if (hit && hit.visible) {
     cmpSeen = true;
     busy = true;
-    void engine.handle(hit.rule).then((how) => {
+    void engine.handle(hit.rule, { hideWalls: settings.hideWalls, frameWall }).then((how) => {
       busy = false;
       if (how) return finish(hit.rule.id, how);
       added = null; // rule failed: let the heuristic look at the whole page
@@ -64,7 +74,7 @@ function scan(recheck = false): void {
   if (!cands.length) return;
   // The fallback is bundled in (no web-accessible resources, so pages can't probe for oho).
   // Its regexes still compile lazily, so pages without candidates never pay for them.
-  finish('heuristic', timed(() => runFallback(cands, seen)));
+  finish('heuristic', timed(() => runFallback(cands, seen, settings.hideWalls)));
 }
 
 let recheckDue = false;
@@ -103,7 +113,10 @@ function watch(): void {
 }
 
 async function allowed(): Promise<boolean> {
-  if (TOP) return isAllowed(await getSettings(), location.hostname);
+  if (TOP) {
+    settings = await getSettings();
+    return isAllowed(settings, location.hostname);
+  }
   // Frames can't see the top-level host: ask the background, which knows the tab URL.
   const msg: Msg = { type: 'oho_check' };
   return ext.runtime.sendMessage(msg).then((r) => r === true, () => false);
@@ -115,7 +128,9 @@ async function main(): Promise<void> {
   if (g.__ohoRan) return;
   g.__ohoRan = true;
   if (!TOP && !rulesFor(location.hostname, false, location.href).length) return;
-  if (!(await allowed())) return;
+  const ok = await allowed();
+  dbg('start', location.href.slice(0, 80), 'allowed=' + ok, 'rules=' + rulesFor(location.hostname, TOP, location.href).map((r) => r.id).join(','));
+  if (!ok) return;
   scan();
   if (!handled) watch();
 }

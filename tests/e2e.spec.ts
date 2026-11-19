@@ -24,6 +24,9 @@ const test = base.extend<{ page: Page }, { ctx: BrowserContext; sw: Worker }>({
       await ctx.route('https://cmp.news-example.test/**', (r) =>
         r.fulfill({ path: 'tests/fixtures/sourcepoint-2step-frame.html', contentType: 'text/html' }),
       );
+      await ctx.route('https://cmp.wall-example.test/**', (r) =>
+        r.fulfill({ path: 'tests/fixtures/sourcepoint-wall-frame.html', contentType: 'text/html' }),
+      );
       await use(ctx);
       await ctx.close();
     },
@@ -55,7 +58,7 @@ async function scrollable(page: Page): Promise<boolean> {
   });
 }
 
-async function setSettings(sw: Worker, s: { enabled: boolean; disabledSites: string[] }): Promise<void> {
+async function setSettings(sw: Worker, s: { enabled: boolean; disabledSites: string[]; hideWalls?: boolean }): Promise<void> {
   await sw.evaluate((v) => chrome.storage.local.set({ oho_settings: v }), s);
 }
 
@@ -129,16 +132,56 @@ test('Usercentrics v3: the floating privacy button survives', async ({ page }) =
   await expect(page.locator('#uc-privacy-button')).toBeVisible();
 });
 
-for (const [fx, wall] of [['iubenda-paywall', '#iubenda-cs-banner'], ['paywall-hidden-cmp', '#ue-initial-modal'], ['custom-notice-es', '#cookies-overlay']]) {
-  test(`no way to refuse (${fx}): hidden, nothing clicked`, async ({ page }) => {
+/** The most recent outcome oho recorded for any tab (background storage.session). */
+const lastOutcome = (sw: Worker): Promise<string | null> =>
+  sw.evaluate(async () => {
+    const all = await chrome.storage.session.get(null);
+    const last = Object.entries(all)
+      .filter(([k]) => k.startsWith('oho_last_'))
+      .map(([, v]) => v as { how: string; t: number })
+      .sort((a, b) => b.t - a.t)[0];
+    return last?.how ?? null;
+  });
+
+// Pay-or-accept walls: left alone by default, hidden only when the user opts in.
+const WALLS: [fixture: string, wall: string][] = [
+  ['iubenda-paywall', '#iubenda-cs-banner'], // "Rifiuta e abbonati" (repubblica.it)
+  ['paywall-hidden-cmp', '#ue-initial-modal'], // custom wall over a hidden Didomi (marca.com)
+  ['sourcepoint-wall', '#sp_message_container_99'], // wall inside a cross-origin CMP frame (bild.de)
+];
+for (const [fx, wall] of WALLS) {
+  test(`pay-or-accept wall, default (${fx}): left alone, reported as a wall`, async ({ page, sw }) => {
     await page.goto(BASE + fx + '.html');
-    await expect(page.locator(wall!)).toBeHidden({ timeout: 6000 });
-    await expect.poll(() => scrollable(page)).toBe(true);
+    await expect.poll(() => lastOutcome(sw), { timeout: 8000 }).toBe('wall');
+    await page.waitForTimeout(1000);
+    await expect(page.locator(wall)).toBeVisible();
+    expect(await page.locator('[data-oho-handled]').count()).toBe(0);
     const s = await state(page);
     expect(s.result).toBeNull();
     expect(s.clicks).toEqual([]);
   });
+  test(`pay-or-accept wall, "hide walls" on (${fx}): hidden, scroll restored, nothing clicked`, async ({ page, sw }) => {
+    try {
+      await setSettings(sw, { enabled: true, disabledSites: [], hideWalls: true });
+      await page.goto(BASE + fx + '.html');
+      await expect(page.locator(wall)).toBeHidden({ timeout: 8000 });
+      await expect.poll(() => scrollable(page)).toBe(true);
+      const s = await state(page);
+      expect(s.result).toBeNull();
+      expect(s.clicks).toEqual([]);
+    } finally {
+      await setSettings(sw, { enabled: true, disabledSites: [] });
+    }
+  });
 }
+
+test('notice with no refuse button (custom-notice-es) is still hidden by default', async ({ page }) => {
+  await page.goto(BASE + 'custom-notice-es.html');
+  await expect(page.locator('#cookies-overlay')).toBeHidden({ timeout: 6000 });
+  const s = await state(page);
+  expect(s.result).toBeNull();
+  expect(s.clicks).toEqual([]);
+});
 
 test('cookie wall without a reject button: hidden, scroll restored, accept never clicked', async ({ page }) => {
   await page.goto(BASE + 'custom-de.html');

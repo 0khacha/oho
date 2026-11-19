@@ -1,6 +1,7 @@
 import data from '../rules/cmps.json';
 import { RE, type Category } from './shared/keywords';
-import { MARK, click, hide, isVisible, labelOf, restoreScroll, safeToClick, sleep, timed } from './shared/dom';
+import { MARK, click, dbg, hide, isVisible, labelOf, restoreScroll, safeToClick, sleep, timed } from './shared/dom';
+import { isWall } from './walls';
 
 export interface Step {
   click?: string;
@@ -35,12 +36,21 @@ export interface Rule {
   hideClasses?: string[];
   /** CMP backdrops/overlays that may outlive the banner; always cleared once oho is done. */
   overlay?: string;
+  /** The banner's buttons live in a cross-origin iframe: ask the frame whether it is a wall. */
+  wallInFrame?: boolean;
   frame?: string[];
   /** Also run in iframes whose URL contains this string (first-party CNAME CMP frames). */
   frameUrl?: string;
 }
 
-export type Outcome = 'rejected' | 'hidden' | null;
+export type Outcome = 'rejected' | 'hidden' | 'wall' | null;
+
+export interface HandleOptions {
+  /** Hide pay-or-accept walls (user setting, off by default). */
+  hideWalls: boolean;
+  /** Did a CMP iframe in this tab report a wall? (Sourcepoint renders its wall cross-origin.) */
+  frameWall: () => Promise<boolean>;
+}
 
 const RULES = (data as { cmps: Rule[] }).cmps;
 
@@ -148,8 +158,8 @@ async function runFlow(rule: Rule): Promise<boolean> {
   return true;
 }
 
-const bannerVisible = (rule: Rule): boolean =>
-  !!find(rule.visible ? scope(rule) : document, rule.visible ?? rule.detect);
+const bannerEl = (rule: Rule): HTMLElement | null => find(rule.visible ? scope(rule) : document, rule.visible ?? rule.detect);
+const bannerVisible = (rule: Rule): boolean => !!bannerEl(rule);
 
 function hideRule(rule: Rule): void {
   if (rule.hide) document.querySelectorAll(rule.hide).forEach(hide);
@@ -268,13 +278,23 @@ export class RuleEngine {
     return null;
   }
 
-  async handle(rule: Rule): Promise<Outcome> {
-    const out = await this.tryReject(rule);
+  async handle(rule: Rule, opts: HandleOptions): Promise<Outcome> {
+    const out = await this.tryReject(rule, opts);
     if (!out) this.failed.add(rule.id);
     return out;
   }
 
-  private async tryReject(rule: Rule): Promise<Outcome> {
+  private async tryReject(rule: Rule, opts: HandleOptions): Promise<Outcome> {
+    // Inside a CMP frame, a pay-or-accept wall is reported (the top frame decides) and the
+    // frame does nothing else: no wandering into settings on a wall.
+    // The message's buttons fade in after it becomes visible (bild.de): wait until it is
+    // clearly a wall or a reject button shows up, before taking any path.
+    if (rule.frame) {
+      const v = await waitFor(() => (isWall(scope(rule)) ? 'wall' : findReject(rule) ? 'reject' : null), 2000);
+      if (v === 'wall') return 'wall';
+    }
+    dbg('tryReject', rule.id);
+
     // Inside a CMP iframe the frame is usually destroyed right after the click, so we can't
     // wait to see it close: report immediately. In the top frame, every action is confirmed.
     const done = (): Promise<boolean> => (rule.frame ? Promise.resolve(true) : closed(rule));
@@ -300,14 +320,25 @@ export class RuleEngine {
       return ok();
     }
     // 3. Multi-step flow (preferences -> switch everything off -> verify -> save).
+    dbg('flow?', rule.id, !!rule.flow);
     if (rule.flow && (await runFlow(rule))) {
       if (!(await done())) timed(() => hideRule(rule));
       return ok();
     }
     if (rule.hide) {
       if (rule.hideDelay) await sleep(rule.hideDelay);
+      const el = timed(() => (document.querySelector(rule.detect) ? bannerEl(rule) : null));
+      if (!el) return null;
+      // Pay-or-accept wall: the only refusal is paying. Left alone unless the user opted in.
+      let wall = timed(() => isWall(el));
+      // The wall may live in a slower cross-origin frame: give its report a few more seconds.
+      for (let i = 0; !wall && rule.wallInFrame && i < 7; i++) {
+        wall = await opts.frameWall();
+        if (!wall && i < 6) await sleep(500);
+      }
+      dbg('hide path', rule.id, 'wall=' + wall);
+      if (wall && !opts.hideWalls) return 'wall';
       return timed(() => {
-        if (!document.querySelector(rule.detect) || !bannerVisible(rule)) return null;
         hideRule(rule);
         makeUsable(rule);
         return 'hidden' as const;

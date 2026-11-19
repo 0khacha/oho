@@ -22,8 +22,8 @@ const common = {
   charset: 'utf8',
 };
 
-async function bundle(outdir, bench = false) {
-  const define = { __BENCH__: String(bench) };
+async function bundle(outdir, bench = false, debug = false) {
+  const define = { __BENCH__: String(bench), __DEBUG__: String(debug) };
   // Bench builds also time the script's own top-level evaluation (regex compilation, rule setup).
   const wrap = bench
     ? {
@@ -97,11 +97,11 @@ if (args.has('--bench')) {
   await bundle('dist/bench', true);
   console.log('bench bundle -> dist/bench');
 } else if (args.has('--collector')) {
-  await build({ ...common, minify: false, entryPoints: ['src/collector.ts'], format: 'iife', outfile: 'training/collector.js', define: { __BENCH__: 'false' } });
+  await build({ ...common, minify: false, entryPoints: ['src/collector.ts'], format: 'iife', outfile: 'training/collector.js', define: { __BENCH__: 'false', __DEBUG__: 'false' } });
   console.log('collector -> training/collector.js');
 } else {
   for (const d of ['dist/js', 'dist/chrome', 'dist/firefox']) rmSync(d, { recursive: true, force: true });
-  await bundle('dist/js');
+  await bundle('dist/js', false, args.has('--debug'));
   const icons = Object.fromEntries([16, 32, 48, 128].map((s) => [s, renderIcon(s)]));
   const report = [];
   for (const browser of ['chrome', 'firefox']) {
