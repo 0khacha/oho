@@ -1,0 +1,2 @@
+# Keep LF everywhere: the build ships some text files as-is, and AMO reviewers rebuild from source.
+* text=auto eol=lf

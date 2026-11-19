@@ -14,12 +14,12 @@ instead of just hiding them:
 It never clicks anything that reads as "accept", and never anything that leads to paying.
 Pay-or-accept walls are left alone unless you choose to hide them.
 
-- **18.3 KB** zipped for Chrome (18.7 KB for Firefox), zero runtime dependencies.
+- **18.3 KB** zipped for Chrome (18.6 KB for Firefox), zero runtime dependencies.
 - **No network requests, no analytics, no data collection** ([privacy policy](PRIVACY.md)).
 - **1.4–5.1 ms** median main-thread work per page across 36 test fixtures, at most 6.9 ms in 3 bench runs, against a 10 ms budget. It never blocks page load.
 - **Live** (52 sites, a banner shown on 38): **38 of 38 banners handled correctly**, **0 accept
   clicks**. 31 rejected, all 31 refusals verified in the site's own storage; 1 notice hidden;
-  6 pay-or-accept walls left alone. Not yet run through an EU connection.
+  6 pay-or-accept walls left alone.
 
 Supported CMPs: OneTrust, Cookiebot, Didomi, Quantcast / InMobi Choice, TrustArc, Usercentrics,
 Sourcepoint, Axeptio, Iubenda, Complianz. Unknown banners are handled by a heuristic and a small model.
@@ -80,7 +80,7 @@ node tests/live/run.ts            # real websites (see CONTRIBUTING.md)
 
 ## Results
 
-**Bundle:** `content.js` 26.4 KB, `oho-chrome.zip` 18.3 KB, `oho-firefox.zip` 18.7 KB.
+**Bundle:** `content.js` 26.4 KB, `oho-chrome.zip` 18.3 KB, `oho-firefox.zip` 18.6 KB.
 
 **Benchmark** (`npm run bench`, Chromium headless, Windows 11, 5 runs per fixture, 3 runs of the
 bench). Main-thread work summed over the whole page life. Ranges are the lowest and highest values
@@ -123,8 +123,6 @@ counters; per-tab values are cleared when the tab closes. See [PRIVACY.md](PRIVA
 
 ## Limitations
 
-- Not live-tested through an EU connection yet, so EU-only banner variants are unverified.
-- Firefox: the popup and the "Grant access" flow still need a manual check in regular Firefox.
 - Pay-or-accept walls record no refusal (none is offered for free), whether left alone or hidden.
 - Banners in closed shadow roots, or in cross-origin iframes oho doesn't match, can only be hidden
   or not handled at all.

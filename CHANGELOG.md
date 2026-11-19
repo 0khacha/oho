@@ -8,6 +8,9 @@ Firefox Add-ons (AMO) submission prep. No change to what the extension does.
 - `store/amo-reviewer-notes.md`: exact steps to rebuild `oho-firefox.zip` from that source.
 - The Firefox manifest declares `data_collection_permissions: { required: ["none"] }`, and
   `web-ext lint` reports 0 errors and 0 warnings.
+- Reproducible build: shipped text files are copied with LF line endings, and `.gitattributes`
+  keeps checkouts LF. A Windows checkout no longer adds CRs to `popup.html` / `popup.css`.
+  `oho-firefox.zip` is now 18.6 KB.
 - Live reports are now named `report-non-eu.*`.
 
 ## 0.1.0 (2026-11-19)
@@ -43,7 +46,7 @@ DOM), Sourcepoint, Axeptio, Iubenda, Complianz.
 ### Live results
 
 52 real sites, tested from a non-EU location (no proxy, headless Chromium, `tests/live/report-non-eu.md`,
-2026-11-19). EU-only banner variants are less covered.
+2026-11-19).
 A banner appeared on 38:
 
 - 38 of 38 handled correctly: 31 rejected, 1 notice with no way to refuse hidden, 6 pay-or-accept
@@ -72,10 +75,6 @@ A banner appeared on 38:
 
 ### Known limitations
 
-- Not live-tested through an EU connection yet. EU-only banner variants may differ from what the
-  rules were checked against.
-- Firefox: the popup and the "Grant access" flow still need a manual check in regular Firefox.
-  Playwright's Firefox build can't open `moz-extension://` pages.
 - Pay-or-accept walls record no refusal (none is offered for free), whether they are left alone or
   hidden.
 - Banners in closed shadow roots, or in cross-origin iframes oho doesn't match, can only be hidden

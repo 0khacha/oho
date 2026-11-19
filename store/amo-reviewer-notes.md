@@ -27,10 +27,12 @@ The build writes the unpacked Firefox extension to `dist/firefox/`, and the same
 `oho-firefox.zip`, which is byte-identical to the uploaded package:
 
 ```
-sha256(oho-firefox.zip) = f597c3ca8ad4d7363bc474a19135428e747f2baf8f72a36258a1ea52a68bab06
+sha256(oho-firefox.zip) = 42cdf1a514418f1ba2f21b93885faf7eebf437ac88f0a8e9537b9cea629c4676
 ```
 
-The zip is deterministic: fixed timestamps and a fixed file order (`scripts/zip.mjs`).
+The zip is deterministic: fixed timestamps and a fixed file order (`scripts/zip.mjs`), and text
+files are copied with LF line endings, so the result doesn't depend on the OS or Git's line-ending
+settings.
 
 ## Where things are
 

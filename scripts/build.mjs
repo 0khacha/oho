@@ -94,13 +94,19 @@ function dirSize(dir) {
 
 const renderIcons = () => Object.fromEntries([16, 32, 48, 128].map((s) => [s, renderIcon(s)]));
 
+/**
+ * Text files shipped as-is are copied with LF line endings, so a CRLF checkout (Windows,
+ * core.autocrlf) builds the same bytes as the repository: AMO reviewers rebuild from source.
+ */
+const copyText = (from, to) => writeFileSync(to, readFileSync(from, 'utf8').replace(/\r\n/g, '\n'));
+
 /** Everything but the scripts: popup, icons, manifest. */
 function assemble(browser, out, icons) {
   mkdirSync(`${out}/icons`, { recursive: true });
-  cpSync('src/popup/popup.html', `${out}/popup.html`);
-  cpSync('src/popup/popup.css', `${out}/popup.css`);
+  copyText('src/popup/popup.html', `${out}/popup.html`);
+  copyText('src/popup/popup.css', `${out}/popup.css`);
   for (const [s, png] of Object.entries(icons)) writeFileSync(`${out}/icons/${s}.png`, png);
-  if (browser === 'firefox') cpSync('assets/mark.svg', `${out}/icons/icon.svg`);
+  if (browser === 'firefox') copyText('assets/mark.svg', `${out}/icons/icon.svg`);
   writeFileSync(`${out}/manifest.json`, JSON.stringify(manifest(browser), null, 2));
 }
 
