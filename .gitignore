@@ -7,3 +7,4 @@ bench-results*.txt
 training/collector.js
 __pycache__/
 tests/live/results/
+tests/live/inspect.png
